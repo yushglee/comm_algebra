@@ -1,0 +1,1208 @@
+\documentclass[leqno]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{color,stmaryrd}
+\usepackage{mathtools,caption,bbm,euscript}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz-cd}
+\usepackage[utf8]{inputenc}
+\usepackage[OT2,T1]{fontenc}
+\hypersetup{
+ colorlinks=true,
+ linkcolor=DarkOrchid,
+ filecolor=blue,
+ citecolor=olive,
+ urlcolor=orange,
+ pdftitle={Commutative Algebra},
+ %pdfpagemode=FullScreen,
+ }
+\usepackage{booktabs}
+
+%[label=(\alph*)]
+%[label=(\Alph*)]
+%[label=(\roman*)]
+%[label={(\bfseries R\arabic*)}]
+
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+
+
+\newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\dBr}[1]{\llbracket{#1}\rrbracket}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+
+% double bracket
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+\newcommand{\qdr}[1]{\underline{ #1 }}
+\newcommand{\cA}{\mathcal A} %complex abelian varieties
+\newcommand{\cB}{\mathcal B} %complex abelian varieties
+\newcommand{\bB}{\mathbf B}
+
+\newcommand{\mm}{\mathbf{m}}
+
+
+%%% Adelic rings
+\newcommand{\Q}{{\mathbf{Q}}}
+\newcommand{\Z}{{\mathbf{Z}}}
+\newcommand{\Qp}{\mathbf{Q}_p}
+\newcommand{\Zp}{\mathbf{Z}_p}
+\newcommand{\Ql}{\mathbf{Q}_\ell}
+\newcommand{\Zl}{\mathbf{Z}_\ell}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\A}{\mathbf A}
+\newcommand{\hZ}{{\hat{\mathbf{Z}}}}
+\newcommand{\dd}{\mathfrak{d}} %different
+\newcommand{\DD}{\mathcal{D}}  %discriminant
+
+\newcommand{\F}{{\mathcal{F}}} %global 
+\newcommand{\OF}{{\mathcal{O}_{\F}}}
+\newcommand{\K}{{\mathcal{K}}} %global quadratic
+\newcommand{\OK}{\mathcal{O}_{\K}}
+\newcommand{\kk}{F} %local
+\newcommand{\E}{E} %local quadratic
+
+
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Nr}{\mathsf{N}}
+\DeclareMathOperator{\Tr}{Tr}
+
+
+
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\hht}{ht}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\trdeg}{tr.deg}
+\DeclareMathOperator{\depth}{depth}
+
+%%% Fonts
+\newcommand{\oeu}{\EuScript{O}}
+\newcommand{\eeu}{\EuScript{E}}
+\newcommand{\feu}{\EuScript{F}}
+\newcommand{\geu}{\EuScript{G}}
+\newcommand{\keu}{\EuScript{K}}
+
+\newcommand{\oo}{\mathcal O}
+\newcommand{\bs}{\mathcal S}
+\newcommand{\id}{\mathbf{1}}
+
+\newcommand{\1}{\mathbf{1}} 
+\newcommand{\bfe}{\mathbf e}
+\newcommand{\bff}{\mathbf f}
+
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fg}{\mathfrak g}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fs}{\mathfrak s}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fl}{\mathfrak l}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\bfp}{\overline{\mathfrak p}}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\bfq}{\overline{\mathfrak q}}
+
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+
+
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\euW}{\EuScript{W}}
+
+
+%%% Categorical
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Inj}{Inj}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\corank}{corank}
+
+
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\rec}{rec}
+
+
+
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{Remark*}{Remark}
+\newtheorem{ack}{Acknowledgement}
+
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+
+
+
+\begin{document}
+\title{Commutative Algebra}
+\author[Y-S.~Lee]{Yu-Sheng Lee}
+\address{Department of Mathematics, University  of Michigan, Ann Arbor, MI 48109, USA}
+\email{yushglee@umich.edu}
+\date{\today}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+\section{Completion}
+\subsection{Completion}
+\begin{defn}
+	Let $A$ be a ring,
+	$(A_n)$ be a decreasing filtration of ideals of $A$ satisfying
+	\[
+		A_{0}=A,\quad
+		A_{n+1}\subset A_{n},\quad
+		A_{n}A_{m}\subset A_{n+m}.
+	\]
+	Let $M$ be an $A$-module, 
+	$(M_n)$ be a compatible decreasing filtration of submodules of $M$ satisfying
+	\[
+		M_{0}=M,\quad
+		M_{n+1}\subset M_{n},\quad
+		A_{n}M_{m}\subset M_{n+m}.
+	\]
+	When $\fq\subset A$ is an ideal, 
+	the $\fq$-adic filtration is defined by $A_n=\fq^nA, M_n=\fq^nM$.
+\end{defn}
+\begin{defn}
+	A ring $A$ is said to be graded if
+	\[
+		A=\oplus_{n\geq 0} A_n \text{ and } A_nA_m\subset A_{n+m}.
+	\]
+	An $A$-module $M$ is said to be compatibly graded if
+	\[
+		M=\oplus_{n\geq 0} M_n \text{ and } A_nM_m\subset M_{n+m}.
+	\]
+Given a filtered ring $A$ and 
+a compatibly filtered $A$-module $M$, 
+we can define the associated graded ring $\gr(A)$
+and the associated compatibly graded $\gr(A)$-module $\gr(M)$
+ \[
+	 \gr(A)=\oplus_{n\geq 0}A_n/A_{n+1},\quad
+	 \gr(M)=\oplus_{n\geq 0}M_n/M_{n+1}.
+\]
+\end{defn}
+Let $A$ be a Noetherian ring
+and $\fq\subset A$ be an ideal.
+Consider the following property on $(M_n)$.
+\begin{align*}\tag{$\fq$-good}
+	&\text{there exists a positive $n_{0}$ such that }
+	M_{n+k}=\fq^kM_{n} \text{ for all }
+	n\geq n_0 \text{ and } k\geq 0\\
+	\Longleftrightarrow
+	&\gr(M) \text{ is finite over the Noetherian ring } \gr(A).
+\end{align*}
+\begin{prop}[Artin-Rees]
+	Let $A$ be a Noetherian ring,
+	$M$ be an $A$-module,
+	$(M_n)$ be a $\fq$-good filtration,
+	$N\subset M$ be a submodule,
+	then the induced filtration $N_n\coloneqq M_n\cap N$
+	is also  $\fq$-good.
+\end{prop}
+\begin{prop}[Krull intersection]
+	Let $A$ be a Noetherian ring,
+	$M$ be a finite $A$-module,
+	then
+	\[
+		x\in \bigcap_{n\geq 0} \fq^nM
+		\Longleftrightarrow
+		\text{ there exists }
+		d\in \fq \text{ such that }
+		dx=x.
+	\]
+\end{prop}
+\begin{proof}
+The submodule $N\coloneqq \cap_n \fq^nM$ satisfies $\fq N=N$ 
+by the Artin-Rees lemma. 
+Pick any generating set $\{ x_1\cdots x_n \}$,
+there exists $A=(a_{ij}), a_{ij}\in \fq$ such that 
+$x_j=\sum a_{ij}x_i$,
+then we can pick $1-d=\det(\id_{n}-A)$.
+\end{proof}
+\begin{rem}
+	When $A$ is a local ring and $M$ is finite,
+	$M\to \hat{M}$ is injective by the above.
+\end{rem}
+Note that $ \hat{\fq}\subset \rad(\hat{A})$ 
+since $1+\fq\subset \hat{A}^\times$.
+Moreover, when $A$ is Noetherian, the followings hold.
+\begin{enumerate}[label=(\alph*)]
+	\item 
+	The $\fq$-adic filtration is exact on finite $A$-modules.
+	%Given $0\to M'\to M\to M''\to 0$ consider
+	%\[
+	%	0\to M'/(M\cap \fq^nM)
+	%	\to M/\fq^nM
+	%	\to M''/\fq^nM''\to 0
+	%\]
+	%and use that $\hat{M}'\cong \varprojlim M'/(M\cap \fq^nM)$ 
+	%by the Artin-Rees lemma.
+	\item 
+	Let $M$ be a finite $A$-module,
+	then $M\otimes_A\hat{ A }\to \hat{ M }$ is an isomorphism.
+	%\[
+	%	\begin{tikzcd}
+	%	A^m\otimes_A\hat{ A }
+	%	\arrow[r]
+	%	\arrow[d] &
+	%	A^n\otimes_A\hat{ A }
+	%	\arrow[r]
+	%	\arrow[d] &
+	%	M\otimes_A\hat{ A }
+	%	\arrow[r]
+	%	\arrow[d] & 0\\
+	%	\hat{ A }^m
+	%	\arrow[r] &
+	%	\hat{ A }^n
+	%	\arrow[r] &
+	%	\hat{ M }
+	%	\arrow[r] & 0.
+	%	\end{tikzcd}
+	%\]
+	\item 
+	Let $I\subset A$ be an ideal and 
+	$M$ be a finite $A$-module,
+	then $I\hat{M}=\hat{IM}=\hat{I}\hat{M}$.
+	%\[
+	%	\begin{tikzcd}
+	%	I\otimes_AM\otimes_A\hat{A}
+	%	\arrow[r,"u"] \arrow[d] \arrow[dr,"v"] & 
+	%	I\otimes_A\hat{M}
+	%	\arrow[d]\\
+	%	IM\otimes_A\hat{A}
+	%	\arrow[r,"w"] & \hat{M}
+	%	\end{tikzcd}	
+	%\]
+	In particular $\hat{A}$ is flat over $A$
+	since $I\otimes\hat{A}\cong \hat{I}\cong I\hat{A}$ 
+	for any finitely generated ideal $I$.
+	\item  
+	$M/\fq^nM=\hat{M}/\fq^n\hat{M}=\hat{M}/\hat{\fq}^n\hat{M}$.
+	\item 
+	Let $A$ be a local ring, then
+	the completion $\hat{A}$ 
+	at the maximal ideal is faithfully-flat over $A$.
+	%Since taking the $\fq$-adic completions is exact,
+	%the above shows that  $M\to M\otimes\hat{A}$ is 
+	%exact on finite $A$-modules.
+	%Since to check the injectivity of 
+	%$M'\otimes\hat{A}\to M\otimes\hat{A}$
+	%if suffices to check on finite submodules,
+	%we see that $\hat{A}$ is flat.
+	%And $\hat{A}$ is faithful since 
+	%for any ideal $I$ there exists the surjection 
+	%$A/I\to A/\fm$ and
+	%$A/\fm\otimes\hat{A}\cong \hat{A}/\hat{\fm}$.
+\end{enumerate}
+\begin{prop}
+	Suppose $A/\fq$ is Noetherian and $\fq$ is finitely-generated,
+	then $\hat{A}$ is Noetherian.
+\end{prop}
+\begin{proof}
+	Use that $\gr^{\fq}(A)$ is Noetherian.
+	Let $I$ be an ideal of $ \hat{A}$,
+	then $\gr^{\fq}(I)$ is finitely generated, 
+	pick any generating set and lift which to an homomorphism
+	between $\fq$-adically filtered $ \hat{A}$-modules
+	 \[
+		u\colon \hat{A}^{s}\to I
+		\text{ such that } \gr(u) \text{ is surjective.}
+	\]
+	Then $u$ is also surjective since  $ \hat{A}$ is complete
+	and $I\subset \hat{A}$ is separated.
+\end{proof}
+
+\subsection{Support of a sheaf}
+\begin{defn}
+	Let $X$ be a ringed space and 
+	$F$ be an $\mathcal{O}_{X}$-module,
+	the set of points $x\in X$ such that $F_x\neq 0$
+	is called the support of $F$ and is denoted  $\Supp(F)$.
+\end{defn}
+\begin{enumerate}[label=(\alph*)]
+	\item 
+	Given an exact sequence $0\to F'\to F\to F''\to 0$
+	of $A$-modules, then
+	\[
+		\Supp(F)=\Supp(F')\cup \Supp(F'').
+	\]
+	\item
+	Let $M,M'$ be  $A$-modules of finite type, then
+	both $\Supp(M)$ and $\Supp(M')$ are closed and
+	\[
+		\Supp(M\otimes_AM')=\Supp(M)\cap \Supp(M').
+	\]
+	%After localization at a common support, 
+	%the Nakayama lemma ensures that 
+	%$M/\fm M$ and $M'/\fm M'$ are both nonzero, then so does
+	%$M\otimes_AM'$ since
+	%$M/\fm M\otimes_{A/\fm}M'/\fm M'=
+	%(M\otimes_AM')\otimes_AA/\fm$.
+	\item
+	Let $M$ be a $A$-module of finite type and 
+	$J$ be the annihilator, then  $\Supp(M)=V(J)$.
+	%Use the finiteness and $\Supp(A/I)=V(I)$.
+	\item
+	Let $M$ be a $A$-module of finite type and $I$ be an ideal,
+	then $\Supp(M/IM)=\Supp(M)\cap V(I)$.
+	\item
+	Let $f\colon X\to Y$ be a morphism of schemes
+	and  $F$ be an $\mathcal{O}_X$-module of finite type, then
+	\[\Supp(f^*F)=f^{-1}(\Supp(F)).\]
+\end{enumerate}
+\begin{prop}[Weak Nullstellensatz]
+	Let $M$ be a finite $A$-module and $f\in A$.
+	Then $f\colon M\to M$ is a nilpotent if and only if 
+	$f$ lies in every prime of $\Supp(M)$.
+\end{prop}
+\begin{proof}
+	The map is a nilpotent if and only if $M_f=0$,
+	use $\Supp(M_f)=\Supp(M)\cap D(f)$.
+\end{proof}
+
+\subsection{Associated primes}
+\begin{defn}
+	A prime ideal $\fp$ is an associated prime
+	for an $A$-module $M$ 
+	if it is the annihilator of some  $x\in M$.
+	If  $X$ is a scheme and $F$ is an $\mathcal{O}_X$-module,
+	then  $\Ass(F)=\{x\in X\mid \fm_x\in \Ass(F_x)\}$.
+\end{defn}
+\begin{enumerate}[label=(\alph*)]
+	\item 
+	Given $0\to M'\to M\to M''\to 0$, then 
+	$\Ass(M)\subset \Ass(M')\cup \Ass(M'')$.
+	%given an inclusion $A/\fp\hookrightarrow m$,
+	%either there exists a nonzero $x\in A/\fp\cap M'$
+	%so that $\fp=\ann(x)\in \Ass(M')$, 
+	%or $A/\fp\hookrightarrow M''$.
+	\item
+	When $A$ is Noetherian, an $A$-module $M$ is nonzero
+	if and only if $\Ass(M)=\emptyset$.
+	\item
+	When $A$ is Noetherian, the set of zero divisors of $M$ is 
+	the union of the associated primes of $M$.
+	\item
+	When $A$ is Noetherian and  $M$ is a finite $A$-fmodule,
+	there exists a filtration
+	\[
+		M=M_{0}\supset \cdots\supset M_{n}=0
+		\text{ such that } M_i/M_{i+1}\cong A/\fp_i.
+	\]
+	Therefore $\Ass(M)\subset\{\fp_1,\cdots,\fp_n\}$ is finite.
+	\item
+	When $A$ is Noetherian,
+	$\Ass_{S^{-1}A}(S^{-1}M)=
+	\{p\in \Ass_A(M)\mid \fp\cap S=\emptyset\}$.
+	%Need finite generation to show 
+	%$S^{-1}\fp\in \Ass(S^{-1}M)\Longrightarrow \fp\in \Ass(M)$.
+	\item
+	When $A$ is Noetherian,
+	$\Supp(M)=\cup_{\fp\in \Ass(M)}V(\fp)$.
+	%If $M_{\fp}\neq 0$, by above there exists $\fq\in \Ass(M)$
+	%such that $\fq\cap A\setminus \fp=\emptyset$.
+\end{enumerate}
+
+\subsection{Characteristic functions}
+\begin{defn}
+	A composition series of an $A$-module $M$ is a filtration
+	\[
+		M=M_0\supset \cdots \supset M_n=0
+		\text{ such that } M_i/M_{i+1} \text{ are simple.}
+	\]
+	Define $\ell_A(M)=n$, then
+	$\ell(M)=\ell(M')+\ell(M'')$ given
+	$0\to M'\to M\to M''\to 0$.
+	When $A$ is Noetherian, $M$ is of finite length
+	if and only if $\Supp(M)$ consists only of maximal ideals.
+\end{defn}
+\begin{prop}
+	A ring $A$ is Artinian if and only if 
+	$A$ is Noetherian and every prime ideal is maximal.
+\end{prop}
+\begin{proof}
+	If $A$ is Noetherian, by Noetherian induction 
+	every ideal contains a finite product of primes.
+	%Otherwise, let $I$ be a maximal one that doesn't satisfy
+	%the property. Then $I$ is necessarily not a prime ideal
+	%and there exists $x,y\notin I, xy\in I$.
+	%One then use $(I+Ax)(I+Ay)\subset I$ to get a contradiction.
+	Therefore $0=\fm_1\cdots \fm_n$ and one obtain
+	a composition series from which.
+	%Note that on defining $I_i=m_1\cdots m_i$, 
+	%each $I_i/I_{i+1}$ is a vector space over $A/m_{i+1}$
+	%of finite dimension by the Noetherian property.
+
+	If $A$ is Artinian,
+	among finite product of maximal ideals of $A$ 
+	pick a minimal $\fm$, so
+	\[
+		\fm^2=\fm \text{ and } \fm\subset \rad(A).
+	\]
+	If $\fm\neq 0$, 
+	among ideals such that $I\fm\neq 0$ 
+	pick a minimal  $I$.
+	Then for $x\in I$, either
+	\begin{enumerate}
+		\item $I\nsupseteq Ax$ and hence $x\fm=0$, or 
+		\item  $I=Ax$, but then $I=0$ by Nakayama lemma
+			since $I\fm=I$ from the minimality of $I$.
+	\end{enumerate}
+	Therefore $\fm=0$, and consequently
+	$A$ is of finite length and every prime ideal
+	of $A$ is maximal.
+\end{proof}
+Let $\fm_1\cdots \fm_n$ be the maximal ideal of an Artinian ring $A$,
+then 
+\begin{enumerate}[label=(\alph*)]
+	\item $A\cong \prod_{i=1}^{n}A_{\fm_i}$.
+	%Pick any $f\in \prod_{j\neq i}\fm_j\setminus \fm_i$, 
+	%then $D(f)=\{\fm_i\}$.
+	\item $A_{\fm_i}\to A/\fm_i^{k}$ is an isomorphism when
+		$k$ is sufficiently large.
+\end{enumerate}
+
+\begin{lem}
+	Let $H$ be a graded ring and 
+	$M$ be a graded $H$-module of finite type.
+	If $H$ satisfies 
+	\begin{enumerate}[label=(\alph*)]
+		\item $H_0$ is Artinian,
+		\item $H$ is an $H_0$-algebra generated by 
+			$x_1\cdots x_r\in H_1$.
+	\end{enumerate}
+	Then there exists a polynomial $Q_M$ of degree
+	$\leq r-1$ such that $Q_M(n)=\ell_{H_0}(M_n)$ for  $n\gg0$.
+\end{lem}
+\begin{proof}
+	In general, let $k_i$ be the degree of $x_i$,
+	then the Poincare series  
+	$P(x)=\sum_{n=0}^\infty \ell_{H_0}(M_n)x^n$ is of the form
+	\[
+		P(x)=\frac{f(x)}{\prod_{i=1}^{r}(1-x^{k_i})},\quad
+		f(x) \text{ is polynomial.}
+	\]	
+	%Inductively consider the exact sequence 
+	%$0\to K_n\to M_n\xrightarrow{x_r} M_{n+k_{s}}
+	%\to L_{n+k_s}\to 0$.
+	Thus $\ell(M_n)$, i.e. the coefficients of $x^n$
+	in  $P(x)$, is a polynomial of degree at most $r-1$
+	in the case when $k_i=1$ for all  $i$ since
+	\[
+		(1-x)^{-r}=\sum_{n\geq 0}\binom{n+r-1}{r-1}t^n.
+	\]
+\end{proof}
+
+\begin{prop}\label{prop:Hilbert-Samuel}
+	Let $A$ be a Noetherian ring 
+	and $M$ be a finite $A$-module.
+	Given a $q$-good filtration $(M_n)$,
+	then when $M/qM$ has finite lengh,
+	\begin{enumerate}[label=(\alph*)]
+	\item 
+	there exists a polynomial  $P_{(M_n)}$
+	of degree $\leq r$
+	such that $P_{(M_n)}(m)=\ell(M/M_m)$ for $m\gg0$.
+	\item 
+	The degree and leading coefficient of $P_{(M_n)}$
+	are independent of the choice of filtration.
+	\item 
+	Given $0\to M'\to M\to M''\to 0$, then
+	 $P_{(M_n)}-P_{(M'_n)}-P_{(M''_n)}$ has degree $\leq r-1$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $I=\Ann(M), B=A/I$ and $\fp=\fq+I/I$.
+	Then $H=\gr^{\fp}(B)$ acting on $\gr(M)$ satisfies
+	the assumptions of the previous lemma
+	since $\Supp(M/\fq M)=V(I) \cap V(\fq)$
+	consists only of maximal primes. 
+	One then use 
+	\[
+		(1-x)\sum_{n=1}^\infty \ell(M/M_n)x^n
+		=\sum_{n=0}^\infty \ell(M_n/M_{n+1})x^n.
+	\]
+	Since $(M_n)$ is $\fq$-good, there exists $n_0$ such that 
+	$M_{n+1}=\fq M_n$ for $n\geq n_{0}$. Thus when $n\gg 0$
+	 \[
+		\fq^{n+n_0}M\subset M_{n+n_0}=\fq^nM_{n_0}\subset M_n
+		\Longrightarrow
+		P_{(\fq^mM)}(n+n_0)\geq P_{(M_m)}(n+n_0)\geq 
+		P_{(\fq^mM)}(n)\geq P_{(M_m)}(n),
+	\]
+	therefore the degree and leading coefficient
+	do not depends on $(M_n)$.
+
+	The last property then follows from the previous two 
+	and that
+	\[
+		 \ell(M/\fq^nM)=\ell(M''/\fq^nM'')+\ell(M'/M'_n),\quad
+		 M'_n\coloneqq M'\cap \fq^nM.
+	\]
+\end{proof}
+\section{Depth and Dimension}
+
+Let $A$ be a Noetherian local ring with maximal ideal $m$
+and  $M$ be a finite $A$-module. Define
+\begin{enumerate}[label=(\alph*)]
+	\item 
+		$\dim (M)\coloneqq \dim (\Supp(M))$.
+	\item 
+		$d(M)\coloneqq \deg(P_{\fq^nM})$ for an ideal of definition
+		$\fm^n\subset \fq\subset \fm$.
+	\item 
+		$s(M)$ is the minimal number 
+		$\{x_1,\cdots ,x_n\}\subset \fm$ such that 
+		$M/(x_1,\cdots,x_n)M$ is of finite length.
+\end{enumerate}
+
+
+\begin{thm}
+	The three values are equal to each other.
+\end{thm}	
+\begin{proof}
+	To prove $\dim(M)\leq d(M)$,
+	pick  $\fp\in \Ass(M)$ such that  $\dim(M)=\dim(A/\fp)$
+	and reduce to show
+	 \[
+		 \dim(M)=\dim(A/\fp)\leq d(A/\fp)\leq d(M).
+	\]
+	If $d(A/\fp)=0$, then $A/\fp$ is of finite length and Artinian.
+	If $d(A/\fp)>0$, there is nothing to prove when $\dim(A/\fp)=0$
+	. And when there exists
+	 \[
+		 \fp=\fp_0\subset \fp_1\subset \cdots\subset \fp_n,\quad n=\dim(A/\fp),
+	\]
+	pick $x\in \fp_1\setminus \fp_0$, then  $\dim(A/(\fp,x))\geq n-1$ while  $d(A/(\fp,x))\leq d(A)-1$
+	since $0\to A/\fp\xrightarrow{x} A/\fp\to A/(\fp,x)\to 0$ is exact, thus by induction on $d(M)$ 
+	 \[
+		 \dim(A/\fp)-1\leq \dim(A/(\fp,x))\leq d(A/(\fp,x))\leq d(A/\fp)-1
+		 \Longrightarrow
+		 \dim(A/\fp)\leq d(A/\fp).
+	\]
+
+	That $d(M)\leq s(M)$ follows from the proof of 
+	Proposition \ref{prop:Hilbert-Samuel}.
+
+	To prove that  $s(M)\leq \dim(M)$.
+	Observe that  $M$ is of finite length when $\dim(M)=0$. 
+	If $\dim(M)\geq 0$, let  $\{\fp_1,\cdots,\fp_h\}$ be the set of
+	associated primes such that $\dim(M)=\dim(A/\fp_i)$,
+	then none of $\fp_i$ are maximal and there exists  
+	$x\in \fm\setminus \cup_i \fp_i$.
+	%Since $m\nsubseteq \fp_i$, inductively there exists  $x_i\in \fm\setminus \cup_{j\neq i}\fp_i$,
+	%then  $x_h+\prod_{i\neq h}x_i\in \fm\setminus \cup_i \fp_i$.
+	For which $s(M/xM)+1\geq s(M)$ and $\dim(M/xM)\leq \dim(M)-1$, 
+	thus by induction on  $\dim(M)$
+	 \[
+		 s(M)\leq s(M/xM)+1\leq \dim(M/xM)+1\leq \dim(M). 
+	\]
+\end{proof}
+\begin{enumerate}
+	\item   
+	$\dim(M/xM)\geq \dim(M)-1$ for  $x\in \fm$.
+	The equality holds when $x$ doesn not belong 
+	to any $\fp\in \Supp(M)$ such that $\dim(M)=\dim(A/\fp)$.
+	In particular when $x$ is not a zero-divisor.
+	\item
+	$\dim_A(M)=\dim_{\hat{A}}(\hat{M})$.
+	\item
+	a prime ideal $\fp$ has height  $\leq n$
+	if and only there exists an ideal  $I$
+	generated by  $n$ elements such that 
+	$\fp$ is a minimal ideal of  $A/I$ 
+	%$A_p/I$ is Artinian
+	(Krull's principal ideal theorem when $n=1$).
+\end{enumerate}
+
+\begin{thm}[Noether normalization lemma]
+	Let $k$ be a field, $A$ be a finite type $k$-algebra, 
+	and $I_1\subset\cdots\subset I_r$ be 
+	a sequence of proper ideals for $A$.
+	Then there exists algebraically independent 
+	${y_1,\cdots,y_n}$ such that
+	\begin{enumerate}[label=(\alph*)]
+		 \item $A$ is integral over $B=k[y_1,\cdots,y_n]$.
+		 \item For each $1\leq i\leq r$,
+			 there exists $h(i)\geq 0$ such that 
+			 $I_i\cap B$ is generated by
+			  $\{ y_1, \cdots,y_{h(i)}\}$.
+	\item 
+	when $A$ is a domain and 
+	$\fp_0\subset \cdots\subset \fp_n$ 
+	is a maximal chain of prime ideals, $n=\trdeg_k A$.
+	\item
+	if $\fm$ is a maximal ideal, 
+	then $A/\fm$ is algebraic over $k$
+	(Nullstellensatz).
+	\end{enumerate}
+\end{thm}
+
+\subsection{Depth}
+Assume throughout the subsection that $A$ is a Noetherian ring.
+\begin{defn}
+Let $M$ be an  $A$-module, 
+a sequence $(x_1,\cdots,x_r)$ of elements in $a$ is $M$-regular if
+\[
+	0\to M_{i-1}\xrightarrow{x_i} M_{i-1},\quad
+	M_{i-1}\coloneqq M/(x_1,\cdots,x_{i-1})M \text{ for all }
+	1\leq i<r.
+\]
+It is $M$-quasi-regular if the canonical surjection
+\[
+	\varphi_r\colon (M/JM)[T_1,\cdots,T_r]\to \gr_J(M),\quad
+	J=(x_1,\cdots,x_r)
+\]
+is an isomorphism.
+When $x_1,\cdots,x_{r}\in \rad(A)$,
+the sequence is $M$-regular
+if and only if it is $M$-quasi-regular.
+Let $I$ be an ideal,
+define $\depth_I(M)$ to be the maximal length
+of $M$-regular sequence in $I$.
+\end{defn}
+\begin{lem}
+	If $(x_1,\cdots,x_r)$ is a regular sequence, 
+	then $\hht(x_1,\cdots,x_r)=r$.
+\end{lem}
+\begin{proof}
+	When $r=1$ and $\fp$ is a minimal prime 
+	containing  $(x_1)$, then
+	$\hht(\fp)\leq 1$ by Krull's principal ideal theorem.
+	Since  $\fp$ contains a non-zero-divisor $x_1$,
+	the equality hodls.
+
+	When  $r>1$, let  $A'=A/(x_1)$ and $\fp'=\fp'/(x_1)$.
+	By induction on $r$,
+	$\hht(\fp')=r-1$.
+	Pick  $\fp'_{r-1}\supset \cdots\supset \fp'_0=\fp'$,
+	which pulls back to 
+	$\fp_{r-1}\supset \cdots\supset \fp_0=\fp$,
+	then $\fp_{r-1}$ is a minimal prime containing $(x_1)$
+	and hence  $\hht(\fp_{r-1})=1$,
+	therefore $\hht(\fp)=r$.
+\end{proof}
+
+
+\begin{prop}
+	Let $A$ be a Noetherian ring and $M$ be a finite $A$-module, the following are equivalent.
+	\begin{enumerate}
+	\item 
+	$\Ext^q(N,M)=0$ for all $q<r$ and all 
+	finite $A$-modules $N$ such that $\Supp(N)\subset V(I)$.
+	\item 
+	$\Ext^q(N,M)=0$ for all $q<r$ and some 
+	finite $A$-modules $N$ such that $\Supp(N)=V(I)$.
+	\item 
+	Given $x_1,\cdots,x_n\in I$ such that
+	$(x_1,\cdots,x_n)$ is $M$-regular,
+	there exists $x_{n+1},\cdots,x_r\in I$ such that 
+	$(x_1,\cdots,x_r)$ is $M$-regular.
+	\item 
+	There exists an $M$-regular sequence $x_1,\cdots,x_r\in I$.
+	\end{enumerate}
+	In particular
+	$\depth(A)=\depth(\hat{A})$
+	since $\hat{A}$ is faithfully-flat over $A$
+	and $\Ext^i(A/\fm, M)\otimes_A\hat{A}\cong
+	\Ext^1(\hat{A}/\hat{\fm}, \hat{M})$.
+\end{prop}
+\begin{proof}
+	If $\Hom(N,M)=0$ and $\Supp(N)=V(I)$,
+	then $I\nsubseteq \fp$ for any  $\fp\in \Ass(M)$.
+	Otherwise there exists a nonzero
+	$N\to A/\fp\hookrightarrow M\neq 0$.
+	%If $\fp\in \Supp(N)$, then the  $A/\fp$
+	%vector space  $N/\fpN$ is nonzero 
+	%since  $N_{\fp}/\fp N_{\fp}\neq 0$ be the Nakayama lemma.
+	Hence there exists $x_0\in I\setminus \cup_{\fp\in\Ass(M)}\fp$,
+	and therefore $M$-regular.
+	Use the argument inductively on 
+	$M_n=M/(x_1,\cdots,x_n)M$ 
+	to show $(ii)\Longrightarrow(iii)$.
+
+	On the other hand, if $x_0$ is  $M$-regular then
+	\[
+		0\to \Hom(N,M)\xrightarrow{x_0}\Hom(N,M).
+	\]
+	But $x_0\in I$ is a nilpotent on N 
+	if $\Supp(N)\subset V(I)$, and hence $\Hom(N,M)=0$.
+	Use the argument inductively on $r$
+	to show  $(iv)\Longrightarrow (i)$. 
+	%Use the induction on 
+	%$0\to M\xrightarrow{x_0}M\to M'\to 0$ to show that 
+	%\[
+	%	0\to \Ext^r(N,M)\xrightarrow{x_0}\Ext^r(N,M).
+	%\]
+\end{proof}
+
+\begin{prop}
+	Let $A$ be a Noetherian local ring and 
+	$M$ be a finite $A$-module, 
+	then $\depth(M)\leq \dim(A/\fp)$ for any  $\fp\in \Ass(M)$. 
+	In particular  $\depth(M)\leq \dim(M)$ if  $M\neq 0$.
+\end{prop}
+\begin{proof}
+	If $0<r\leq \depth(M)$, pick an  $M$-regular $x_0\in \fm$
+	and form $0\to M\xrightarrow{x_0}M\to M'\to 0$.
+	Then $r-1\leq \depth(M')$ and inductively
+	$r-1\leq \dim(A/\fp')$ for any  $\fp'\in \Ass(M')$.
+	Now, if  $\fp\in \Ass(M)$, then 
+	 \[
+		 0\to \Hom(A/\fp,M)\xrightarrow{x_0}
+		 \to \Hom(A/\fp,M) \to 
+		 \Hom(A/\fp,M')=\Hom(A/\fp+Ax, M')
+	\]
+	is exact. Thus Nakayama's lemma implies that 
+	$\Hom(A/\fp+Ax,M')\neq 0$,
+	but then there exists  $\fp'\in \Ass(M')\cap V(\fp+Ax)$,
+	for which $r-1\leq \dim(A/\fp')\leq \dim(A/\fp)-1$. 
+\end{proof}
+
+\subsubsection{Kozul complex}
+
+\begin{defn}
+	For $x\in A$, let $K(x).$ be the complex 
+	$\cdots0\to A\xrightarrow{x}A\to 0\cdots$.
+	The tensor $C.(x)\coloneqq C.\otimes K.(x)$ 
+	of which with any complex  $C.$ of $A$-modules
+	is defined as the total complex of
+	\[
+		\begin{tikzcd}
+			\cdots\arrow[r]&
+			C_p\arrow[r,"d"]\arrow[d,"(-1)^{p}x"]
+			\arrow[dl,dash,red]&
+			C_{p-1}\arrow[r,"d"]
+			\arrow[d,"(-1)^{p-1}x"]
+			\arrow[dl,dash,red]&\cdots
+			\arrow[dl,dash,red]\\
+			\cdots\arrow[r]&
+			C_p\arrow[r,"d"]&
+			C_{p-1}\arrow[r,"d"]&\cdots
+		\end{tikzcd}
+	\]
+	In general, given a sequence $(x_1,\cdots,x_n)$,
+	the Kozul complex is 
+	$K.(x_1,\cdots,x_n)\coloneqq 
+	K.(x_1)\otimes\cdots\otimes K.(x_n)$.
+	In particular,
+	$H_n(\underline{x},M)=M[\underline{x}]$
+	and
+	$H_0(\underline{x},M)=M/(x_1,\cdots,x_n)M$.
+\end{defn}
+\begin{lem}
+	If the sequence $(x_1,\cdots,x_n)$ is $M$-regular,
+	then 
+	$H_0(x_1,\cdots,x_n,M)=M/(x_1,\cdots,x_n)M$
+	and
+	$H_p(x_1,\cdots,x_n,M)=0$ for $p>0$.
+	Conversely, 
+	when $A$ is local and  $M$ is a finite  $A$-module,
+	$(x_1,\cdots,x_n)$ is $M$-regular if 
+	$H_1(x_1,\cdots,x_n,M)=0$.
+\end{lem}
+\begin{proof}
+	For any complex $C.$, the above construction 
+	gives an exact sequence of complexes
+	$0\to C.\to C.(x)\to C.[-1]\to 0$
+	and an associated long exact sequence
+	$\cdots\to H_p(C.)\to H_p(C.(x))\to H_{p-1}(C.)\to \cdots$.
+		
+	Now, the lemma is trivial if $n=1$.
+	If $n>1$ and $p>1$, then inductive
+	\[
+		0=H_{p}(x_1,\cdots,x_{n-1},M)\to
+		H_{p}(x_1,\cdots,x_n,M)\to
+		H_{p-1}(x_1,\cdots,x_{n-1},M)=0\quad
+	\]
+	and $0\to H_{1}(x_1,\cdots,x_{n},M)\to
+	M/(x_1,\cdots,x_{n-1})\xrightarrow{x_{n}}
+	M/(x_1,\cdots,x_{n-1})$
+	when $p=1$.
+	
+	Conversely, if $H_{1}(x_1,\cdots,x_{n},M)=0$,
+	then
+	\[
+		H_{1}(x_1,\cdots,x_{n-1},M)
+		\xrightarrow{x_{n}}
+		H_{1}(x_1,\cdots,x_{n-1},M)\to 0\to
+		M/(x_1,\cdots,x_{n-1})
+		\xrightarrow{x_{n}}
+		M/(x_1,\cdots,x_{n-1}).
+	\]
+	Therefore $H_{1}(x_1,\cdots,x_{n-1},M)=0$
+	by Nakayama's lemma 
+	and $x_n$ is regular for  $M/(x_1,\cdots,x_{n-1})$.
+	Inductively, $(x_1,\cdots,x_n)$ is $M$-regular.
+\end{proof}
+
+
+\subsection{Regular local rings}
+Throughout the subsection, 
+$A$ is a Noetherian local ring
+with maximal ideal $\fm$ and residue field  $k=A/\fm$.
+\begin{defn}
+	Let $A$ be a Noetherian local ring.
+	\begin{enumerate}[label=(\alph*)]
+	\item 
+	$A$ is regular if $\fm$ is generated by 
+	$r=\dim(A)$ elements.
+	\item 
+	$A$ is la local complete intersection ring if
+	it is the quotient of a regular local ring by 
+	a regular sequence.
+	\item 
+	$A$ is Gorenstein if
+	$\Ext^i(k,A)=0$ when $i\neq \dim(A)$ and
+	$\dim_k\Ext^i(k,A)=1$  when $i=\dim(A)$.
+	\item 
+	$A$ is Cohen-Macaulay if  $\depth(A)=\dim(A)$.
+	\end{enumerate}
+\end{defn}
+
+\subsubsection{Cohen-Macaulay}
+
+In general, a finite $A$-module  $M$
+is Cohen-Macaulay if  $\dim(M)=\depth(M)$.
+then $\dim(M)=\depth(M)\leq \dim(A/\fp)$ 
+for any $\fp\in \Ass(M)$.
+Thus $A/I$ is equi-dimensional since
+$\Supp(A/I)=\Supp(M)=\bigcup_{\fp\in\Ass(M)}\fp$.
+
+\begin{lem}
+	The followings hold when $M$ or $A$ is Cohen-Macaulay.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\depth_\fp(M)=\depth_{A_\fp}(M_\fp)=\dim_{A_{\fp}}(M_\fp)$
+		when  $M_\fp\neq 0$.
+		\item a sequence  $(x_1,\cdots,x_r)$ is regular
+		if and only if $\hht(x_1,\cdots,x_r)=r$.
+		\item $\hht(I)+\dim(A/I)=\dim(A)$.
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	Observe that 
+	$\depth_\fp(M)\leq \depth_{A_\fp}(M_\fp)
+	\leq\dim_{A_{\fp}}(M_\fp)$.
+	If $\depth_\fp(M)=0$, 
+	then $\fp$ is minimal 
+	in $\Supp(M)$ and hence $\dim(M_\fp)=0$.
+	%$\depth_\fp(M)=0$ implies that 
+	%$\fp$ is contained in the set of 
+	%zero-divisors of  $M$,
+	%and therefore contained in an associated
+	%prime. But $M$ is Cohen-Macaulay.
+	If $\depth_\fp(M)>0$,
+	pick any non-zero-divisor $x\in \fp$,
+	then $M'=M/xM$ is also Cohen-Macaulay.
+	By induction on $\depth_\fp$
+	\[
+		 \depth_\fp(M)-1=\depth_\fp(M')=\dim(M'_\fp)=
+		 \dim(M_\fp)-1.
+	\]
+
+\end{proof}
+
+\begin{enumerate}
+	\item If $x_0$ is a non-zero-divisor, then
+		 $A$ is Cohen-Macaulay if and only if 
+		 $A/(x_0)$ is.
+	 \item If $A$ is Cohen-Macaulay, so is $\hat{A}$.
+	 \item If $A$ is Cohen-Macaulay, so is $A[[X]]$.
+	 \item If $A$ is Cohen-Macaulay, so is $A_\fp$
+		 for any prime ideal $\fp$.
+\end{enumerate}
+
+\begin{thm}
+	When $A$ is CM,
+	a sequence $(x_1,\cdots,x_r)$ such that
+	$\hht(x_1,\cdots,x_r)=r$ is regular.
+	In particular $ht(I)+\dim(A/I)=\dim(A)$.
+\end{thm}
+\begin{proof}
+	If $r=\dim(A)$, then $(x_1,\cdots,x_r)$
+	is a system of parameters.
+	In particular
+	$x_1$ doesn't belong to 
+	any $\fp\in \Ass(A)$.
+	Otherwise $(x_2,\cdots,x_r)$
+	is also a system of parameters 
+	for $A/\fp$ but $\dim(A)=\dim(A/\fp)$.
+	Therefore $x_1$ is regular
+	and $A/(x_1)$ is also Cohen-Macaulay.
+	Inductively, 
+	$(x_1,\cdots,x_r)$ is regular.
+
+
+	If $r<\dim(A)$, 
+	there exists $x_{r+1}\in \fm$
+	such that $x_{r+1}\notin\fp$
+	for any minmail prime 
+	$\fp$ containing $(x_1,\cdots,x_r)$.
+	Then $\hht(x_1,\cdots,x_{r+1})=r+1$,
+	and the sequence can be inductively
+	extended to a system of parameters.
+
+	Thus $(x_1,\cdots,x_r)$ is regular
+	and $A/(x_1,\cdots,x_r)$ is 
+	Cohen-Macaulay.
+	Therefore for any minimal prime
+	$\fp$ containing $(x_1,\cdots,x_r)$,
+	$\dim(A/\fp)=\depth(A)-r
+	=\dim(A)-\hht(\fp)$.
+\end{proof}
+
+\begin{thm}
+	if $A$ is CM, so is $A[[X]]$.
+\end{thm}
+\begin{proof}
+	Let $(x_1,\cdots,x_n)$ be a regular sequence,
+	with $n=\dim(A)$, then 
+	it is also a system of parameters.
+	Then  $(X,x_1,\cdots,x_n)$
+	is both a regular sequence
+	and a system of parameters for $A[[X]]$, so
+	\[
+		n+1\leq \depth(A[[X]])\leq \dim(A[[X]])\leq n+1.
+	\]
+\end{proof}
+
+
+Elements of $\fm$ that are linearly independent in  $\fm/\fm^2$
+are called \textbf{regular parameters}.
+By Nakayama's lemma, 
+$\fm$ is generated by regular parameters 
+of size $\dim_k(\fm/\fm^2)$,
+therefore  $\dim(A)=s(A)\leq \dim_k(\fm/\fm^2)$.
+The equality holds if and only if  $A$ is regular.
+When this is the case,
+let $(x_1,\cdots,x_r), r=\dim(A)$,
+be a set of regular parameters that generate $\fm$.
+Then the natural surjection
+\[
+	\phi\colon k[T_1,\cdots,T_r]\to \gr^{\fm}(A),\quad T_i\mapsto x_i
+\]
+is an isomorphism.
+Otherwise let $I=\ker(\phi)$ and consider the exact sequence
+\[
+	0\to I\to k[T_1,\cdots,T_r]\to \gr^{\fm}(A)\to 0
+\]
+If there exists some nonzero $u_h\in I_h$, then
+$I_n\supset u_h(k[T_1,\cdots,T_r])_{n-h}$ for any $n\geq h$.
+Therefore the Hilbert polynomial for
+\begin{multline*}
+	\ell(\fm^n/\fm^{n+1})=
+	\dim_k(\gr^{\fm}(A))_n=\dim(k[T_1,\cdots,T_r]_n)-\dim_k(I_n)
+	\\\leq
+	\dim(k[T]_n)-\dim(k[T]_{n-h})=
+	\binom{n+r-1}{r-1}-
+	\binom{n-h+r-1}{r-1}
+\end{multline*}
+has degree $\leq r-2$, which is a contradiction.
+Consequently $\gr^{\fm}(A)$ is a domain,
+and so therefore so is  $A$ since  $\cap_n\fm^n=0$ 
+by Krull's intersection.
+
+\begin{prop}
+	Let  $I$ be an ideal of a local Noetherian ring 
+	of dimension  $r=\dim(A)$.
+	The followings are equivalent.
+\begin{enumerate}[label=(\alph*)]
+	\item 
+	$A$ is regular and 
+	$I$ is generated by $s$ regular parameters.
+	\item  
+	$B=A/I$ is regular of dimension  $r-s$
+	and $I$ is generated by  $s$ element
+	\item  
+	$A$ is regular and  $B$ is regular of dimsnion  $r-s$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+	Consider the exact sequence
+	\[
+		0\to I+\fm^2/\fm^2\to \fm/\fm^2\to \fn/\fn^2\to 0,\quad
+		\fn\coloneqq \fm/I.
+	\]
+	
+	If  $r=\dim_k\fm/\fm^2$ and 
+	$I$ is generated by $s$ regular parameters, then
+	\[
+		r-s\leq \dim(B)\leq \dim_k \fn/\fn^2=r-s,
+	\]
+	and $B$ is therefore regular
+	(the first inequality follows from Krull's principal
+	ideal theorem).
+
+	If $B$ is regular of dimension  $r-s$
+	and $I$ is generated by  $s$ element, then
+	\[
+		r=\dim(A)\leq \dim_k(\fm/\fm^2)\leq r.
+	\]
+
+	At last, if $A, B$ are regular and $\dim(B)=r-s$,
+	there exists $s$ regular parameters among generators of
+	$I/\fm I\twoheadrightarrow I/I\cap \fm^2\cong I+\fm^2/\fm^2$.
+	Let $I'\subset I$ be the ideal generated by them,
+	then both $I'$ and  $I$ are prime ideals 
+	of co-dimension  $r-s$ and thus  $I=I'$.
+\end{proof}
+By the above proof, when $A$ is regular and  $r=\dim(A)$,
+a set of regular parameters  $(x_1,\cdots,x_r)$
+is also a regular sequence since each 
+$(x_1,\cdots,x_i), 1\leq i\leq r$ is a prime ideal.
+In particular $\depth(A)=\dim(A)$.
+\begin{rem}
+Conversely, if the maximal ideal of a local Noetherian ring $A$	
+is generated by a regular sequence, then
+$\dim(A)\leq \dim_k(\fm/\fm^2)\leq \depth(A)\leq \dim(A)$,
+and thus  $A$ is regular.
+\end{rem}
+
+\subsubsection{Gorenstein}.
+
+$\dim(R)=0$, then  $\dim_k\Hom_R(k,R)=1$.
+eg $k[x]/x^5$ or 
+$k[x,y]/(x^2,xy,y^2)$(Not)
+$k[x,y]/(x^2,y^2)$(Yes)
+ \[
+	 \Ext^i(k,R)=\begin{cases}
+		 0, & i\neq\dim(R)\\
+		 1-\dim, & i=\dim(R).
+	 \end{cases}
+\]
+A is Gr iff $A/x$ is for some non zero-divisor.
+
+The following are equivalent
+\begin{enumerate}[label=(\alph*)]
+	\item Gr
+	\item $\Ext^i(k,A)=0$ for some  $i>n$
+	\item $\Ext^i(k,A)=0$ for $i<n$ and  $\cong k$ for  $i=n$
+	\item $A$ is CM and  $\Ext^n(k,A)\cong k$
+\end{enumerate}
+
+\subsubsection{local complete intersection}
+
+\begin{defn}
+	$M$ is finite module over ring  $R$
+	 \[
+		R^*\to R^n\to M\to 0
+	\]
+	then Fitt0 is generated by $\det$ of  $n*n$-minors.
+
+	Fitt(i) is (n-i)-minors.
+\end{defn}
+eg $\Z\oplus \Z/2 \oplus \Z/6$,
+\begin{enumerate}[label=(\alph*)]
+	\item 0-th: 0
+	\item 1-st: 12
+	\item 2-nd: 2
+	\item 3-rd: $\Z$
+\end{enumerate}
+
+\begin{defn}
+	Quotient of regular local ring by regular sequence.
+	Any hyperplane is lci
+	(lci is generated by minimal amount of equations)
+\end{defn}
+
+\begin{lem}
+	a $0$-diml Noetherian ring is lci 
+	iff  $Fitt_0(\fm)\neq 0$
+\end{lem}
+
+\subsection{Projective dimension}
+
+Auslander-Buchsbaum.
+For Noetherian local ring and fintie $A$-module,
+if  $M\neq 0$ and  $proj.\dim(M)<\infty$, then
+\[
+	proj.\dim(M)+\depth(M)=\depth(A)
+\]
+
+Serre, for a Noetherian local ring 
+\[
+	A \text{regular } \Longleftrightarrow
+	gl.\dim(A)=\dim(A) \Longleftrightarrow
+	gl.\dim(A)<\infty
+\]
+
+\begin{enumerate}[label=(\alph*)]
+	\item a regular ring is normal
+	\item if $A$ is regular so is  $A[[X]]$.
+	\item a regular ring is UFD
+\end{enumerate}
+
+\subsection{example}
+
+$k[x,y]/(y^2-x^3)$ localize at the origin.
+$k[x,y]/(f)$ has dimension  $n-1$,
+so regular at a point 
+if there is linear term,
+equivalently non-vanishing derivatives.
+
+Cohen structure thm
+$k[[x]]$ for complete regular locla ring.
+
+$\Z[\sqrt{3}]\subset \Z[\sqrt{3}+1/2]$
+not regular, normalization is regular.
+
+$k[[x,y]]/(y^2,xy)$ loalize at the origin
+ $\depth=0$. non-CM
+
+ $k[x,y,z]/(xz,yz)$ let $x_0=x+z$
+ quotient by  $x_0$ get previous.
+ so non-CM
+ (line pass through plane not equi-dimensional)
+
+ Equi-dimensional not CM
+ (two planes meet at a point in $4$-diml)
+ $k[x,y,w,z]/(wy,wz,xy,xz)$
+ pick  $x_0=w-y$.
+  $\depth=1$ not CM.
+
+Any hypersurface singularity is CM
+
+%\bibliographystyle{amsalpha}
+%\bibliography{biblio}
+\end{document}
