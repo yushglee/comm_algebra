@@ -87,6 +87,7 @@
 \DeclareMathOperator{\hht}{ht}
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\trdeg}{tr.deg}
@@ -1318,15 +1319,15 @@ Therefore  $A_\fp$ is also regular.
 	is an injective resolution.
 	\end{enumerate}
 	Consider the double complex below.
-	Then $E_{1,I}^{q,p}=R^qS(TQ^p)=0$ for $q>0$
-	and $E_{2,I}^{0,p}=R^p(S\circ T)(A)$. 
+	Then $\prescript{}{I}{E}_2^{p,q}=R^qS(TQ^p)=0$ for $q>0$
+	and $\prescript{}{I}{E}_2^{0,p}=R^p(S\circ T)(A)$. 
 	On the other hand, 
-	$E_{1,II}^{p,q}=H^p(S(J^{q,*}))=S(H^p(J^{q,*}))$
+	$\prescript{}{II}{E}_1^{p,q}=H^p(S(J^{q,*}))=S(H^p(J^{q,*}))$
 	since both
 	$0\to Z^{q,p}\to J^{q,p}\to B^{q,p+1}\to 0$ and
 	$0\to B^{q,p}\to Z^{q,p}\to H^{q,p}\to 0$ split.
 	But $H^p(J^{q,*})$ is an injective resolution of $R^pT(A)$,
-	so  $E_{2,II}^{p,q}\cong R^qS(R^pT(A))$.
+	so  $\prescript{}{II}{E}_1^{p,q}\cong R^qS(R^pT(A))$.
 \[
 \begin{tikzcd}[row sep=small]
 	0 \arrow[r] &
@@ -1356,7 +1357,226 @@ Therefore  $A_\fp$ is also regular.
 	then $H^p(Y, R^qf_*F)\Longrightarrow H^{p+q}(X,F)$.
 \end{itemize}
 
+\section{Flat}
 
-%\bibliographystyle{amsalpha}
-%\bibliography{biblio}
+\begin{defn}
+	An $A$-module $M$ is flat if the sequence
+	$N'\otimes_AM\to N\otimes_AM\to N^{''}\otimes_AM$ is exact
+	when $N'\to N\to N''$ is exact.
+	The followings are equivalent.
+\begin{enumerate}
+	\item $M$ is flat.
+	\item $I\otimes_AM\to IM$ is bijective.
+	\item $\Tor_1(M,A/I)=0$ for any ideal $I$.
+	\item $\Tor_1(M,N)=0$ for any $N$.
+\end{enumerate}
+%If $\Tor_1(M,A/I)=0$ for any ideal $I$, 
+%inductively $\Tor_1(M,N)=0$ for any finite $A$-module $N$,
+%hence $\Tor_1(M,N)=\varinjlim\Tor_1(M,N_i)=0$ 
+%for any $A$-module.
+	An $A$-module $M$ is faithfully flat if 
+	a sequence $N'\to N\to N''$ is exact if and only if
+	$N'\otimes_AM\to N\otimes_AM\to 
+	N^{''}\otimes_AM$ is exact.
+	The followings are equivalent.
+\begin{enumerate}
+	\item $M$ is faithfully flat.
+	\item $M$ is flat and $M\otimes_AN=0$ implies  $N=0$.
+	\item $M$ is flat and $M\otimes A/\fm\neq 0$
+	for all maximal ideal  $\fm$.
+\end{enumerate}
+Note that when $A$ is a local ring, 
+a finite $A$-module $M$ is faithfully flat if and only if 
+it is flat and nonzero.
+\end{defn}
+The statements below are still true if all
+instances of \red{flat} are replaced by faithfully flat.
+\begin{itemize}
+	\item If $M,N$ are \red{flat} over $A$,
+	then  $M\otimes_AN$ is \red{flat} over $A$.
+	\item If $M$ is \red{flat} over $A$
+	then $M\otimes_AB$ is \red{flat} over $B$.
+	\item If $B$ is \red{flat} over  $A$ and 
+	$P$ is \red{flat} over $B$, 
+	then $P$ is \red{flat} over $A$.
+	\item If $B$ is faithfully flat over $A$ 
+	and $M\otimes_AB$ is \red{flat} over $B$,
+	then $M$ is \red{flat} over $A$.
+\end{itemize}
+
+\begin{lem}
+	Let $\varphi\colon A\to B$ be a ring homomorphism,
+	the followings are equivalent.
+\begin{enumerate}
+	\item $B$ is faithfully flat over $A$.
+	\item $B$ is flat over $A$ and 
+	 $M\to M\otimes_AB$ is injective for any  $A$-module $M$.
+	\item  $\varphi$ is injective and 
+	$B/\varphi(A)$ is flat over $A$.
+	\item  $I\otimes_AB\to IB$ is bijective
+	and  $\varphi^{-1}(IB)=I$ for any ideal $I\subset A$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+	When $B$ is faithfully flat,
+	since $M\otimes_AB\to M\otimes_AB\otimes_AB$
+	has a natural left inverse,
+	the kernel of $M\to M\otimes_AB$ is trivial.
+	Assume either (ii) or (iii),
+	then $\varphi$ is injective and 
+	\[
+		 0\to\Tor_1(M,B)\to \Tor_1(M,B/\varphi(A))\to 
+		 M\to M\otimes_AB\to M\otimes_AB/\varphi(A)\to 0.
+	\]
+	From which one sees that (ii) and (iii) are equivalent.
+	Assume (ii), then $I\otimes_AB\to IB$ is bijective and
+	\[
+		0\to A/I\to (A/I)\otimes_AB=B/IB \Longrightarrow
+		\varphi^{-1}(IB)=I.
+	\]
+	Assume (iv), then $B$ is flat 
+	and  $\fm B\neq B$ for any maximal ideal  $\fm\subset A$,
+	thus  $B$ is faithfully flat.
+\end{proof}
+
+
+\subsection{flat morphism}
+\begin{defn}
+	Let $f\colon X\to Y$ be a morphism of schemes
+	and  $F$ be an $\mathcal{O}_X$-module.
+	We say $F$ is flat over $Y$ if $F_x$ is  
+	$\mathcal{O}_{f(x)}$-flat for any $x\in X$,
+	faithfully flat if $F$ is flat 
+	\begin{enumerate}
+	\item $F$ is flat over $Y$ if $F_x$ is 
+	$\mathcal{O}_{f(x)}$-flat for every $x\in X$.
+	\item  $F$ is faithfull flat over $Y$ if 
+	$F$ is flat over $Y$ and $F\otimes k(y)\neq 0$
+	for every $y\in Y$.
+	\end{enumerate}
+
+	The morphism $f$ is quasi-flat if 
+	there exists a quasi-coherent $F$ of finite type
+	which is flat over $Y$ and $\Supp(F)=X$,
+	and quasi-faithfully flat if it is furthermore surjective.
+	The morphism $f$ is flat or faithfully flat
+	when $\mathcal{O}_X$ can be taken for $F$.
+\end{defn}
+\begin{itemize}
+	\item An open immersion is flat.
+	\item Compositions of \red{flat} morphisms are \red{flat}.
+	\item Base changes of \red{flat} morphisms are \red{flat}.
+	\item Products of \red{flat} morphisms are \red{flat}.
+\end{itemize}
+
+\begin{prop}
+	Let $f\colon X\to Y$ be a morphism of schemes
+	and  $F$ be a quasi-coherent $\mathcal{O}_X$-module.
+	\begin{itemize}
+		\item If $X,Y$ are affine,
+		$F$ is \red{flat} over $Y$ if and only if
+		$M=\Gamma(X,F)$ is \red{flat}
+		over $A=\Gamma(Y,\mathcal{O}_Y)$.
+		\item $F$ is faithfully flat over $Y$
+		if an only if $F$ is flat over $Y$
+		and $f(\Supp(F))=Y$.
+	\end{itemize}
+\end{prop}
+\begin{proof}
+	Consider a ring homomorphism $A\to B$
+	and a $B$-module $M$. 
+	If $M_\wp$ is flat over $A_\fp$ 
+	for any prime $\wp\subset B$ and  $\fp=\wp\cap A$,
+	then 
+	Then $M$ is \red{flat} over $A$ if and only if 
+	$M_\fp\otimes_BB_\wp=M_\wp$
+\end{proof}
+\begin{proof}
+    Consider a ring homomorphism $A\to B$ and a $B$-module $M$.
+    Suppose $M_\wp$ is $A_\fp$ for any prime $\wp\subset B$
+    and $\fp=\wp\cap A$. Given any ideal $I\subset A$, the map
+    \[
+        (I\otimes M)_\wp=I_\fp\otimes_{A_\fp}M_\wp \to (IM)_\wp=I_{\fp}M_\wp
+    \]
+    is injective, so $I\otimes_AM\to IM$ is injective and $M$ is $A$-flat.
+    Conversely, if $M$ is $A$-flat, for any $A_\fp$-module $N$, the functor
+    $N\otimes_{A_\fp}M_\wp=(N\otimes_AM)_\wp$ is then exact.
+\end{proof}
+\begin{proof}
+    If $F\otimes k(y)\neq 0$, then there exists $x\mapsto y$
+    and $F\otimes \mathcal{O}_y\neq 0$.
+
+    Conversely, if $F_x\neq 0$ and $x\mapsto y$,
+    then $F_x$ is faithfully flat over $\mathcal{O}_y$ 
+    by Nakayama's lemma.
+\end{proof}
+
+
+
+If $f\colon X\to Y$ is a finite morphism between locally Noetherian schemes
+and $F$ is coherent,
+then $F$ is flat over $y\in Y$ implies $f_*F$ is locally free at $y$.
+
+\begin{prop}
+    Let $\varphi\colon A\to B$ be a local homomorphism
+    of Noetherian local rings, then
+    \[
+        \dim(B)\leq \dim(A)+\dim(B\otimes_Ak).
+    \]
+    Furthermore, the equality holds 
+    when either of the followings holds.
+    \begin{enumerate}[label=(\roman*)]
+        \item there exists a nonzero finite $B$-module $M$ 
+	with $\Supp(M)=B$ which is flat over $A$.
+        \item for all prime $\fp\subset A$ not equal to $\fm$ 
+	and all minimal prime $\fq$ of $\fp B$, 
+	$\varphi^{-1}(\fq)\neq \fm$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $I\subset A$ be an ideal generated
+	by a system of parameters of size  $d=\dim(A)$.
+	Then $A/I$ is Artinian and $\fm/I$ is nilpotent,
+	consequently $\fm B/IB$ is nilpotent and 
+	\[
+		\dim(B\otimes_Ak)=\dim(B/IB)\geq \dim(B)-d.
+	\]
+	
+	If $\dim(A)=0$, then  $\fm$ and hence $\fm B$
+	are nilpotent, therefore $\dim(B)=\dim(B/\fm B)$.
+	%(ii) holds trivially in this case.
+	If $\dim(A)>0$,
+	let  $\{\fq_i\}$ be the set of minimal primes of $B$ and
+	$\{\fp'_i\}$ be the set of minimal primes of $A$.
+	Then (ii) implies that
+	$\fp_i\coloneqq \fq_i\cap A\neq \fm$,
+	for otherwise $\fq_i$ is also minimal 
+	among primes containing  $\fp B$ for some $\fp\subset \fm$.
+
+	Thus there exists $x\in \fm\setminus \cup\fp'_i\cup\fp_i$.
+	Put $A'=A/xA, B'=B/xB$,
+	then $\dim(A')=\dim(A)-1,\dim(B')=\dim(B)-1$,
+	and $\dim(B\otimes_Ak)=\dim(B'\otimes_{A'}k)$.
+	Since $\varphi'\colon A'\to B'$
+	is still a local homomorphism satisfying (ii),
+	the proposition follows by induction on  $\dim(A)$.
+
+	At last, suppose (i) holds.
+	If  $\fq\subset B$ is minimal among primes of $B$
+	containing  $\fq B$ for some  $\fp\neq \fm$
+	such that $\varphi^{-1}(\fq)=\fm$,
+	then  $A\to B\to B_\fq$ is stil a local homomorphism.
+	Since the functor 
+	$N\otimes_AM_\fq=(N\otimes_AM)\otimes_BB_\fq$
+	is exact for any  $A$-module $N$,
+	$M_\fq\neq 0$ is flat and thus faithfully flat over $A$.
+	Thus $f\colon \Spec(B_\fq)\to \Spec(A)$
+	is surjective and there exists a prime $\fq'\subset \fq$ 
+	which restricts to $\fp$, constradicting the minimality.
+\end{proof}
+
+
+
+%\bibliography style{amsalpha}
+%\bibliography biblio}
 \end{document}
