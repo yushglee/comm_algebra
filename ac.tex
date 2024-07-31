@@ -26,10 +26,16 @@
 %[label=(\roman*)]
 %[label={(\bfseries R\arabic*)}]
 
+\makeatletter
+\newcommand\myprimeitem{%
+ \item[(\roman{enumi}\textquotesingle)]\def\@currentlabel{(\roman{enumi}\textquotesingle)}}
+\makeatother
+
 
 \setlength{\textwidth}{\paperwidth}
 \addtolength{\textwidth}{-2in}
 \calclayout
+
 
 
 \newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
@@ -1306,42 +1312,42 @@ Therefore  $A_\fp$ is also regular.
 	$TQ^*\to J^{**}$ such that 
 	\begin{enumerate}[label=(\alph*)]
 	\item Each  
-	$0\to T(Q^p)\to \cdots\to J^{q,p}\to\cdots$ 
+	$0\to T(Q^q)\to \cdots\to J^{p,q}\to\cdots$ 
 	is an injective resolution.
 	\item Each  
-	$0\to Z^p(TQ^*)\to \cdots\to Z^p(J^{q,*})\to\cdots$ 
+	$0\to Z^q(TQ^*)\to \cdots\to Z^q(J^{p,*})\to\cdots$ 
 	is an injective resolution.
 	\item Each  
-	$0\to B^p(TQ^*)\to \cdots\to B^p(J^{q,*})\to\cdots$ 
+	$0\to B^q(TQ^*)\to \cdots\to B^q(J^{p,*})\to\cdots$ 
 	is an injective resolution.
 	\item Each  
-	$0\to H^p(TQ^*)\to \cdots\to H^p(J^{q,*})\to\cdots$ 
+	$0\to H^q(TQ^*)\to \cdots\to H^q(J^{p,*})\to\cdots$ 
 	is an injective resolution.
 	\end{enumerate}
 	Consider the double complex below.
-	Then $\prescript{}{I}{E}_2^{p,q}=R^qS(TQ^p)=0$ for $q>0$
-	and $\prescript{}{I}{E}_2^{0,p}=R^p(S\circ T)(A)$. 
+	Then $\prescript{}{I}{E}_1^{p,q}=R^pS(TQ^q)=0$ for $p>0$
+	and $\prescript{}{I}{E}_2^{0,q}=R^q(S\circ T)(A)$. 
 	On the other hand, 
-	$\prescript{}{II}{E}_1^{p,q}=H^p(S(J^{q,*}))=S(H^p(J^{q,*}))$
+	$\prescript{}{II}{E}_1^{p,q}=H^q(S(J^{p,*}))=S(H^q(J^{p,*}))$
 	since both
-	$0\to Z^{q,p}\to J^{q,p}\to B^{q,p+1}\to 0$ and
-	$0\to B^{q,p}\to Z^{q,p}\to H^{q,p}\to 0$ split.
-	But $H^p(J^{q,*})$ is an injective resolution of $R^pT(A)$,
-	so  $\prescript{}{II}{E}_1^{p,q}\cong R^qS(R^pT(A))$.
+	$0\to Z^{p,q}\to J^{p,q}\to B^{p+1,q}\to 0$ and
+	$0\to B^{p,q}\to Z^{p,q}\to H^{p+1,q}\to 0$ split.
+	But $H^q(J^{p,*})$ is an injective resolution of $R^qT(A)$,
+	so  $\prescript{}{II}{E}_1^{p,q}\cong R^pS(R^qT(A))$.
 \[
 \begin{tikzcd}[row sep=small]
 	0 \arrow[r] &
 	S(TQ^0) \arrow[r]\arrow[d,dashed] & \cdots \arrow[r]&
-	S(TQ^p)\arrow[r]\arrow[d,dashed] & \cdots \\
+	S(TQ^q)\arrow[r]\arrow[d,dashed] & \cdots \\
 	0 \arrow[r] &
 	S(J^{0,0}) \arrow[r]\arrow[d] & \cdots \arrow[r]&
-	S(L^{0,p}) \arrow[r]\arrow[d] & \cdots \\
+	S(L^{0,q}) \arrow[r]\arrow[d] & \cdots \\
 	&
 	\vdots \arrow[d]& \ddots&
 	\vdots \arrow[d]& \ddots \\
 	0 \arrow[r] &
-	S(L^{q,0}) \arrow[r]\arrow[d] & \cdots \arrow[r]&
-	S(L^{q,p}) \arrow[r]\arrow[d] & \cdots \\
+	S(L^{p,0}) \arrow[r]\arrow[d] & \cdots \arrow[r]&
+	S(L^{p,q}) \arrow[r]\arrow[d] & \cdots \\
 	&
 	\vdots & \ddots&
 	\vdots & \ddots 
@@ -1477,45 +1483,36 @@ instances of \red{flat} are replaced by faithfully flat.
 		$F$ is \red{flat} over $Y$ if and only if
 		$M=\Gamma(X,F)$ is \red{flat}
 		over $A=\Gamma(Y,\mathcal{O}_Y)$.
-		\item $F$ is faithfully flat over $Y$
+		\item If $F$ is of finite type,
+		$F$ is faithfully flat over $Y$
 		if an only if $F$ is flat over $Y$
 		and $f(\Supp(F))=Y$.
 	\end{itemize}
 \end{prop}
 \begin{proof}
-	Consider a ring homomorphism $A\to B$
-	and a $B$-module $M$. 
-	If $M_\wp$ is flat over $A_\fp$ 
-	for any prime $\wp\subset B$ and  $\fp=\wp\cap A$,
-	then 
-	Then $M$ is \red{flat} over $A$ if and only if 
-	$M_\fp\otimes_BB_\wp=M_\wp$
+	Let $\varphi\colon A\to B$ be a ring homomorphism
+	and  $M$ be a $B$-module.
+	Suppose  $M_\wp$ is  $A_\fp$-flat for any prime  $\wp\subset B$
+	and  $\fp=\wp\cap A$,
+	then for any ideal  $I\subset A$, the flatness implies that
+	 \[
+		 (I\otimes_AM)_\wp=I_\fp\otimes_{A_\fp}M_\wp\to M_\wp
+	\]
+	is injective, thus $I\otimes_AM\to IM$ is injective as well
+	and $M$ is flat over  $A$.
+	Conversely, if  $M$ is  $A$-flat, then for any  $A_\fp$-module  $N$,
+	the functor  $N\otimes_{A_\fp}M_\wp=(N\otimes_AM)_\wp$ is exact,
+	so $M_\wp$ is  $A_\fp$-flat.
+
+	For (ii), if  $F\otimes k(y)\neq 0$, 
+	then  $\mathcal{O}_X\otimes k(y)\neq 0$
+	and there exists $x\in f^{-1}(y)$ 
+	such that $F\otimes \mathcal{O}_x\neq 0$.
+	Conversely, if $F_x\neq0$ is flat over $\mathcal{O}_y$
+	for  $y=f(x)$ 
+	under the local homomorphism  $\mathcal{O}_y\to \mathcal{O}_x$,
+	then it is faithfully flat.
 \end{proof}
-\begin{proof}
-    Consider a ring homomorphism $A\to B$ and a $B$-module $M$.
-    Suppose $M_\wp$ is $A_\fp$ for any prime $\wp\subset B$
-    and $\fp=\wp\cap A$. Given any ideal $I\subset A$, the map
-    \[
-        (I\otimes M)_\wp=I_\fp\otimes_{A_\fp}M_\wp \to (IM)_\wp=I_{\fp}M_\wp
-    \]
-    is injective, so $I\otimes_AM\to IM$ is injective and $M$ is $A$-flat.
-    Conversely, if $M$ is $A$-flat, for any $A_\fp$-module $N$, the functor
-    $N\otimes_{A_\fp}M_\wp=(N\otimes_AM)_\wp$ is then exact.
-\end{proof}
-\begin{proof}
-    If $F\otimes k(y)\neq 0$, then there exists $x\mapsto y$
-    and $F\otimes \mathcal{O}_y\neq 0$.
-
-    Conversely, if $F_x\neq 0$ and $x\mapsto y$,
-    then $F_x$ is faithfully flat over $\mathcal{O}_y$ 
-    by Nakayama's lemma.
-\end{proof}
-
-
-
-If $f\colon X\to Y$ is a finite morphism between locally Noetherian schemes
-and $F$ is coherent,
-then $F$ is flat over $y\in Y$ implies $f_*F$ is locally free at $y$.
 
 \begin{prop}
     Let $\varphi\colon A\to B$ be a local homomorphism
@@ -1575,7 +1572,189 @@ then $F$ is flat over $y\in Y$ implies $f_*F$ is locally free at $y$.
 	which restricts to $\fp$, constradicting the minimality.
 \end{proof}
 
+\subsection{local criterion}
 
+\begin{thm}
+	The following conditions on an $A$-module $M$
+	satisfies the relation
+	\[
+		(i)\Longrightarrow 
+		(ii) \Longleftrightarrow (ii')\Longleftrightarrow 
+		(iii) \Longleftrightarrow (iii') \Longrightarrow
+		(iv) \Longleftrightarrow (v).
+	\]
+	\begin{enumerate}[label=(\roman*)]
+		\item $M$ is flat.
+		\item  $M/IM$ is $A/I$-flat and $\Tor_1(M,A/I)=0$.
+		\myprimeitem  $M/IM$ is $A/I$-flat 
+		and $I\otimes_AM\to IM$ is bijective.
+		\item $\Tor_1(M,N)=0$ for all $A$-module $N$ annihilated by $I$.
+		\myprimeitem $\Tor_1(M,N)=0$ 
+		for all $A$-module $N$ annihilated by $I^s$ for some $s$.
+		\item $M\otimes_A(A/I^s)$ is flat over $A/I^s$ for all $s$.
+		\item  $M/IM$ is $A/I$-flat and 
+			$\gr_I^0(M)\otimes_{A/I}\gr_I^*(A)\to \gr_I^*(M)$
+			is an isomorphism.
+	\end{enumerate}
+	Furthermore, they are equivalent
+	when either of the following assumptions holds.
+	\begin{itemize}
+		\item $I$ is nilpotent.
+		\item $A$ is Noetherian and $M$ is a finite  $B$-module
+		for a Noetherian $A$-algebra $B$ such that $IB\subset\rad(B)$.
+	\end{itemize}
+\end{thm}
+\begin{proof}
+	The equivalence between $(ii)$ and $(iii)$ follows from 
+	the exact sequence
+	\[
+		N\otimes_{A/I}\Tor^A_1(M,A/I)\to 
+		\Tor^A_1(M,N)\to 
+		\Tor^{A/I}_1(M/IM,N)\to 0,
+	\]
+	which comes from the spectral sequnce  
+	$\Tor^{A/I}_p(\Tor^A_q(M,A/I),N)\Longrightarrow\Tor_{p+q}^A(M,N)$.
+	That $(iii)$ implies $(iii')$ follows by considering inductively
+	$\Tor_1(M,IN)\to \Tor_1(M,N)\to \Tor_1(M,N/IN)$.
+	That $(iii')\Longrightarrow(v)$ in general and 
+	$(v)\Longrightarrow(ii')$ when $I$ is nilpotent 
+	can be obtained from the diagram below.
+	\[
+		\begin{tikzcd}
+			&I^{s+1}\otimes_AM\arrow[d]\arrow[r]
+				&I^{s}\otimes_AM\arrow[d]\arrow[r]
+					& \gr^s_I(A)\otimes_{A/I}
+					\gr^0_I(M) \arrow[r]\arrow[d]
+						&0\\
+		0\arrow[r]
+			&I^{s+1}M\arrow[r]
+				&I^{s}M\arrow[r]
+					&\gr^s_I(M)\arrow[r]
+						&0
+		\end{tikzcd}
+	\]
+	For each $n\geq1$, let  $(*)_n$ denote the same conditions
+	for  $A/I^n$ and  $M/I^nM$.
+	Then $(iv)\Longrightarrow(i)_n\Longrightarrow(v)_n$ for all  $n\geq 1$,
+	but then $(v)$ holds since
+	$\gr^s_{I/I^n}(M/I^nM)=\gr^s_I(M)$ when $s\leq n$.
+	Conversely $(v)\Longrightarrow(ii)_n\Longrightarrow(iv)_n$
+	for all $n\geq1$ since $I/I^n$ is nilpotent.
+	Thus $(iv)$ also holds.
+
+	To prove that $(iv)\Longrightarrow(i)$ under the second condition,
+	observe that 
+	\[
+		 N'/(I^rN\cap N')\otimes_{A/I^r}(M/I^rM)\hookrightarrow
+		 N/I^rN\otimes_{A/I^r}(M/I^rM),
+	\]
+	is injective for any injection 
+	$N'\hookrightarrow N$ between $A$-modules. 
+	By Artin-Rees, there exists $k\geq 0$
+	such that  $I^rN\cap N'=I^{r-k}(I^kN\cap N')$.
+	Let $M'$ be the image of  $(I^kN\cap N')\otimes_AM$
+	in  $N'\otimes_AM$ and rewrite the above as
+	$N'\otimes_AM/I^{r-k}M'\hookrightarrow N\otimes_AM/I^rM$.
+	Therefore
+	$(N'\otimes_AM)^\wedge\to(N\otimes_AM)^\wedge$ is injective,
+	since $(I^{r-k}M')$ also induces 
+	the $I$-adic topology on $N'\otimes_AM$.
+	At last, since by Krull's intersection
+	$N'\otimes_AM\hookrightarrow (N'\otimes_AM)^\wedge$
+	is injective and similar for $N$,
+	we see $N'\otimes_AM\hookrightarrow N\otimes_AM$
+	is injective, which implies  $(i)$.
+\end{proof}
+
+\begin{prop}
+	Let $A\to B$ be a ring homomorphism between Noetherian rings,
+	$I\subset A$ and  $I'\subset B$
+	are ideals such that $IB\subset I'\subset \rad(B)$.
+	Let  $M$ be a finite  $B$-module and 
+	$\hat{M}$ be the $I'$-adic completion, then
+	\[
+		M\text{ is }A\text{-flat}\Longleftrightarrow
+		\hat{M}\text{ is }A\text{-flat}\Longleftrightarrow
+		\hat{M}\text{ is }\hat{A}\text{-flat}.
+	\]
+\end{prop}
+\begin{proof}
+	The first equivalence follows from that 
+	$\hat{B}$ is faithfully over $B$ and $M\otimes_B\hat{B}=\hat{M}$.
+	Since $\hat{A}, \hat{B}$ are Noetherian,
+	$\hat{M}$ is $\hat{B}$-finite,
+	and $ \hat{A}/\hat{I}^s\cong A/I^s$ for all $s$,
+	the second equivalence follows from 
+	$(i)\Longleftrightarrow(iv)$ of the theorem.
+\end{proof}
+
+\begin{prop}[fiberwise criterion]
+	Let $R\to A$ and $A\to B$ be local homomorphism
+	of Noetherian rings and $M$ be a finite $B$-module.
+	Suppose $A$ is flat over  $R$,
+	the the followings are equivalent.
+	 \begin{enumerate}[label=(\alph*)]
+		\item $M$ is flat over $A$.
+		\item  $M$ is flat over  $R$
+		and $M\otimes_Rk$ is  lat over $A\otimes_Rk$,
+		where $k$ is the residue field of $R$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $\fm\subset R$ be the maximal ideal 
+	and apply the theorem to $I=\fm A$ yields
+	\[
+		(M/IM)\otimes_k\gr^*_\fm(R)\cong \gr^*_I(M),\,
+		(A/I)\otimes_k\gr^*_\fm(R)\cong \gr^*_I(A)\Longrightarrow
+		(M/IM)\otimes_{A/I}\gr^*_I(A)\cong \gr^*_I(M).
+	\]
+\end{proof}
+
+\begin{prop}
+	Let $A\to B$ be a local homomorphism of Noetherian rings,
+	$M$ be a fintie $B$-module, 
+	$\fm\subset A$ the maximal ideal, and $k=A/\fm$.
+	Then $M$ is flat over  $A$ if the following assumptions hold.
+	  \begin{itemize}
+	 	\item $A$ is a regular local ring.
+		\item $M$ is a Cohen-Macaulay $B$-module.
+		\item  $\dim_B(M)=\dim(A)+\dim_{B\otimes_Ak}(M\otimes_Ak)$
+	 \end{itemize}
+\end{prop}
+In particualr, let $A\to B$ be a squasi-finite 
+local homomorphism of regular local rings having the same dimension,
+then  $B$ is flat over  $A$,
+since quasi-finite implies  $\dim(B\otimes_Ak)=0$.
+
+\begin{proof}
+	Since $k$ is a field,  $M\otimes_Ak$ is trivially flat over  $k$.
+	To use (i)(ii), need  $\Tor_1(M,k)=0$.
+	Let  $x_1,\cdots,x_r$ be a regular parameters of $A$.
+	Then
+	 \[
+		 \dim_B(M/(x_1,\cdots,x_r)M)=\dim_B(M)-\dim(A)
+	\]
+	so $(x_1,\cdots,x_r)$ is a $M$-regular sequence.
+	Define  $M_i=M/(x_1,\cdots,x_i), A_i=A/(x_1,\cdots,x_i)$
+	and show inductively that $\Tor_1(M,A_i)=0$.
+\end{proof}
+
+\subsection{constructible sets}
+
+\begin{defn}
+	A subset $Z\subset X$ is constructible 
+	if it is a finite union of locally closed subsets in  $X$.
+\end{defn}
+\begin{itemize}
+	\item Open sets and closed sets are constructible.
+	\item If $Z$ and  $Z'$ are constructible,
+		then so are  $Z\cup Z'$ and  $Z\cap Z'$.
+	\item If  $f\colon Y\to X$ is continuous and  
+		$Z\subset X$ is constructible, then so is $f^{-1}(Z)$.
+	\item If  $Z$ is constructible in  $Y$ and 
+		$Y$ is constructible in  $X$, 
+		then $Z$ is constructible in  $X$.
+\end{itemize}
 
 %\bibliography style{amsalpha}
 %\bibliography biblio}
