@@ -1,0 +1,401 @@
+\documentclass[leqno]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{mathtools,caption,bbm,euscript}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz-cd}
+\usepackage[utf8]{inputenc}
+\usepackage[OT2,T1]{fontenc}
+\hypersetup{
+ colorlinks=true,
+ linkcolor=DarkOrchid,
+ filecolor=blue,
+ citecolor=olive,
+ urlcolor=orange,
+ pdftitle={Complex Multiplication},
+ %pdfpagemode=FullScreen,
+ }
+\usepackage{booktabs}
+
+%[label=(\alph*)]
+%[label=(\Alph*)]
+%[label=(\roman*)]
+%[label={(\bfseries R\arabic*)}]
+
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+
+
+\newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\dBr}[1]{\llbracket{#1}\rrbracket}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+
+% double bracket
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+  \newcommand{\llbracket}[1][]{\savebox{\@brx}{\(\m@th{#1[}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrbracket}[1][]{\savebox{\@brx}{\(\m@th{#1]}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+%%% Unitary group specific
+\newcommand{\V}{\mathbf V} 
+\newcommand{\W}{\mathbf W} 
+\newcommand{\G}{\mathbf G} %GU(2,2)
+\newcommand{\X}{\mathbf H} %Hermitian symmetric domain
+\newcommand{\KK}{\mathbf K} %compact open subgroup
+\newcommand{\xx}{\mathbf x}
+\newcommand{\yy}{\mathbf y}
+\newcommand{\nn}{\mathbf n} %unipotent
+
+\newcommand{\qdr}[1]{\underline{ #1 }}
+\newcommand{\cA}{\mathcal A} %complex abelian varieties
+\newcommand{\cB}{\mathcal B} %complex abelian varieties
+\newcommand{\bB}{\mathbf B}
+
+\newcommand{\cO}{\mathcal O} %complex abelian varieties
+\newcommand{\mm}{\mathbf{m}}
+
+
+\newcommand{\balpha}{\boldsymbol{\alpha}} %diagonal torus elements
+\newcommand{\bbeta}{\boldsymbol{\beta}} %diagonal torus elements
+\newcommand{\bnu}{\boldsymbol{\nu}} %character on diagonal torus
+\newcommand{\bmu}{\boldsymbol{\mu}} %character on diagonal torus
+
+%%% modular form specific
+
+\newcommand{\wt}[1]{\underline{ #1 }}
+\newcommand{\bwt}[1]{\underline{\boldsymbol { #1 }}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\Mk}{\mathbf{M}_{\wt{k}}}
+\newcommand{\pM}{\widehat{\mathbf{M}}}
+\newcommand{\pMk}{\widehat{\mathbf{M}}_{\wt{k}}}
+\newcommand{\AM}{\mathcal{A}}
+\newcommand{\bun}{\mathcal{E}}
+\newcommand{\ii}{\mathbf i}
+\newcommand{\ff}{\mathbf f}
+\newcommand{\her}{\EuScript{H} }
+
+
+
+\newcommand{\phk}{\mathcal{H}_{\wt{k}}} %Hecke algebra
+\newcommand{\ordp}{e}
+
+
+\newcommand{\vk}{v_{-\wt{k}}} % lowest weight vector
+\newcommand{\lk}{\mathnormal{l}_{\wt{k}}} % projection to lowest weight
+\newcommand{\blk}{\mathnormal{l}_{\bwt{k}}} % projection to lowest weight
+\newcommand{\Lk}{L_{\wt{k}}} 
+\newcommand{\pf}{\hat{f}} % algebraic modular form
+\newcommand{\pfk}{\hat{f}_{\wt{k}}}
+\newcommand{\euF}{\EuScript{F}} % Hida family
+\newcommand{\B}{\mathbf{B}} % pairing of algebraic modular form
+
+
+\newcommand{\ww}{\boldsymbol{\omega}}
+\DeclareMathOperator{\an}{an}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\cts}{cts}
+\DeclareMathOperator{\FJ}{FJ}
+
+
+%%% Linear algebraic groups
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mp}{Mp}
+\DeclareMathOperator{\GSp}{GSp}
+\DeclareMathOperator{\UU}{U}
+\DeclareMathOperator{\GUU}{GU}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\mtr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\vol}{vol}
+
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Pol}{Pol_p}
+
+%%% Adelic rings
+\newcommand{\Q}{{\mathbf{Q}}}
+\newcommand{\Z}{{\mathbf{Z}}}
+\newcommand{\Qp}{\mathbf{Q}_p}
+\newcommand{\Zp}{\mathbf{Z}_p}
+\newcommand{\Ql}{\mathbf{Q}_\ell}
+\newcommand{\Zl}{\mathbf{Z}_\ell}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\A}{\mathbf A}
+\newcommand{\hZ}{{\hat{\mathbf{Z}}}}
+\newcommand{\dd}{\mathfrak{d}} %different
+\newcommand{\DD}{\mathcal{D}}  %discriminant
+
+\newcommand{\arch}{\mathbf{a}}
+\newcommand{\fin}{\mathbf{h}}
+
+\newcommand{\F}{{\mathcal{F}}} %global 
+\newcommand{\OF}{{\mathcal{O}_{\F}}}
+\newcommand{\K}{{\mathcal{K}}} %global quadratic
+\newcommand{\OK}{\mathcal{O}_{\K}}
+\newcommand{\kk}{F} %local
+\newcommand{\E}{E} %local quadratic
+
+
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Nr}{\mathsf{N}}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\qch}{\epsilon} % quadratic character of K/F
+
+
+%%% Fonts
+\newcommand{\oeu}{\EuScript{O}}
+\newcommand{\eeu}{\EuScript{E}}
+\newcommand{\feu}{\EuScript{F}}
+\newcommand{\geu}{\EuScript{G}}
+\newcommand{\keu}{\EuScript{K}}
+
+\newcommand{\oo}{\mathcal O}
+\newcommand{\bs}{\mathcal S}
+\newcommand{\id}{\mathbf{1}}
+
+\newcommand{\1}{\mathbf{1}} 
+\newcommand{\bfe}{\mathbf e}
+\newcommand{\bff}{\mathbf f}
+
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fg}{\mathfrak g}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fs}{\mathfrak s}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fl}{\mathfrak l}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\bfp}{\overline{\mathfrak p}}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\bfq}{\overline{\mathfrak q}}
+
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+
+
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\euW}{\EuScript{W}}
+
+
+%%% Categorical
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Inj}{Inj}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\corank}{corank}
+
+
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\rec}{rec}
+
+
+
+\newcommand{\bw}{{w^c}}
+\newcommand{\ee}{\mathbf e}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{Remark*}{Remark}
+\newtheorem{ack}{Acknowledgement}
+
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+
+
+
+\begin{document}
+\title{Complex Multiplication}
+\author[Y-S.~Lee]{Yu-Sheng Lee}
+\address{Department of Mathematics, University  of Michigan, Ann Arbor, MI 48109, USA}
+\email{yushglee@umich.edu}
+\date{\today}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+\section{Elliptic curves}
+
+Let $E,E'$ be elliptic curves over a field  $k$,
+$\lambda\in \Hom(E,E')$ is called an isogeny if 
+\begin{itemize}
+	 \item $\lambda\neq 0$
+	 \item  $\ker(\lambda)$ is finite
+	 \item  $\lambda$ is surjective.
+\end{itemize}
+$E$ is identified with all its points over the universal domain.
+Isogeny is an equivalence relation.
+
+In general,
+$\End_\Q(E)=\End(E)\otimes_\Z\Q$ is either 
+$\Q$, an imaginary quadratic field, or a quaternion algebra over  $\Q$
+ramified at a prime and  $\infty$,
+the last situation occurs only when the characteristic of the 
+universal domain is  $p$.
+
+Assume that characteristic not  $2,3$, then
+ \[
+	E:Y^2Z=4X^3-g_2XZ^2-g_3Z^3, \quad
+	\Delta=g_2^3-27g_3^2\neq 0,\quad
+	j_E=g_2^3/\Delta, J_E=2^{6}3^3j_E.
+\]
+
+
+
+For an automorphism $\sigma$ of the universal domain, define
+ \[
+	E^\sigma:y^2=4x^3-g_2^\sigma x-g_3^\sigma,\quad
+	j(E^\sigma)=j(E)^\sigma.
+\]
+when char=0, $\Q(j_E)$ the field of moduli of  $E$,
+and  $E$ hs a model defined over which.
+
+\subsection{complex}
+
+Let $L$ be a lattice in  $\C$.
+\begin{gather*}
+	 \wp(u)=u^{-2}+\sum'_{\omega\in L}[(u-\omega)^{-2}-\omega^{-2}]
+	 =u^{-2}+\sum_{n=2}^\infty (2n-1)G_{2n}(L)u^{2n-2},\\
+	 \wp'(u)=-2u^{-3}-2\sum'_{\omega\in L}(u-\omega)^{-3}
+	 =2u^{-3}+\sum_{n=2}^\infty(2n-1)(2n-2)G_{2n}(L)u^{2n-3},\quad
+	 G_{2n}(L)=\sum'_{\omega\in L}\omega^{-2n}.
+\end{gather*}
+Then
+\[
+	\wp^{'2}=4\wp^3-g_2(L)\wp-g_3(L),\quad
+	g_2(L)=60G_2(L), g_3(L)=140G_3(L).
+\]
+The function field is $F_L=\C(\wp,\wp')$
+and  $g_2(L)^3-27g_3(L)^2\neq0$.
+
+\subsection{torsion}
+
+Let $p$ be the characteristic of  $k$ (possibly  $0$)
+and let  $\ell\neq p$ be a prime, 
+then  $\bigcup E[\ell^n]\cong (\Ql/\Zl)^2$ and induces
+ \[
+	 R_\ell\colon \End_\Q(E)\to M_2(\Ql)
+\]
+then the characteristic polynomial of $R_\ell(\alpha)$,
+for  $\alpha\in \End_Q(E)$ is a rational polynomial
+not depending on  $\ell$.
+
+There exists Weil pairing
+\[
+	e_N\colon E[N]\times E[N]\to \mu_N
+\]
+\begin{itemize}
+	\item $e_N(t,s)=e_N(s,t)^{-1}$
+	\item  $e_N(s,t)^\sigma=e_N(s^\sigma,t^\sigma)$
+	\item if  $t$ is of order  $N$, then  $e_N(t,s)$ is primitive
+		for some  $s$.
+\end{itemize}
+
+\subsection{isogeny over the complex}
+If $\mu\in \C$ and  $\mu L\subset L$, then
+ \[
+	 \smat{z &\bar{z}\\1 & 1}
+	 \smat{\mu &\\ & \mu}=
+	 \smat{a&b\\c&d}
+	 \smat{z &\bar{z}\\1 & 1}\quad
+	 \alpha= \smat{a&b\\c&d}\in M_2(\Z)\cap\GL_2^+(\Q).
+\]
+
+\section{main theorem}
+
+Let $E$ be an elliptic curve with CM by  $K$
+and  $\theta\colon K\to \End_\Q(E)$ is normalized so that
+$\omega\circ \theta(\alpha)=\alpha\omega$ for any diffrential  $\omega$,
+here we fixed  $K\hookrightarrow \C$.
+Fix $\xi\colon \C/\fa\cong E$, note that 
+the image of  $K/\fa$ under  $\xi$
+is the torsion points of  $E$.
+ \begin{thm}
+	 Let $\sigma\in \Aut(\C/K)$, and
+	 $s\in \A_K^\times$ such that 
+	  $\sigma\vert_{K^{ab}}=\rec(s)$. 
+	  Then there is an isomorphism 
+	  $\xi'\colon \C/s^{-1}\fa\to E^\sigma$ such that
+	   \[
+	  	\begin{tikzcd}
+			K/\fa \arrow[r,"\xi"]\arrow[d,"s^{-1}"] 
+				& E \arrow[d,"\sigma"]\\
+			K/s^{-1}\fa \arrow[r,"\xi'"] & E^\sigma
+	  	\end{tikzcd}
+	  \]
+\end{thm}
+\begin{proof}
+	Proof reduced to when $\fa$ is a fractional ideal in  $K$.
+	Let  $h=h(K)$ and $j_1,\cdots,j_h$ be the $j$-invariant.
+	$E_i$ defined over  $\Q(j_i)$,
+	$\End(E_i)$ defined over  $K(j_i)$.
+	Find  $L/K$ sufficiently large so that
+	\begin{itemize}
+		\item $L$ contains the ray class field of conductor
+			$m\cO_K$, where $m\in \Z$
+			is such that $\cO_K^\times$
+			are dinstinct modulo $m$
+		\item $L$ contains all $j_i$
+		\item  $L$ contains all  $E[m]$.
+	\end{itemize}
+	Then fo $\sigma\in \Aut(C/K)$, find a prime ideal
+	$\mathfrak{B}$ such that
+	\begin{itemize}
+		\item $\sigma\vert_L$ is  $\Frob_\mathfrak{B}$
+		\item if  $\fp=\mathfrak{B}\cap K$, then
+			 $\Nr\fp$ is a rational prime,
+			 and  $\fp$ is unramified in  $L$
+		 \item $\mathfrak{B}\nmid 6m$
+		 \item for every $\tau\in \Gal(L/K)$,
+			 $E_i^\tau$ has good reduction mod $\mathfrak{B}$
+		 \item The invariants $j_1,\cdots,j_h$
+			 are distinct mod  $\mathfrak{B}$
+	\end{itemize}
+\end{proof}
+
+%\biblio r phystyle{amsalp a}
+%\bibliogr phy{biblio}
+\end{document}
+
