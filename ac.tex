@@ -1702,7 +1702,8 @@ instances of \red{flat} are replaced by faithfully flat.
 \end{prop}
 \begin{proof}
 	Let $\fm\subset R$ be the maximal ideal 
-	and apply the theorem to $I=\fm A$ yields
+	and apply $(i)\Longrightarrow(v)$ of
+	the theorem to $I=\fm A$ yields
 	\[
 		(M/IM)\otimes_k\gr^*_\fm(R)\cong \gr^*_I(M),\,
 		(A/I)\otimes_k\gr^*_\fm(R)\cong \gr^*_I(A)\Longrightarrow
@@ -1727,16 +1728,38 @@ then  $B$ is flat over  $A$,
 since quasi-finite implies  $\dim(B\otimes_Ak)=0$.
 
 \begin{proof}
-	Since $k$ is a field,  $M\otimes_Ak$ is trivially flat over  $k$.
-	To use (i)(ii), need  $\Tor_1(M,k)=0$.
-	Let  $x_1,\cdots,x_r$ be a regular parameters of $A$.
+	Since $M\otimes_Ak$ is necessarily
+	flat over the field  $k$,
+	the goal is to show that $\Tor_1(M,k)=0$
+	and apply $(i)\Longleftrightarrow(ii)$
+	of the theorem. 
+	Let  $x_1,\cdots,x_r, r=\dim(A)$,
+	be regular parameters of $A$.
 	Then
 	 \[
-		 \dim_B(M/(x_1,\cdots,x_r)M)=\dim_B(M)-\dim(A)
+		 \dim(M\otimes_Ak)
+		 =\dim_B(M/(x_1,\cdots,x_r)M)
+		 =\dim_B(M)-\dim(A)
 	\]
-	so $(x_1,\cdots,x_r)$ is a $M$-regular sequence.
-	Define  $M_i=M/(x_1,\cdots,x_i), A_i=A/(x_1,\cdots,x_i)$
-	and show inductively that $\Tor_1(M,A_i)=0$.
+	implies that $(x_1,\cdots,x_r)$
+	is a $M$-regular sequence.
+	Define  
+	$M_i=M/(x_1,\cdots,x_i)$ and 
+	$A_i=A/(x_1,\cdots,x_i)$.
+	Since $(x_1,\cdots,x_r)$
+	is also an $A$-regular sequence
+	by the regularity of $A$, 
+	the long exact sequence
+	\[
+	\Tor_1(M,A_i)\to
+	\Tor_1(M,A_{i+1})\to
+	M_i\xrightarrow{x_{i+1}} M_i
+	\]
+	associated to 
+	$0\to A_i\xrightarrow{x_{i+1}}
+	\to A_i\to A_{i+1}\to 0$
+	shows inductively that
+	$\Tor_1(M,A_{i})=0$ for all $i$.
 \end{proof}
 
 \subsection{constructible sets}
