@@ -5,7 +5,7 @@
 \usepackage{hyperref}
 \usepackage{mathrsfs}
 \usepackage{color,stmaryrd}
-\usepackage{mathtools,caption,bbm,euscript}
+\usepackage{mathtools,caption,euscript}
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{tikz-cd}
 \usepackage[utf8]{inputenc}
@@ -1778,6 +1778,44 @@ since quasi-finite implies  $\dim(B\otimes_Ak)=0$.
 		$Y$ is constructible in  $X$, 
 		then $Z$ is constructible in  $X$.
 \end{itemize}
+
+\begin{lem}
+	Let $X$ be a Noetherian space.
+	A subset $Z$ is constructible if and only if 
+	for all closed irreducible subset  $Y$ 
+	such that $Z\cap Y$ is dense in  $Y$,
+	then  $Z\cap Y$ contains 
+	a non-empty open subset of  $Y$.
+\end{lem}
+\begin{proof}
+	If $Z=\cup_{i=1}^nF_i\cap V_i$ is constructible,
+	where $F_i$ are closed and  $V_i$ are open in $X$,
+	write $Z\cap Y=\cup_{i=1}^nF'_i\cap V'_i$,
+	where $F_i'=F_i\cap Y$ and  $V_i'=V_i\cap Y$.
+	By assumpsion  $Y=F'_i$ for some  $i$,
+	thus $V'_i=F'_i\cap V'_i\subset Z\cap Y$,
+	is an open subset in  $Y$.
+
+	Conversely,
+	suppose $Z$ is not constructible,
+	let $Y$ be a closed subset of $X$
+	minimal among closed subsets of $X$ such that 
+	$Z\cap Y$ is not constructible. 
+	Then either
+	\begin{itemize}
+		\item $Y=Y_1\cup Y_2$ is not irreducible,
+			but then  $Z\cap Y=Z\cap Y_1\cup Z\cap Y_2$
+			is constructible.
+		\item  $Y$ is irreducible but  $Z\cap Y$ is not dense in  $Y$,
+			then  $Z=Z\cap \overline{Z\cap Y}$ is constructible
+			since $Y$ is minimal.
+		\item  $Y$ is irreducible and $Z\cap Y$ is dense in  $Y$,
+			by assumption there exists an open subset 
+			$V\subset Z\cap Y$ of $Y$
+			but then $Z\cap Y=V\cup Z\cap (Y\setminus V)$
+			is constructible.
+	\end{itemize}
+\end{proof}
 
 %\bibliography style{amsalpha}
 %\bibliography biblio}
