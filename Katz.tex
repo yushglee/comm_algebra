@@ -1,0 +1,466 @@
+\documentclass[leqno]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{mathtools,caption,bbm,euscript}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz-cd}
+\usepackage[utf8]{inputenc}
+\usepackage[OT2,T1]{fontenc}
+\hypersetup{
+ colorlinks=true,
+ linkcolor=DarkOrchid,
+ filecolor=blue,
+ citecolor=olive,
+ urlcolor=orange,
+ pdftitle={Gauss-Manin},
+ %pdfpagemode=FullScreen,
+ }
+\usepackage{booktabs}
+
+%[label=(\alph*)]
+%[label=(\Alph*)]
+%[label=(\roman*)]
+%[label={(\bfseries R\arabic*)}]
+
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+
+
+\newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\dBr}[1]{\llbracket{#1}\rrbracket}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+
+% double bracket
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+  \newcommand{\llbracket}[1][]{\savebox{\@brx}{\(\m@th{#1[}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrbracket}[1][]{\savebox{\@brx}{\(\m@th{#1]}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+%%% Unitary group specific
+\newcommand{\V}{\mathbf V} 
+\newcommand{\W}{\mathbf W} 
+\newcommand{\G}{\mathbf G} %GU(2,2)
+\newcommand{\X}{\mathbf H} %Hermitian symmetric domain
+\newcommand{\KK}{\mathbf K} %compact open subgroup
+\newcommand{\xx}{\mathbf x}
+\newcommand{\yy}{\mathbf y}
+\newcommand{\nn}{\mathbf n} %unipotent
+
+\newcommand{\qdr}[1]{\underline{ #1 }}
+\newcommand{\cA}{\mathcal A} %complex abelian varieties
+\newcommand{\cB}{\mathcal B} %complex abelian varieties
+\newcommand{\bB}{\mathbf B}
+
+\newcommand{\mm}{\mathbf{m}}
+
+
+\newcommand{\balpha}{\boldsymbol{\alpha}} %diagonal torus elements
+\newcommand{\bbeta}{\boldsymbol{\beta}} %diagonal torus elements
+\newcommand{\bnu}{\boldsymbol{\nu}} %character on diagonal torus
+\newcommand{\bmu}{\boldsymbol{\mu}} %character on diagonal torus
+
+
+\newcommand{\EE}{\EuScript{E}} 
+
+
+
+
+%%% Linear algebraic groups
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mp}{Mp}
+\DeclareMathOperator{\GSp}{GSp}
+\DeclareMathOperator{\UU}{U}
+\DeclareMathOperator{\GUU}{GU}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\mtr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\vol}{vol}
+
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Pol}{Pol_p}
+
+%%% Adelic rings
+\newcommand{\Q}{{\mathbf{Q}}}
+\newcommand{\Z}{{\mathbf{Z}}}
+\newcommand{\Qp}{\mathbf{Q}_p}
+\newcommand{\Zp}{\mathbf{Z}_p}
+\newcommand{\Ql}{\mathbf{Q}_\ell}
+\newcommand{\Zl}{\mathbf{Z}_\ell}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\A}{\mathbf A}
+\newcommand{\hZ}{{\hat{\mathbf{Z}}}}
+\newcommand{\dd}{\mathfrak{d}} %different
+\newcommand{\DD}{\mathcal{D}}  %discriminant
+
+\newcommand{\arch}{\mathbf{a}}
+\newcommand{\fin}{\mathbf{h}}
+
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Nr}{\mathsf{N}}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\qch}{\epsilon} % quadratic character of K/F
+
+
+%%% Fonts
+\newcommand{\oeu}{\EuScript{O}}
+\newcommand{\eeu}{\EuScript{E}}
+\newcommand{\feu}{\EuScript{F}}
+\newcommand{\geu}{\EuScript{G}}
+\newcommand{\keu}{\EuScript{K}}
+
+\newcommand{\oo}{\mathcal O}
+\newcommand{\bs}{\mathcal S}
+\newcommand{\id}{\mathbf{1}}
+
+\newcommand{\1}{\mathbf{1}} 
+\newcommand{\bfe}{\mathbf e}
+\newcommand{\bff}{\mathbf f}
+
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fg}{\mathfrak g}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fs}{\mathfrak s}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fl}{\mathfrak l}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\bfp}{\overline{\mathfrak p}}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\bfq}{\overline{\mathfrak q}}
+
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+
+
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\euW}{\EuScript{W}}
+
+\DeclareMathOperator{\Der}{Der}
+
+%%% Categorical
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Inj}{Inj}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\corank}{corank}
+
+
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\rec}{rec}
+
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{Remark*}{Remark}
+\newtheorem{ack}{Acknowledgement}
+
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+
+
+
+\begin{document}
+\title{Gauss-Manin}
+\author[Y-S.~Lee]{Yu-Sheng Lee}
+\address{Department of Mathematics, University  of Michigan, Ann Arbor, MI 48109, USA}
+\email{yushglee@umich.edu}
+\date{\today}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+$U=X\setminus D$ where
+$D=\sum_{j=1}^rD_j$ is a reduced normal crossing divisor.
+Write $\iota\colon U\hookrightarrow X$ and
+\[
+	 \Omega_X^a(*D)=\varprojlim_\nu \Omega_X^a(\nu\cdot D)
+	 =\iota_*\Omega_U^a
+\]
+Define $\Omega_X^a(\log D)$ as the subsheaf of $\Omega_X^a(*D)$
+consists of sections  $\alpha$ such that 
+$\alpha$ and  $d\alpha$ have at most simple poles along  $D$.
+\begin{itemize}
+	\item $\Omega_X^a(\log D)\hookrightarrow \Omega_X^a(*D)$
+	\item  $\Omega_X^a(\log D)=\wedge^a \Omega_X^1(\log D)$
+	\item for  $p\in X$ with local parameters
+		 $f_1,\cdots,f_n$ such that 
+		 $D_j$ is defined by  $f_j=0$.
+		 Suppose  $p\in D_j$ for  $j=1,\cdots,s$ and 
+		 $p\notin D_j$ for  $j=s+1,\cdots,r$.
+		 Let
+		 \[
+		 	\delta_j=
+			\begin{cases}
+				\frac{df_j}{f_j} & j\leq s;\\
+				df_j & j>s.
+			\end{cases}
+		 \]
+		 then $\Omega^1(\log D)$
+		 is locally generated by $\delta_j$
+		 over  $\mathcal{O}_X$.
+\end{itemize}
+\begin{proof}
+	Consider $\alpha\in \Omega_X^a(*D)$ written as
+	 \[
+		\alpha=\alpha_1+\alpha_2\wedge\frac{df_1}{f_1}
+	\]
+	where $\alpha_i$ are generated by wedge products
+	of  $df_2,\cdots,df_n$. 
+	Then $\alpha\in \Omega_X^a(\log D)$ implies
+	 \[
+	f_1\cdot \alpha=f_1\cdot\alpha_1+\alpha_2\wedge df_1,
+	\in \Omega_X^a
+	f_1\cdot d\alpha=f_1d\alpha_1+d\alpha_2\wedge df_1
+	\in \Omega_X^{a+1}
+	\]
+	so $\alpha_2$ and  $f_1\alpha_1$ have no poles,
+	then so does $\alpha_1$ since
+	 \[
+		 d(f_1\alpha_1)=
+		 df_1\wedge\alpha_1+f_1d\alpha-d\alpha_2
+	\]
+\end{proof}
+
+\begin{align}
+	&\alpha\colon \Omega_X^1(\log D)\to
+	\bigoplus_{j=1}^s\mathcal{O}_{D_j},\quad
+	\alpha(\sum a_j\delta_j)=\bigoplus a_j\vert_{D_j}\\
+	&\beta_1\colon \Omega_X^a(\log D)\to 
+	\Omega_{D_1}^{a-1}(\log(D-D_1)\vert_{D_1})\quad
+	\beta_1(\varphi_1+\varphi_2\wedge\frac{df_1}{f_1})
+	=\sum a_I\delta_{I-\{1\}}\vert_{D_1},
+	\varphi_2=\sum a_I\delta_{I-\{1\}},
+	\varphi_1=\sum_{1\notin I} a_I\delta_I.\\
+	&\gamma_1\colon 
+	\Omega_X^a(\log(D-D_1))\to 
+	\Omega_{D_1}^a(\log(D-D_1)\vert_{D_1}),\quad
+	\gamma_1(\sum_{1\in I}f_1a_I\delta_I+
+	\sum_{1\notin I}a_I\delta_I)=
+	\sum_{1\notin I}a_I\delta_I\vert_{D_1}
+\end{align}
+
+\begin{gather*}
+	0\to \Omega_X^1\to \Omega_X^11(\log D)\to 
+	\bigoplus_{j=1}^r\mathcal{O}_{D_j}\to 0\\
+	0\to \Omega_X^a(\log(D-D_1))\to 
+	\Omega_X^a(\log D)\xrightarrow{\beta}
+	\Omega_{D_1}^{a-1}(\log(D-D_1)\vert_{D_1})\to 0\\
+	0\to \Omega_X^a(\log D)(-D_1)\to
+	\Omega_X^a(\log(D-D_1))\xrightarrow{\gamma}
+	\Omega_{D_1}^a(\log(D-D_1)\vert_{D_1})\to 0
+\end{gather*}
+
+\begin{defn}
+	From 
+	\[
+		\nabla\colon E\to \Omega_X^1(\log D)\otimes E,\quad
+		\nabla(f\cdot e)=f\cdot \nabla(e)+df\otimes e
+	\]
+	define 
+	\[
+		\nabla_a\colon \Omega_X^a(\log D)\otimes E
+		\to \Omega_X^{a+1}(\log D)\otimes E,\quad
+		\nabla_a(\omega\otimes e)=d\omega\otimes e+
+		(-1)^a\cdot \omega\wedge\nabla(e)
+	\]
+\end{defn}
+
+\section{Relative de Rham complex}
+$f\colon U\to V$ proper smooth morphism between
+smooth  $\C$-schemes
+and  $(M,\nabla)$ an algebraic differential equation on  $U$,
+i.e. $M$ is locally free sheaf on  $U$ and integrable connection
+ \[
+	 \nabla\colon M\to \Omega_U^1\otimes_{\mathcal{O}_U}M
+\]
+compose with $\Omega_U^1\to \Omega_{U/V}^1$,
+get relative de Rham complex, whose hypercohomology.
+\[
+	H^q_{dR}(U/V,(M,\nabla))=
+	\mathbb{R}^qf_*(\Omega_{U/V}^*\otimes_{\mathcal{O}_U}M)
+\]
+
+Filter the absolute de Rham complex by
+\[
+	F^i(\Omega_U^*\otimes_{\mathcal{O}_U}M)=
+	\text{image of }
+	f^*(\Omega_V^i)\otimes_{\mathcal{O}_U}
+	\Omega_U^{*-i}\otimes_{\mathcal{O}_U}M
+	\to \Omega_U^*\otimes_{\mathcal{O}_U}M\quad
+	gr^i=F^i/F^{i+1}=
+	f^*(\Omega_V^i)\otimes_{\mathcal{O}_U}
+	\Omega_U^{*-i}\otimes_{\mathcal{O}_U}M
+\]
+The Gauss-Manin connection is the coboundary map of the 
+long exact sequence of $\mathbb{R}^qf_*$
+from 
+ $0\to gr^1\to F^0/F^2\to gr^0\to 0$, since
+  \begin{gather*}
+	  \mathbb{R}^qf_*(gr^0)=H^q_{dR}(U/V,(M,\nabla))\\
+	  \mathbb{R}^{q+1}f_*(gr^1)=
+	  \Omega_V^1\otimes_{\mathcal{O}_V}H^q_{dR}(U/V,(M,\nabla))
+ \end{gather*}
+ (why integrable?)
+ and thus $H^q_{dR}(U/V,(M,\nabla))$
+ are locally free as well.
+
+ When $(M,\nabla)=(\mathcal{O}_U,d)$,
+ then  $H_{dR}(U/V)=\mathbb{R}f_*(\Omega_{U/V}^*)$
+ is the Gauss-Manin connection
+ and the algebraic differntial equations is called
+ the Picard-Fuchs equation.
+
+\[
+	\begin{tikzcd}
+		U\arrow[r,hookrightarrow]
+		 \arrow[d,"f"]
+		 & S \arrow[d,"\pi"]\\
+		V\arrow[r,hookrightarrow] & T
+	\end{tikzcd}
+\]
+where $V=T\setminus Y$ and  $D=\pi^{-1}(Y)$ is normal crossing.
+Define the locally free sheaf 
+of relative differrntials with logarithmic singularities along  $D$
+by 
+ \[
+	 \Omega_{S/T}^1(\log D)=
+	 \Omega_S^1(\log D)/\pi^*(\Omega_T^1(\log Y)),
+	 \Omega_{S/T}^p(\log D)=
+	 \wedge_{\mathcal{O}_S}^p\Omega_{S/T}^1(\log D)=
+\]
+which fits into
+\[
+	0\to\pi^*(\Omega_T^1(\log Y))\otimes_{\mathcal{O}_S}
+	\Omega_{S/T}^{*-1}(\log D)\to 
+	\Omega_S^*(\log D)\to 
+	\Omega_{S/T}^*(\log )\to 0
+\]
+
+When $(M,\nabla)$ has regular singular points, i.e.
+there is locally free  $\overline{M}$ on  $S$ which prolongs  $M$
+and 
+ \[
+	 \bar{\nabla}\colon \overline{M}
+	 \to \Omega_S^1(\log D)\otimes_{\mathcal{O}}\bar{M}
+\]
+Filter $\Omega_S^*(\log D)\otimes_{\mathcal{O}}\bar{M}$
+by subcomplexes
+ \[
+	F^i=\text{image of }
+	\pi^*(\Omega_T^i(\log Y)\otimes_{\mathcal{O}_S}
+	\Omega_S^{*-i}(\log D)\otimes_{\mathcal{O}_S}\bar{M}
+	\to \Omega_S^*(\log D)\otimes_{\mathcal{O}_S}\bar{M}
+\]
+then
+$gr^i=F^i/F^{i+1}=\pi^*(\Omega_T^i(\log Y)\otimes_{\mathcal{O}_S}
+	\Omega_S^{*-i}(\log D)\otimes_{\mathcal{O}_S}\bar{M}$
+and $gr^0$ prolongs  $\Omega_{U/V}\otimes M$.
+Same constructions provide prolongations.
+So the relative de Rham coholomologies on $V$
+has regular singular points.
+
+\subsection{exponents}
+The map
+\[
+	L_i\colon \overline{M}
+	\to \Omega_S^1(\log D)\otimes_{\mathcal{O}_S}\overline{M}
+	\xrightarrow{\text{residue}}
+	\mathcal{O}_{D_i}\otimes_{\mathcal{O}_S}\overline{M}
+\]
+is $\mathcal{O}_{D_i}$-linear.
+Since $D_i$ is proper, 
+the characteristic polynomial
+$P_i=\det(XI-L_i;\overline{M}\otimes\mathcal{O}_{D_i})\in \C[X]$ 
+whose roots are called the exponents
+of $(\overline{M},\bar{\nabla})$ around $D_i$
+
+\section{Katz-Oda}
+
+$S$ is smooth scheme over the field  $k$,
+and $\EE$ is a quasi-coherent sheaf of  $\oo_S$-module.
+Let  $\Der_k(\oo_S)$ be the sheaf of $k$-derivations of 
+ $\oo_S$ into itself,
+which is naturally a sheaf of  $k$-Lie algbras,
+whiles as  $\oo_S$-module isomorphic to
+$\underline{\Hom}_{\oo_S}(\Omega_{S/k}^1,\oo_S)$.
+Let $\underline{\End}_k(\EE)$
+be the sheaf of  $k$-linear endomorhism.
+
+Given a connection on $\EE$,
+there is a  $\oo_S$-linear map
+ \[
+	 \Der_k(\oo_S)\to \underline{\End}_k(\EE),\quad
+	 D\mapsto
+	 \tilde{D}\colon 
+	 \EE\to \Omega_{S/k}^1\otimes_{\oo_S}\EE
+	 \xrightarrow{D\otimes 1}
+	 \oo_S\otimes_{\oo_S}\EE\cong \EE
+\]
+
+Conversely, since $S$ is smooth over  $k$,
+any  $\oo_S$-linear map
+$\Der_k(\oo_S)\to \underline{\End}_k(\EE)$
+with  $ \tilde{D}(fe)=D(f)e+f\tilde{D}(e)$
+comes from a unique connection.
+The connection is integrable iff
+the above map is a Lie-algebra homomorphism.
+
+ \[
+	 d_1^{p,q}\colon E_1^{p,q}=R^{p+q}\pi_*(gr^p)\to 
+	 E_1^{p+1,q}=R^{p+1+q}\pi_*(gr^{p+1})
+\]
+is the connecting homomorphism of 
+\[
+	0\to gr^{p+1}\to F^p/F^{p+2}\to gr^p\to 0.
+\]
+
+local system $\EE$ and 
+integrable connection on a coherent sheaves $\EE\otimes\oo_X$
+
+%\bibliographystyle{amsalpha}
+%\bibliography{biblio}
+\end{document}
+

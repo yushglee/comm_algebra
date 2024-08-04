@@ -1574,7 +1574,7 @@ instances of \red{flat} are replaced by faithfully flat.
 
 \subsection{local criterion}
 
-\begin{thm}
+\begin{thm}\label{thm:criterion}
 	The following conditions on an $A$-module $M$
 	satisfies the relation
 	\[
@@ -1757,7 +1757,7 @@ since quasi-finite implies  $\dim(B\otimes_Ak)=0$.
 	\]
 	associated to 
 	$0\to A_i\xrightarrow{x_{i+1}}
-	\to A_i\to A_{i+1}\to 0$
+	A_i\to A_{i+1}\to 0$
 	shows inductively that
 	$\Tor_1(M,A_{i})=0$ for all $i$.
 \end{proof}
@@ -1779,43 +1779,248 @@ since quasi-finite implies  $\dim(B\otimes_Ak)=0$.
 		then $Z$ is constructible in  $X$.
 \end{itemize}
 
+
 \begin{lem}
-	Let $X$ be a Noetherian space.
-	A subset $Z$ is constructible if and only if 
-	for all closed irreducible subset  $Y$ 
-	such that $Z\cap Y$ is dense in  $Y$,
-	then  $Z\cap Y$ contains 
+	Let $Z$ be a subset of a Noetherian space  $X$.
+	Then $Z$ is constructible if and only if 
+	for all closed irreducible subset $Y$,
+	such that $Z\cap Y$ is dense in $Y$,
+	$Z\cap Y$ contains 
 	a non-empty open subset of  $Y$.
 \end{lem}
 \begin{proof}
 	If $Z=\cup_{i=1}^nF_i\cap V_i$ is constructible,
-	where $F_i$ are closed and  $V_i$ are open in $X$,
+	where $F_i$ are closed and $V_i$ are open in $X$,
 	write $Z\cap Y=\cup_{i=1}^nF'_i\cap V'_i$,
 	where $F_i'=F_i\cap Y$ and  $V_i'=V_i\cap Y$.
-	By assumpsion  $Y=F'_i$ for some  $i$,
-	thus $V'_i=F'_i\cap V'_i\subset Z\cap Y$,
+	If $Z\cap Y$ is dense in $Y$,
+	then  $Y=F'_i$ for some  $i$ and therefore
+	$V'_i=F'_i\cap V'_i\subset Z\cap Y$
 	is an open subset in  $Y$.
 
 	Conversely,
 	suppose $Z$ is not constructible,
-	let $Y$ be a closed subset of $X$
-	minimal among closed subsets of $X$ such that 
-	$Z\cap Y$ is not constructible. 
+	there exists a closed subset $Y\subset X$ which is
+	minimal among closed subsets such that 
+	$Z\cap Y$ is not constructible in $Y$.
 	Then either
-	\begin{itemize}
+	\begin{enumerate}
 		\item $Y=Y_1\cup Y_2$ is not irreducible,
-			but then  $Z\cap Y=Z\cap Y_1\cup Z\cap Y_2$
-			is constructible.
-		\item  $Y$ is irreducible but  $Z\cap Y$ is not dense in  $Y$,
-			then  $Z=Z\cap \overline{Z\cap Y}$ is constructible
-			since $Y$ is minimal.
-		\item  $Y$ is irreducible and $Z\cap Y$ is dense in  $Y$,
-			by assumption there exists an open subset 
-			$V\subset Z\cap Y$ of $Y$
-			but then $Z\cap Y=V\cup Z\cap (Y\setminus V)$
-			is constructible.
-	\end{itemize}
+		but then  $Z\cap Y=Z\cap Y_1\cup Z\cap Y_2$
+		is constructible.
+		\item  $Y$ is irreducible but  
+		$Z\cap Y$ is not dense in  $Y$,
+		then $Z=Z\cap \overline{Z\cap Y}$ is constructible.
+		\item $Y$ is irreducible and 
+		$Z\cap Y$ is dense in  $Y$,
+		by assumption there exists an open subset 
+		$V\subset Z\cap Y$ of $Y$
+		but then $Z\cap Y=V\cup Z\cap (Y\setminus V)$
+		is constructible.
+	\end{enumerate}
 \end{proof}
+\begin{lem}
+	Let $Z$ be a constructible subset 
+	of a Noetherian space  $X$ and $x\in Z$.
+	Then  $Z$ is a neighborhood of $x$
+	if and only if $Z\cap Y$ is dense in  $Y$
+	for any closed irreducible subset  $Y$
+	containing  $x$.
+\end{lem}
+\begin{proof}
+	Suppose $Z$ is not a neighborhood of  $x$,
+	there exists a closed subset $Y\subset X$
+	which is minimal among closed subsets such that
+	$Z\cap Y$ is not a neighborhood of  $x$ in  $Y$.
+	If $Y=Y_1\cup Y_2$ is not irreducible, either
+	\begin{enumerate}
+	\item $x\in Y_1$ and $x\in Y_2$,
+	then there exists open sets $V'_1,V'_2$
+	such that $x\in V_i=V'_i\cap Y_i\subset Z\cap Y_i$.
+	Then $V_1\cap V_2\subset Z\cap Y$
+	is an open set of $Y$ containing  $x$.
+	\item  $x\in Y_1$ but $x\notin Y_2$,
+	pick $V_1$ as above,
+	then $V_1\setminus (V_1\cap Y_2)\subset Z\cap Y$
+	is an open set of $Y$ containing  $x$.
+	\end{enumerate}
+	If $Y$ is irreducible, by the lemma above
+	$Z\cap Y$ contains a nonempty open subset $V$ of $Y$.
+	Then either $x\in V$,
+	or  $x\notin V$
+	and there exists  $V'\subset Z\cap (Y\setminus V)$
+	which is open in  $Y\setminus V$ and contains $x$. 
+	Then $V'\cup V\subset Z\cap Y$
+	is an open set of $Y$ containing  $x$.
+\end{proof}
+	
+According to the two lemmas above,
+a subset $Z$ of a Noetherian space $X$ is open if and only 
+$Z\cap Y$ is either empty or contains a nonempty open subset 
+of  $Y$ for any closed irreducible  $Y\subset X$.
+\begin{prop}[Topological Nagata criterion]\label{prop:Nagata}
+	Let $A$ be a Noetherian ring
+	and $U$ be a subset of $\Spec(A)$.
+	Then $U$ is open if and only if
+	$U$ is closed under generization 
+	and $U$ contains a non-empty open subset of 
+	$V(\fp)$ when  $\fp\in U$.
+\end{prop}
+
+
+\begin{thm}[Chevalley theorem]
+	Let $f\colon X\to Y$ be a morphism of finite type
+	betwen Noetherian schemes.
+	Then $f(Z)$ is a constructible subset of  $Y$
+	if $Z$ is a constructible subset of  $X$.
+\end{thm}
+\begin{proof}
+	The proof is eventually reduced to the following 
+	situation:
+	let $A\hookrightarrow B$ be an injective ring homomorphism,
+	where $A,B$ are integral domains
+	and $B$ is of finite type over  $A$,
+	show that the image of $\Spec(B)\to \Spec(A)$ 
+	contanis an open subset.
+
+	Let $K$ be the fractional field of  $A$,
+	by Noetherian normalization,
+	there eixts  $T_1,\cdots,T_n\in B\otimes_AK$
+	such that $B\otimes_AK$
+	is integral over  $K[T_1,\cdots,T_n]$.
+	Then there exists $g\in A\setminus\{0\}$ 
+	such that $T_i\in B\otimes_AA_g$
+	for all  $i$ and  $B\otimes_AA_g$
+	is integral over  $C=A_g[T_1,\cdots,T_n]$.
+	Now, $\fp C$ is a prime of $C$ for $\fp\in D(g)$,
+	and by integrality there exits $\wp\subset B$
+	such that $\wp\cap A_g=\fp$.
+	Therefore the image of  $\Spec(B)$
+	contains the open subset  $D(g)$.
+\end{proof}
+
+\begin{proof}
+	Let $K$ be the fractional ideal of  $A$
+	and pick alg.independent  $T_1,\cdots,T_n\in B\otimes_AK$
+	such that $B\otimes_AK$ is integral over
+	$K[T_1,\cdots,T_n]$ (Noetherian normalization).
+	Can find $g\in S=A\setminus 0$
+	such that  $T_i=t_i/g, t_i\in B$
+	and integral equations has coefficients in  $A_g$.
+\end{proof}
+
+\begin{prop}
+	Let $f\colon X\to Y$ be a morphism of finite type
+	between Noetherian schemes,
+	$x\in X$, and  $y=f(x)$.
+	Then $f$ is an open map if 
+	if $f$ is quasi-flat.
+\end{prop}
+\begin{proof}
+	Let $U\subset X$ be an open subset.
+	Then $f(U)$ is open 
+	since it is closed under generization
+	by quasi-flatness and 
+	constructible by Chevalley theorem.
+\end{proof}
+
+\begin{prop}
+	Let $A$ be a Noetherian domain,
+	$B$ be an $A$-algebra of finite type,
+	and $M$ a finite $B$-module.
+	Then there exists $f\in A$
+	such that  $M_f$ is free over $A_f$.
+\end{prop}
+\begin{proof}
+	When $B=A$,
+	pick $x_1,\cdots,x_n\in M$
+	which forms a bais of
+	$M\otimes_AK$ over  $K$,
+	the fractional field of  $A$.
+	Consider the induced sequence
+	\[
+		0\to N\to A^n\to M\to P\to 0.
+	\]
+	Then $N\otimes_AK=0=P\otimes_AK$
+	(recall that $K$ is flat over  $A$),
+	thus there exists $f\in A$ such that $N_f=0=P_f$
+	and consequently $M_f$ is free over  $A_f$.
+
+	It then suffices to show that 
+	the statements are true for $B[T]$ when
+	they are true for  $B$.
+	Let $M$ be a finite  $B[T]$-module
+	and $(x_1,\cdots,x_n)$ be a set of generaters.
+	Let $M_1$ be the $B$-submodule generated by them,
+	and in general define 
+	$M_{n+1}=M_n+TM_n=M_1+TM_1+\cdots+T^nM_1$ for $n\geq 1$.
+	Observe that the kernels of the surjections
+	\[
+		M_1\xrightarrow{T^n} M_{n+1}/M_n
+	\]
+	is an increasing sequence that eventually terminates
+	by the Noetherian hypothesis.
+	Therefore $\{M_{n+1}/M_n\}$ is a finite sequence
+	of $B$-modules. 
+	By induction, there eixts  $f\in A$
+	such that  all  $(M_{n+1}/M_n)_f$ are free over $A_f$,
+	and therfore  $M_f$ is free over  $A_f$.
+\end{proof}
+
+\begin{thm}
+	Let $A$ be a Noetherian ring,
+	$B$ be an  $A$-algebra of finite type,
+	and $M$ be a finite $B$-module,
+	then  
+	$U=\{\wp\in \Spec(B)\mid M_\wp \text{ is flat over }A\}$ 
+	is a open subset in $\Spec(B)$.
+\end{thm}
+\begin{proof}
+	Clearly $U$ is closed under generization.
+	On the other hand,
+	to verify the topological Nagata criterion, suppose
+	$\wp\in U$ and  $\fp=\wp\cap A$.
+	By \ref{thm:criterion},
+	$M_Q$ is flat over  $A$
+	for $Q\in V(\wp)$ if and only if 
+	$M_Q/\fp M_Q$ is flat over $A/\fp$
+	and $\Tor_1(M_Q,A/\fp)=0$.
+	In particular 
+	$\Tor_1(M_\wp,A/\fp)=\Tor_1(M,A/\fp)\otimes_BB_\wp=0$.
+	Since $\Tor_1(M,A/\fp)$ is a finite $B$-module,
+	there exists then a neighborhood of $V(\wp)$
+	on which $\Tor_1(M_Q,A/\fp)=0$.
+	And by generic flatness, there exists  $f\notin\fp$
+	such that  $M_f/\fp M_f$ is  $(A/\fp)_f$ free,
+	then  $M_Q/\fp M_Q$ is flat if $Q\in V(\wp)\cap D(f)$.
+\end{proof}
+
+\section{misc}
+
+Let $P$ be a property of ring maps,  $P$ is local if
+\begin{enumerate}[label=(\alph*)]
+	\item for any $R\to A$ and  $f\in R$,
+		$P(R\to A)\Longrightarrow P(R_f\to A_f)$.
+	\item for any  $f\in R, a\in A$ and  $R_f\to A$,
+		$P(R_f\to A)\Longrightarrow P(R\to A_a)$.
+	\item for any  $R\to A$ and  $a_i\in A$ 
+		such that  $(a_1,\cdots,a_n)=A$,
+		$P(R\to A_{a_i})\Longrightarrow P(R\to A)$.
+\end{enumerate}
+Let $f\colon X\to S$ be a morphism of schemes,
+ $f$ is locally of type  $P$ if for any  $x\in X$
+ there is  $x\in U$ to  $f(U)\subset V$ affines
+ such that  $P(O_S(V)\to O_X(U))$.
+  \begin{lem}
+	  If $f(U)\to V$ and $f$ is locally of type $P$
+	  for  $P$ local, then
+	  $P(O _S(V)\to O_X(U))$.
+ \end{lem}
+ Use the fact:
+ let $X$ be a scheme and  $U,V$ are affines,
+ let  $x\in U\cap V$
+ ther exists open  $W$ which is standard in both  $U,V$
+
 
 %\bibliography style{amsalpha}
 %\bibliography biblio}
