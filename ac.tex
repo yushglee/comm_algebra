@@ -96,6 +96,7 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\trdeg}{tr.deg}
 \DeclareMathOperator{\depth}{depth}
 \DeclareMathOperator{\prd}{proj.dim}
@@ -1170,6 +1171,38 @@ recall that
 %	 N\otimes k=0.
 %\]
 %implies $N=0$ by Nakayama's lemma.
+\begin{rem}
+	When $A$ is Noetherian
+	and  $M$ is a finite $A$-module,
+	the followings are equivalent.
+	 \begin{enumerate}[label=(\alph*)]
+		\item $M$ is flat over $A$.
+		\item  $M$ is locally free.
+		\item  $M$ is projective
+	\end{enumerate}
+	that $M$ is projective follows
+	by showing $\Ext^1(M,N)=0$
+	using localizations.
+
+	Moreover, if  $A$ is a domain,
+	it is equivalent to that 
+	$\dim_{k(\fp)}(M\otimes A/\fp)$
+	have the same dimension for all
+	prime $\fp\subset A$.
+	Pick any generator $x_1,\cdots,x_r$
+	that generates $M\otimes A/\fp$,
+	there exists  $a\notin \fp$
+	such that
+	 \[
+		\varphi\colon A_a^r\to M_a
+	\]
+	is surjective,
+	then use dimension to show that
+	$\varphi\otimes A/Q$ is an isomorphis
+	for $Q\in D(a)$,
+	and conclude that  $\ker(\varphi)=0$
+	using that  $A_a$ is reduced.
+\end{rem}
 A resolution of $M$ can be constructed as follows.
 \begin{enumerate}
 	\item Lift a basis of $M$ and form
@@ -1445,6 +1478,12 @@ instances of \red{flat} are replaced by faithfully flat.
 	thus  $B$ is faithfully flat.
 \end{proof}
 
+\begin{rem}
+	When $f\colon A\to B$ is flat and  $a\in A$ is not a zero-divisor,
+	then  $f(a)$ is not a zero-divisor.
+	Conversely, if $A$ is a DVR and $B$ is integral,
+	and  $f$ is injective, then  $f\colon A\to B$ is flat.
+\end{rem}
 
 \subsection{flat morphism}
 \begin{defn}
@@ -1468,6 +1507,109 @@ instances of \red{flat} are replaced by faithfully flat.
 	The morphism $f$ is flat or faithfully flat
 	when $\mathcal{O}_X$ can be taken for $F$.
 \end{defn}
+
+\begin{rem}
+	Here is a classical criterion
+	of flatness that is equivalent
+	to $I\otimes_AM\to IM$ is bijective:
+	If  $\sum_{i=1}^ra_ix_i=0$
+	for $a_i\in A, x_i\in M$,
+	then there exists  $b_{ij}\in A$
+	and $y_j\in M$ such that
+	\[
+		\sum_{i=1}^ra_ib_{ij}=0,\quad
+		x_i=\sum_{j}b_{ij}y_j
+	\]
+	If $M$ is flat, consider 
+	 \[
+		 \ker\to A^r\xrightarrow{\varphi}
+		 \to A\quad
+		 \varphi(t_1,\cdots,t_r)=
+		 \sum a_it_i
+	\]
+	Thus if 
+	$x=(x_1,\cdots,x_r)\in \ker(\varphi\otimes I_M$
+	there exists $y_j\in M$
+	and  $b_j\in \ker$
+	such that  $x=\sum b_j\otimes y_j$.
+
+	Conversely, 
+	if  $\sum a_ix_{i}=0$ 
+	for $a_i\in I, x_i\in M$ 
+	and there exists $b_{ij}, y_j$
+	as above, 
+	then
+	\[
+		\sum a_i\otimes x_i=
+		\sum a_i\otimes \sum_j b_{ij}y_j=
+		\sum_i \sum_ja_ib_{ij}\otimes y_j=
+		0
+	\]
+\end{rem}
+
+\begin{prop}
+	Let $A\to B$ be a flat ring homomorphism,
+	and  $b\in B$
+	such that  $b$ is not a zero-divisor
+	in  $B/\fm B$
+	for any maximal ideal  $\fm$ of  $A$,
+	then   $B/(b)$ is flat over  $A$.
+	Inductively if $b_1,\cdots,b_r$
+	is a $b/\fm B$-regular sequence,
+	then  $B/(b_1,\cdots,b_r)$
+	is flat over $A$.
+\end{prop}
+\begin{proof}
+	May reduce to the case 
+	when $A\to B$ is local homomorphism
+	between local rings.
+	First prove that $b$
+	is not a zero-divisor in  $B$:
+	\begin{enumerate}[label=(\alph*)]
+		\item if $cb=0$, then 
+			 $c\in \fm B$
+		 \item write $c=\sum a_ib_i$
+			 where  $\{a_i\}$ 
+			 is a minimal generating set of $\fm$,
+			 then  $\sum a_ib_ib=0$
+			 implies there are 
+			  $a'_{ij}, y_j$
+			  such that $\sum a_ia'_{ij}=0$ and $b_ib=\sum a'_{ij}y_j$.
+			  Thus $a'_{ij}\in \fm$
+			  and $b_ib\in \fm B$.
+			  Thus  $b_i\in \fm B$
+			  and  $c\in \fm^2 B$.
+		  \item Inductively similar 
+			  arguements shows
+			   $c\in \cap_n \fm^n B=0$
+			   by Krull's intersection.
+	\end{enumerate}
+	The same argument shows that
+	$b$ is not a zero-divisor in
+	$B/IB$ for any ideal $I\subset A$,
+	thus there is the exact sequence
+	 \[
+		\begin{tikzcd}
+			I\otimes B \arrow[r]\arrow[d] &
+			I\otimes B \arrow[r]\arrow[d] & I\otimes(B/(b)) \\
+			B \arrow[r]\arrow[d] &
+			B \arrow[r]\arrow[d] &
+			B/(b) \\
+			B/IB \arrow[r] &
+			B/IB \arrow[r] &
+			(B/(b))/I(B/(b))
+		\end{tikzcd}
+	\]
+	from which $B/(b)$ is  $A$-flat.
+\end{proof}
+Consequently, when $B=A[X_1,\cdots,X_n]$,
+a hypersurface $Z$ is flat over  $A$
+if the coefficients defining  $Z$
+generates $A$.
+This generalizes to the propositions
+below on dimensions of closed fibers.
+
+
 \begin{itemize}
 	\item An open immersion is flat.
 	\item Compositions of \red{flat} morphisms are \red{flat}.
@@ -1995,9 +2137,121 @@ of  $Y$ for any closed irreducible  $Y\subset X$.
 	then  $M_Q/\fp M_Q$ is flat if $Q\in V(\wp)\cap D(f)$.
 \end{proof}
 
+\subsection{descent}
+
+\begin{defn}
+	A morphism $Y\to X$
+	is a strict epimorphism if the sequence below is exact.
+	 \[
+		 \Hom(X,Z)\to \Hom(Y,Z)
+		 \rightrightarrows_{p_2}^{p_1}
+		 \Hom(Y\times_XY,Z)
+	\]
+\end{defn}
+
+\begin{prop}
+	If $f\colon A\to B$ is faithfully-flat
+	and $M$ is an  $A$-module,
+	the folowing sequence is exact.
+	\[
+		0\to M\xrightarrow{f}
+		M\otimes_AB\xrightarrow{d_1}
+		M\otimes_AB\otimes_AB\xrightarrow{d_2}\cdots
+		\xrightarrow{d_{r-1}} 
+		M\otimes_AB^{\otimes r}\xrightarrow{d_r}\cdots
+	\]
+	where 
+	$d_r=\sum_{i=0}^r (-1)^ie_i$ and
+	$e_i(b_0\otimes\cdots\otimes b_{r-1})=
+	b_0\otimes\cdots\otimes b_{i-1}\otimes 1\otimes b_i\otimes\cdots\otimes b_{r-1}$.
+\end{prop}
+\begin{proof}
+	If there exists a sction $g\colon B\to A$
+	such that  $g\circ f=I_A$, then
+	 \[
+		 k_r\colon B^{\otimes r+1}\to B^{\otimes r}\quad
+		 k_r(b_0\otimes\cdots\otimes b_{r})
+		 =g(b_0)b_1\otimes\cdots\otimes b_{r}
+	\]
+	defines a contracting homotopy
+	satisfying $k_{r}d_{r}+d_{r+1}k_{r+1}=1$.
+	The same sequence $\otimes_AB$
+	is exact since  $B\to B\otimes_AB$ 
+	admits sections.
+	Thus the original sequence is exact 
+	since $A\to B$ is faithfully flat.
+\end{proof}
+
+\begin{prop}
+	A faithfully flat morphism
+	$f\colon X\to Y$
+	of finite-type is 
+	a stric epimorphism.
+\end{prop}
+\begin{prop}
+	Let $f\colon X\to Y$ be faithfully flat and quasi-compact.
+	To give a quasi-coherent $\oo_Y$-module  $M$
+	is the same as to give a quasi-coherent  $\oo_X$-module
+	 $M'$ and an isomorphism  $\phi\colon p_1^*M'\to p_2^*M'$ 
+	 satisfying
+	 \[
+		 p_{31}^*(\phi)=
+		 p_{32}^*(\phi)
+		 p_{21}^*(\phi)
+	 \]
+	 where $p_{ji}(x_1,x_2,x_3)=(x_j,x_i)$ for $j>i$.
+\end{prop}
+
+\section{Etale morphisms}
+
+\begin{defn}
+	Let $k$ be a ring, $A$ be a $k$-algebra,
+	and $M$ be an  $A$-module.
+	The module $\Der_k(A,M)$ of $k$-derivations of  $A$ in  $M$
+	consists of $k$-linear maps $D\colon A\to M$
+	satisfying $D(fg)=fD(g)+gD(f)$ for  $f,g\in A$.
+	Then there eixits an  $A$-module  $\Omega^1_{A/k}$,
+	the module of differentials of $A$ over  $k$,
+	such that 
+	 \[
+		 \Hom_A(\Omega^1_{A/k},M)\cong \Der_k(A,M).
+	\]
+\end{defn}
+\begin{enumerate}[label=(\alph*)]
+	\item let $\varphi\colon A\to B$ be a 
+		$k$-algebra homomorphism, then
+		\[
+		0\to \Der_A(B,M)\to \Der_k(B,M)\to \Der_A(B,M)
+		\Longleftrightarrow
+		\Omega^1_{A/k}\otimes_AB\to \Omega^1_{B/k}
+		\to \Omega^1_{B/A}\to 0
+		\]
+	\item let $A$ be a  $k$-algebra and  $B=A/I$, then
+		 \[
+		 0\to \Der_k(B,M)\to \Der_k(A,M)\to\Hom_B(I/I^2,M)
+		 \Longleftrightarrow
+		 I/I^2\to \Omega^1_{A/k}\otimes_AB\to 
+		 \Omega^1_{B/k}\to 0
+		\]
+\end{enumerate}
+
+Let $X$ be an  $S$-scheme,
+then there exists a quasi-coherent sheaf
+$\Omega_{X/S}$ and an exterior differntial
+$d\colon \oo_X\to \Omega_{X/S}$.
+Moreover, $\Omega^1_{X/S}$ is of finite type
+when $X$ is locally of finite type over  $S$.
+
+\subsection{quasi-finite}
+\subsection{unramified}
+\subsection{etale}
+\subsection{radicial}
+\subsection{covers}
+
 \section{misc}
 
-Let $P$ be a property of ring maps,  $P$ is local if
+A property $P$ of ring maps is local if 
+the followings hold.
 \begin{enumerate}[label=(\alph*)]
 	\item for any $R\to A$ and  $f\in R$,
 		$P(R\to A)\Longrightarrow P(R_f\to A_f)$.
@@ -2007,20 +2261,19 @@ Let $P$ be a property of ring maps,  $P$ is local if
 		such that  $(a_1,\cdots,a_n)=A$,
 		$P(R\to A_{a_i})\Longrightarrow P(R\to A)$.
 \end{enumerate}
-Let $f\colon X\to S$ be a morphism of schemes,
- $f$ is locally of type  $P$ if for any  $x\in X$
- there is  $x\in U$ to  $f(U)\subset V$ affines
- such that  $P(O_S(V)\to O_X(U))$.
-  \begin{lem}
-	  If $f(U)\to V$ and $f$ is locally of type $P$
-	  for  $P$ local, then
-	  $P(O _S(V)\to O_X(U))$.
- \end{lem}
- Use the fact:
- let $X$ be a scheme and  $U,V$ are affines,
- let  $x\in U\cap V$
- ther exists open  $W$ which is standard in both  $U,V$
-
+A morphism $f\colon X\to S$ between schemes 
+is locally of type $P$ if for any  $x\in X$,
+there exists an affine open subset  $x\in U$ of  $X$
+and an open affine subset $V$ of $Y$ with  $f(U)\subset V$
+such that $P(O_S(V)\to O_X(U))$.
+\begin{lem}
+	If $f\colon X\to S$ is locally of type  $P$
+	for a property  $P$ that is local,
+	then $P(\oo_S(V)\to \oo_X(U))$ holds
+	for any open affine subsets 
+	$U\subset X$ and  $V\subset S$
+	with  $f(U)\subset V$.
+\end{lem}
 
 %\bibliography style{amsalpha}
 %\bibliography biblio}
