@@ -2233,7 +2233,35 @@ of  $Y$ for any closed irreducible  $Y\subset X$.
 		 I/I^2\to \Omega^1_{A/k}\otimes_AB\to 
 		 \Omega^1_{B/k}\to 0
 		\]
+	\item Let $B_1,B_2$ be  $k$-algebras and 
+		 $A=B_1\times B_2$, then
+		 $\Omega_{A/k}\cong
+		 \Omega_{B_1/k}\oplus\Omega_{B_2/k}$.
+	\item Let $A$ be a $k$-algebra,
+	$k\to k'$ be a ring homomorphism,
+	and $A'=A\otimes_kk'$, then
+	$\Omega_{A'/k'}
+	\cong\Omega_{A/k}\otimes_AA'
+	\cong\Omega_{A/k}\otimes_kk'$.
+	\item Let $A$ be a  $k$-algebra, 
+	$S\subset k$ and  $T\subset A$ be multiplicative subsets
+	such that $S$ is mapped into $T$,
+	then $\Omega_{T^{-1}A/S^{-1}k}\cong T^{-1}\Omega_{A/k}$.
+	\item Let $B_1,B_2$ be  $k$-algebras and 
+	$A=B_1\otimes B_2$, then
+	$\Omega_{A/k}\cong 
+	\Omega_{B_1/k}\otimes_{B_1}A\oplus
+	\Omega_{B_2/k}\otimes_{B_2}A$.
+	The map $k\to B_1\to A$ gives
+	 \[
+		\Omega^1_{B_1/k}\otimes_{B_1}A\to 
+		\Omega^1_{A/k}\to \Omega^1_{A/B_1}=
+		\Omega^1_{B_2/k}\otimes_{B_2}A\to 0
+	\]
+	A similar sequence given by $k\to B_2\to A$
+	gives a splitting of the above.
 \end{enumerate}
+
 
 Let $X$ be an  $S$-scheme,
 then there exists a quasi-coherent sheaf
@@ -2241,17 +2269,208 @@ $\Omega_{X/S}$ and an exterior differntial
 $d\colon \oo_X\to \Omega_{X/S}$.
 Moreover, $\Omega^1_{X/S}$ is of finite type
 when $X$ is locally of finite type over  $S$.
+\begin{enumerate}[label=(\alph*)]
+	\item Let $f\colon X\to Y$
+	be an $S$-morphism between $S$-schemes, then
+	\[ 
+		f^*\Omega^1_{Y/S}\to \Omega^1_{X/S}
+		\to\Omega^1_{X/Y}\to 0
+	\]
+	\item Let $X, Y$ be  $S$-schemes, then
+	 $pr_1^*\Omega^1_{X/S}\oplus pr_2^*\Omega^1_{Y/S}
+	 \cong \Omega^1_{X\times_SY/S}$.
+	\item Let $X, Y$ be  $S$-schemes, then
+	$\Omega^1_{X/S}\oplus \Omega^1_{Y/S}
+	\cong \Omega^1_{X\sqcup Y/S}$.
+	\item Let $i\colon X\hookrightarrow Y$ be an immersion
+	of  $S$-schemes and  $J$ be the sheaf of ideals
+	defining  $X$, then
+	\[
+		J/J^2\xrightarrow{\delta}
+		i^*\Omega^1_{Y/S}\to \Omega^1_{X/S}\to 0.
+	\]
+	The $\oo_X$-module  $J/J^2$ is called
+	the conormal sheaf of  $X$ in  $Y$.
+	\item Let $X$ be an $S$-scheme
+	$S'\to S$ be a morphism between schemes,
+	and $X'=X\times_SS'$.
+	Write $f\colon X'\to X$,
+	then $f^*\Omega^1_{X/S}\cong \Omega^1_{X'/S'}$.
+\end{enumerate}
+Let $X$ be an $S$-scheme, 
+$Y=X\times_SX$, and $i\colon X\to Y$,
+then $\Omega_{X/S}$ is the cornormal sheaf of
+$X$ in $Y$.
 
 \subsection{quasi-finite}
+
+\begin{defn}
+	Let $f\colon X\to Y$ be a morphism locally of finite type.
+	Then  $f$ is quasi-finite if 
+	for each  $x\in X$ and  $y=f(x)$,
+	$\oo_x/\fm_y\oo_x$ is a finite-dimensional vector space
+	over  $k(y)$.
+	The followings are equivalent.
+	 \begin{enumerate}[label=(\alph*)]
+		\item $\oo_x$ is a quasi-finite $\oo_y$-module.
+		\item  $ \{x\}$ is open in $f^{-1}(y)$.
+		\item $\fm_x^r\subset \fm_y\oo_x$ for
+			some integer $r$ and 
+			$k(x)$ is a finite extension of $k(y)$.
+	\end{enumerate}
+\end{defn}
+\begin{proof}
+	Consider $A/\fm_yA\to \oo_x/\fm_y\oo_x$
+\end{proof}
+
+\begin{lem}
+	$A\to B$ Noetherian,  $\fq\subset A, \fq'\subset B$
+	such that  $\fq B\subset \fq'\subset \rad(B)$,
+	$M$ is finite  $A$-module and  $N$ is finite  $B$-module.
+	Let  $\varphi\colon M\to N$ be  $A$-homomorphism, inducing
+	 \[
+		\begin{tikzcd}
+		M/\fq M\arrow[r,"\varphi'"]\arrow[d]&
+			N/\fq N\arrow[d,"\beta"]\\
+			\hat{M}/\fq \hat{M}\arrow[r]&
+			\hat{N}/\fq \hat{N}
+		\end{tikzcd}
+	\]
+	then  $ \hat{\varphi}$ is surjective 
+	iff $\beta$ and  $\varphi'$ are surjective.
+\end{lem}
+
+\begin{prop}
+	Let $f\colon X\to Y$ be locally of finite type
+	between  locally Noetherian schemes.
+	Let  $x\in X$ and  $y=f(x)$,
+	then  $\oo_x$ is quasi-finite over  $\oo_y$
+	iff  $ \hat{\oo}_x$ is finite over $ \hat{\oo}_y$.
+\end{prop}
+\begin{proof}
+	If $f$ is quasi-finite,
+	then  $\fm_x^r\subset \fm_y\oo_x$ for some  $r\geq 0$,
+	lift a surjection  $k(y)^{\oplus n}\to k(x)$ 
+	to $\oo_y\to \oo_x$,
+	then  $\varphi'$ surjective implies 
+	 $\varphi''$ surjective
+	 and  $ \hat{\varphi}$ surjective.
+
+	 Conversely, $ \hat{\oo}_x$ is finite
+	 over $ \hat{\oo}_y$ implies
+	 $ \hat{\fm}_x^r\subset \hat{\fm}_y\hat{\oo}_x$,
+	 in other word $ \hat{\fm}_x^r\to \hat{\oo}_x/\hat{\fm}_y\hat{oo}_x$ is the zero map,
+	 and thus $\fm_x^r\subset \fm_y\oo_x$
+	 since  $ \hat{\oo}_x$ is faithfully flat.
+\end{proof}
+
+Let $f\colon X\to \Spec(k)$ be a morphism of finite type
+and  $k$ is a field, then the followings are equivalent.
+ \begin{enumerate}[label=(\alph*)]
+	 \item $X$ is affine and $\Gamma(X,\oo_X)$ is Artinian.
+	 \item  $X$ is finite and discrete.
+	 \item  $X$ is discrete.
+	 \item  $f$ is finite.
+\end{enumerate}
+\begin{itemize}
+	\item any immersion is quasi-finite
+	\item composition
+	\item base-change.
+\end{itemize}
+
 \subsection{unramified}
+
+\begin{defn}
+	Let  $f\colon X\to Y$ be morphism locally of type
+	between locally Noetherian schemes.
+	Let $x\in X$ and $y=f(x)$,
+	then  $f$ is unramified at $x$
+	if $\fm_x=\fm_y\oo_x$ and $k(x)$ is a 
+	finite separable field extension over $k(y)$.
+	The followings are equivalent.
+	\begin{enumerate}[label=(\alph*)]
+		\item $f$ is unramified at  $x$.
+		\item  $\Omega^1_{X/Y}$ is zero at $x$
+		\item  $\Delta_{X/Y}$ is an open
+			immersion in neighborhood of $x$.
+	\end{enumerate}
+\end{defn}
+
+
+Let $K $ be an Artinian $k$-algebra
+over a field $k$.
+If $K\otimes_k\bar{k}$ is reduced, 
+then   $K$ is a finite product of finite separable
+field  extensions of $k$.
+\begin{proof}
+	Reduced to when $K$ is local,
+	since  $K\hookrightarrow K\otimes_k\bar{k}$ 
+	and $\fm$ consists of nilpotents,
+	we see  $\fm=0$ and  $K$ is a field.
+	Furthermore, for any  $x\in K$
+	the subfield generated over  $k$
+	is isomorphic to  $k[X]/f(X)$.
+	Then 
+	 \[
+		 k[X]/f(X)\otimes_k\bar{k}
+		 =\prod\bar{k}[X]/(X-a_i)^{r_i}\hookrightarrow
+		 K\otimes_k\bar{k}
+	\]
+	has no nilpotent implies separable.
+\end{proof}
+If $L/K$ is a separable field extension
+and  $D\in Der_K(L,M)$,
+for any  $\alpha\in L$
+let  $f(\alpha)=0$ be the minimal polynomial,
+then  $0=D(f(\alpha))=f'(\alpha)D(\alpha)$,
+since  $f'(\alpha)\neq 0$,  $D(\alpha)=0$,
+thus  $D=0$ and  $\Omega_{L/K}=0$.
+
+\begin{itemize}
+	\item immersions are unramified.
+	\item composition
+	\item base change
+	\item product 
+	\item if $g\circ f$ is unramified, then
+		 $f$ is unramified.
+	\item if  $f$ is unramified, 
+		 then  $f_{red}$ is unramified.
+\end{itemize}
+
+\begin{prop}
+	Let $f\colon X\to Y$ locally of finite type
+	between locally Noetherian  $S$-schemes.
+	Let  $x\in X$ be a point over  $s\in S$, then
+	 \begin{enumerate}[label=(\alph*)]
+		\item $f$ is unramfied at $x$ iff
+			$f^*\Omega^1_{Y/S}\to \Omega^1_{X/S}$
+			is surjective at $x$
+		\item  $f$ is unramfied at $x$ iff
+			\[
+				X\otimes_Sk(s)\to 
+				Y\otimes_Sk(s)
+			\]
+			is unramfied at $x$.
+	\end{enumerate}
+\end{prop}
+
+$f$ is unramified at $x$ iff
+ $ \hat{\oo}_x/\hat{\oo}_y$ is unramfied.
+ Furthermore, supose either
+ \begin{itemize}
+	 \item $k(x)=k(y)$
+	 \item  $k(y)$ is alg closed
+ \end{itemize}
+ then if $f$ is unramified,
+ then  $ \hat{\oo}_y\to \hat{\oo}_x$ is surjective.
+
 \subsection{etale}
-\subsection{radicial}
-\subsection{covers}
+
 
 \section{misc}
 
-A property $P$ of ring maps is local if 
-the followings hold.
+A pro erty $P$ of ring maps is local if 
+the f llowings hold.
 \begin{enumerate}[label=(\alph*)]
 	\item for any $R\to A$ and  $f\in R$,
 		$P(R\to A)\Longrightarrow P(R_f\to A_f)$.
