@@ -82,6 +82,8 @@
 %%% Linear algebraic groups
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\Mp}{Mp}
 \DeclareMathOperator{\GSp}{GSp}
@@ -91,6 +93,7 @@
 \DeclareMathOperator{\mtr}{tr}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\adj}{ad}
 \DeclareMathOperator{\vol}{vol}
 
 \DeclareMathOperator{\val}{val}
@@ -152,6 +155,9 @@
 \newcommand{\bfp}{\overline{\mathfrak p}}
 \newcommand{\fq}{\mathfrak q}
 \newcommand{\bfq}{\overline{\mathfrak q}}
+\newcommand{\fk}{\mathfrak k}
+\newcommand{\fu}{\mathfrak u}
+\newcommand{\ft}{\mathfrak t}
 
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \newcommand{\bdelta}{\boldsymbol{\delta}}
@@ -162,6 +168,28 @@
 \newcommand{\euW}{\EuScript{W}}
 
 \DeclareMathOperator{\Der}{Der}
+
+%%% Lie algebras
+
+
+\newcommand{\rfg}{\mathfrak{g}_0}
+\newcommand{\cfg}{\mathfrak{g}}
+\newcommand{\rfh}{\mathfrak{h}_0}
+\newcommand{\cfh}{\mathfrak{h}}
+\newcommand{\rfk}{\mathfrak{k}_0}
+\newcommand{\cfk}{\mathfrak{k}}
+\newcommand{\rfp}{\mathfrak{p}_0}
+\newcommand{\cfp}{\mathfrak{p}}
+\newcommand{\rfq}{\mathfrak{q}_0}
+\newcommand{\cfq}{\mathfrak{q}}
+\newcommand{\rfu}{\mathfrak{u}_0}
+\newcommand{\cfu}{\mathfrak{u}}
+\newcommand{\rfl}{\mathfrak{l}_0}
+\newcommand{\cfl}{\mathfrak{l}}
+\newcommand{\rft}{\mathfrak{t}_0}
+\newcommand{\cft}{\mathfrak{t}}
+\newcommand{\rff}{\mathfrak{f}_0}
+\newcommand{\cff}{\mathfrak{f}}
 
 %%% Categorical
 \DeclareMathOperator{\Ext}{Ext}
@@ -460,7 +488,222 @@ is the connecting homomorphism of
 local system $\EE$ and 
 integrable connection on a coherent sheaves $\EE\otimes\oo_X$
 
-%\bibliographystyle{amsalpha}
-%\bibliography{biblio}
+\section{Vogan-Zuckerman classification}
+
+Let $G$ be a connected real semisimple Lie group
+with finite center,
+$\rfg$ be the Lie algebra
+and  $\cfg$ be the complexification.
+Denote by
+\[
+	\langle X,Y\rangle=\Tr(\adj(X)\adj(Y))
+\]
+the Killing form.
+Fix a Cartan involution $\Theta$ on  $G$
+and  $\theta$ on  $\cfg$.
+Then $K=G^\Theta$ is a maximal compact subgroup
+(used that the center is finite).
+Let  $\rfg=\rfk\oplus \rfp$
+be the Cartan decomposition
+( $\pm1$-eigenspaces of  $\theta$)
+
+ \begin{defn}
+	 Let $(\pi,\mathcal{H})$
+	 be an irreducible unitary 
+	 representation of $G$.
+	 Then the smooth vectors
+	 $\mathcal{H}^\infty\subset \mathcal{H}$
+	  is a dense subset that is 
+	  invariant under $G$,
+	  and the  $K$-finite subspace
+	  $\mathcal{H}^K\subset\mathcal{H}^\infty$
+	  is an irreducible  $(\cfg, K)$-module
+	  called the Harish-Chandra module
+	  attached to  $\pi$.
+\end{defn}
+
+\begin{defn}
+	Define $\theta$-stable parabolic
+	subalgebra as follows.
+	Let $x\in i\rfk$, then
+	$\adj(x)$ acts on  $G$
+	is diagonalization with real 
+	eigenvalues, let
+	\begin{align*}
+		\cfq&\colon \text{non-negative eigenspace}\\
+		\cfu&\colon \text{positive eigenspace}\\
+		\cfl&\colon \text{zero-negative eigenspace}
+	\end{align*}
+        \begin{enumerate}[label=(\alph*)]
+		\item $\cfq$ is a parabolic subalgebra and
+		$\cfq=\cfl+\cfu$
+		is the Levi decomposition.
+		\item $\cfl$ is the complexification 
+		of $\rfl=\cfq\cap \rfg$.
+		\item $\rfl$ correspondes to 
+		the connected closed subgroup $L\subset G$
+		which is also the centralizer of  $x$.
+		\item $\cfq=\cfq\cap\cfk+\cfq\cap\cfp$
+		\item $\cfq\cap \cfk$ 
+		is a parabolic subalgebra of $\cfk$ and
+		$\cfq\cap\cfk=\cfl\cap\cfk+\cfu\cap\cfk$
+		is the Levi decomposition.
+       \end{enumerate}
+       Pick a Cartan subalgebra 
+       $\rft$ of  $\rfk$ that contains  $ix$.
+       Then  $\cft\subset \cfl\cap\cfk$
+       If $\cff\subset\cfq$ is  $\adj(\cft)$-stable, define
+        \[
+		\Delta(\cff,\cft)=\{\alpha\in \cft^*\mid 
+		\text{ roots with multiplicities}\},\quad
+		\rho(\cff)=\frac{1}{2}\sum_{\alpha\in \Delta(\cff)}
+		\alpha\in \cft^*,
+		\rho(\cff)(y)=\frac{1}{2}\Tr(\adj(y)\vert_{\cff})
+		\text{ for }y\in \cft.
+       \]
+\end{defn}
+A representation $\lambda\colon \cfl\to \C$ is called admissible
+if 
+\begin{itemize}
+	\item it is the differential of a unitary representation
+		$\lambda\colon L\to \C^\times$.
+	\item if  $\alpha\in \Delta(\cfu)$, then
+	$ \langle \alpha, \lambda\vert_{\cft}\rangle\geq 0$
+\end{itemize}
+\begin{defn}
+	If $\lambda$ is admissible, let 
+	$\mu(\cfq,\lambda)$ be the irreducible representation
+	of  $K$ of highest weight  
+	$\lambda\vert_{\cft}+2\rho(\cfu\cap \cfp)$.
+	Simply write $\mu(\cfq,\lambda)=\mu(\cfq)$
+	when  $\lambda=0$ correspondes to the trivial representaton.
+\end{defn}
+\begin{thm}
+	There exists a unique irreducible $\cfg$--module
+	$A_\cfq(\lambda)$ with the following properties.
+	  \begin{enumerate}[label=(\alph*)]
+	 	\item the restriction to $\cfk$
+			contains $\mu(\cfq,\lambda)$
+		\item the infinitesimal character is 
+			$\chi_{\lambda+\rho}$
+		\item if a  $K$-representation of highest weight
+			$\delta$ occurs in  $A_\cfq(\lambda)$
+			then 
+			 \[
+				\delta=\lambda\vert_{\cft}
+				+2\rho(\cfu\cap\cfp)
+			+\sum_{\beta\in \Delta(\cfu\cap\cfp)}
+				n_\beta\beta,\quad n_\beta\geq 0
+			\]
+	 \end{enumerate}
+\end{thm}
+\begin{itemize}
+	\item $\cfl\subset\cfk$ if and only if $A_\cfq(\lambda)$
+		is a discrete series.
+	\item  $[\cfl,\cfl]\subset\cfk$ if and only if
+		$A_\cfq(\lambda)$ is a fundamental series 
+		representation(?) 
+	\item  $[\cfl,\cfl]\nsubseteq\cfk$ then
+		$A_\cfq(\lambda)$ is non-tempered.
+	\item if  $\cfu\cap\cfp=0$ 
+		(for example when  $\cfq=\cfg)$,
+		then  $A_\cfq(\lambda)=\lambda$.
+		(at least when $\lambda$ is trivial).
+\end{itemize}
+
+Let $\Lambda^*\cfp$ be the quotient of   $\Lambda^*\cfg$
+by the ideal generated by  $\cfk$.
+Then for an $\cfg$-module  $X$,
+$\Hom(\Lambda^*\cfp,X)\subset \Hom(\Lambda^*\cfg,X)$
+and the differential preserves $\Hom_\cfk(\Lambda^*\cfp,X)$
+and defines  $H^*(\cfg,\cfk,X)$.
+
+\begin{thm}
+	Let $F$ be a finite-dimensional $G$-representation
+	and  $\mathcal{H}$ an irreducible unitary representation.
+	\begin{enumerate}[label=(\alph*)]
+		\item $H^*(G,\mathcal{H}\otimes F)\cong 
+			H^*(\cfg,\cfk,\mathcal{H}^K\otimes F)$.
+		\item if the actions of the Casimir operator
+			on $\mathcal{H}^K$ and $F$
+			don't agree, then
+			$H^*(\cfg,\cfk,\mathcal{H}^K\otimes F)=0$
+		\item if they agree, then
+			 $H^*(\cfg,\cfk,\mathcal{H}^K\otimes F)=
+		  Hom_\cfk(\Lambda^*\cfp,\mathcal{H}^K\otimes F)$.
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Let $R=\dim(\cfu\cap\cfp)$
+	and $F$ be a f nite-dimensional irreducible $\cfg$-module
+	of lowest weight $-\gamma\in \cfh^*$
+	with respect to  $\Delta^+(\cfg,\cfh)$,
+	then if $\gamma=\lambda\vert_{\cfh}$
+	\[
+		H^\iota(\cfg,\cfk,A_\cfq(\lambda)\otimes F)\cong
+		H^{\iota-R}(\cfl,\cfk\cap\cfl,\C)\cong
+		\Hom_{\cfl\cap\cfk}
+		(\Lambda^{\iota-R}(\cfl\cap\cfp), \C)
+	\]
+	and otherwise
+	$H^\iota(\cfg,\cfk,A_\cfq(\lambda)\otimes F)=0$.
+\end{thm}
+
+\begin{thm}
+	Suppose $H^*(G,\pi\otimes F)\neq 0$,
+	then there exists  $\cfq=\cfl+\cfu$ such that
+	 \begin{enumerate}[label=(\alph*)]
+		\item $F/\cfu F$ is a one-dimensional 
+			unitary representation $\lambda$ of $L$.
+			Let $-\lambda\colon \cfl\to \C$
+			be the differential of which.
+		\item  $X\cong A_\cfq(\lambda)$
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	When $G$ is simple and  $\pi$ is a nontrivial
+	unitary irreducible representation
+	and  $E$ is finite dimensional.
+	Then  $H^i(G,\pi\otimes E)=0$ 
+	for all $i<r_G$, which is the minimum dimension
+	of  $\cfu\cap \cfp$.
+\end{thm}
+\begin{align*}
+	\SL(2,\R)\colon & r_G=1\\
+	\SU(p,q),p\leq q\colon& r_G=p\\
+	\SO(p,q),p\leq q,2\leq q\colon& r_G=p.
+\end{align*}
+
+\subsection{Hermitian symmetric}
+
+$\Lambda^\iota\cfp=\oplus_{p+q=\iota}(\Lambda^p\cfp^+)
+\otimes(\Lambda^q\cfp^-)$ and
+\[
+	\Hom_\cfk(\Lambda^\iota\cfp,X)\cong
+	\bigoplus_{p+q=\iota}
+	\Hom_\cfk((\Lambda^p\cfp^+) \otimes(\Lambda^q\cfp^-),X)
+\]
+with $d=\partial+\bar{\partial}$.
+Thus 
+$H^i(\cfg,\cfk,X)\cong \oplus_{p+q=i}H^{p,q}(\cfg,\cfk,X)$
+
+\begin{prop}
+	Let $R^{\pm}=\dim(\cfu\cap\cfp^\pm)$, 
+	then
+	\[
+		H^{p+R^+,p+R^-}(\cfg,\cfk,A_\cfq(\lambda)\otimesF)
+		\cong H^{p,p}(\cfl,\cfl\cap\cfk,\C)
+		\cong \Hom_{\cfl\cap\cfk}
+		(\Lambda^{2p}(\cfl\cap\cfp),\C).
+	\]
+	the cohomology $H^{p,q}=0$ 
+	if $p-q\neq R^+-R^-$.
+\end{prop}
+
+
+%\bib ingraphystyle{amsalpha}
+%\bib raphy{biblio}
 \end{document}
 

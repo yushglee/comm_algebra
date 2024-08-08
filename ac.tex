@@ -2396,6 +2396,28 @@ and  $k$ is a field, then the followings are equivalent.
 	\end{enumerate}
 \end{defn}
 
+\begin{proof}
+	Suppose $\Omega^1_{X/Y}=0$,
+	For $x\mapsto y$,
+	replay  $X$ by  $f^{-1}(y)$
+	and  $Y$ by  $\Spec(k(y))$;
+	then furher replace by base changes
+	to  $k$, the algebraic clossure
+	of  $k(y)$.
+	Then  $\Delta_{X/Y}$ is an open 
+	immersion in neighborhood of $x$,
+	implies  $x$ is open in  $X$.
+	Thus some local ring  $A_f$ 
+	of finite type is Artinian over  $k$.
+	Since  $(A_f)\otimes_k(A_f)\to A_f$
+	is an open immersion, 
+	implies  $\dim_k(A_f)=1$.
+\end{proof}
+
+\begin{rem}
+	unramified are quasi-finite.
+\end{rem}
+
 
 Let $K $ be an Artinian $k$-algebra
 over a field $k$.
@@ -2442,20 +2464,20 @@ thus  $D=0$ and  $\Omega_{L/K}=0$.
 	between locally Noetherian  $S$-schemes.
 	Let  $x\in X$ be a point over  $s\in S$, then
 	 \begin{enumerate}[label=(\alph*)]
-		\item $f$ is unramfied at $x$ iff
+		\item $f$ is unramified at $x$ iff
 			$f^*\Omega^1_{Y/S}\to \Omega^1_{X/S}$
 			is surjective at $x$
-		\item  $f$ is unramfied at $x$ iff
+		\item  $f$ is unramified at $x$ iff
 			\[
 				X\otimes_Sk(s)\to 
 				Y\otimes_Sk(s)
 			\]
-			is unramfied at $x$.
+			is unramified at $x$.
 	\end{enumerate}
 \end{prop}
 
 $f$ is unramified at $x$ iff
- $ \hat{\oo}_x/\hat{\oo}_y$ is unramfied.
+ $ \hat{\oo}_x/\hat{\oo}_y$ is unramified.
  Furthermore, supose either
  \begin{itemize}
 	 \item $k(x)=k(y)$
@@ -2466,6 +2488,134 @@ $f$ is unramified at $x$ iff
 
 \subsection{etale}
 
+\begin{defn}
+	Let $f\colon X\to Y$
+	be locally of finite type
+	between locally Noetherian.
+	Then  $f$ is etale at  $x\in X$
+	if  $f$ is unramified and flat
+	at  $x$.
+\end{defn}
+
+\begin{prop}
+	$f$ is etale iff
+	 $ \hat{\oo}_x$ is
+	 etale over $ \hat{\oo}_{f(x)}$.
+\end{prop}
+
+\begin{prop}
+	$f$ flat and quasi-finite at  $x$
+	implies
+	 \[
+		 \hat{\oo}_{f(x)}\to \hat{\oo}_x
+	\]
+	is injective and finite.
+	Injective because faithfully.
+\end{prop}
+
+If $ \hat{\oo}_{f(x)}\to \hat{\oo}_x$
+is isomorphic, then $f$ is etale at  $x$.
+Conversely, if either
+$k(f(x))$ is alg closed or $k(x)/k(f(x))$
+is trivial extension.
+Then  $f$ etale at  $x$ implies
+the isomorphism.
+ 
+ \begin{rem}
+	Etale at $x$ means etale
+	at neighborhood since this is true
+	for both unramified and flat.
+\end{rem}
+
+\begin{itemize}
+	\item open immersion
+	\item coposition
+	\item base change
+	\item product
+	\item $g\circ f$ etale
+		and  $g$ unramified 
+		implies  $f$ etale.
+\end{itemize}
+\begin{proof}
+	Consider 
+	$X\xrightarrow{f}Y\xrightarrow{g}S$.
+	Since  $f$ is the composition of
+	the open immersion
+	$X\to X\times_SY$
+	(base change of the open immersion
+	$Y\to Y\times_SY$ by unramifiedness)
+	and the etale map
+	 $X\times_XY\to Y$
+	 (base change of  $X\to S$).
+\end{proof}
+
+\begin{prop}
+	If $f\colon X\to Y$
+	are morphism between  $S$-schemes
+	and  $X,Y$ are flat over  $S$
+	If  $x\mapsto x$,
+	then  $f$ is flat or etale at  $x$
+	iff  $f\otimes k(s)$ is.
+\end{prop}
+
+\begin{prop}
+	If $f:X\to Y$
+	between  $S$-schemes are etale,
+	then $f^*\Omega^1_{Y/S}\cong \Omega^1_{X/S}$
+\end{prop}
+\begin{proof}
+	\[
+		\begin{tikzcd}
+			X\arrow[r,"\Delta_{X/Y}"]
+			\arrow[dr,"f"] &
+			X\times_YX
+			\arrow[r,"g"]
+			\arrow[d,"g'"] &
+			X\times_SX \arrow[d,"h"]\\
+		   & Y\arrow[r,"\Delta_{Y/S}"] &
+		   Y\times_SY
+		\end{tikzcd}
+	\]
+Since $h$ is flat, the conormal sheaf of  $g$
+is the pull-back by  $g'$
+of the conormal sheaf $\Omega^1_{Y/S}$ 
+of $\Delta_{Y/S}$,
+but since $\Delta_{X/Y}$ is open 
+and $g\circ \Delta_{X/Y}=\Delta_{X/S}$.
+\end{proof}
+
+\subsection{radicial}
+\begin{defn}
+	A morphism $f\colon X\to Y$
+	betwen schemes is radicial
+	if it is injective 
+	and for all  $x\in X$
+	$k(x)/k(f(x))$ is purely inseparable.
+	The followings are equivalent.
+	 \begin{enumerate}[label=(\alph*)]
+		\item $f$ is radicial
+		\item for any field $K$,
+			the map between $K$-points
+			$X(K)\to Y(K)$
+			is injective.
+		\item any base change
+			$f_{Y'}\colon X\times_YY'\to Y'$ is injective.
+		\item For any $\Spec(K)\to Y$
+			of a field  $K$,
+			 $f_K$ is injective.
+	\end{enumerate}
+\end{defn}
+
+\begin{itemize}
+	\item immersion
+	\item coposition
+	\item base change
+	\item product
+	\item $g\circ f$ radicial
+		then  $f$ radicial
+	\item  $f$ radicial then
+		 $f_{red}$ radicial.
+\end{itemize}
 
 \section{misc}
 
