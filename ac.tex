@@ -830,7 +830,7 @@ of $M$-regular sequence in $I$.
 	Now, if  $\fp\in \Ass(M)$, then 
 	 \[
 		 0\to \Hom(A/\fp,M)\xrightarrow{x_0}
-		 \to \Hom(A/\fp,M) \to 
+		 \Hom(A/\fp,M) \to 
 		 \Hom(A/\fp,M')=\Hom(A/\fp+Ax, M')
 	\]
 	is exact. Thus Nakayama's lemma implies that 
@@ -1135,6 +1135,7 @@ and thus  $A$ is regular.
 \end{rem}
 
 
+
 \subsection{Projective dimension}
 
 
@@ -1323,6 +1324,126 @@ Therefore  $A_\fp$ is also regular.
 		 for any prime ideal $\fp$.
 \end{enumerate}
 
+\subsection{Serre criterion}
+
+Recall that a ring $A$ is normal if 
+$A_P$ is an integrally-closed domain for all prime $P$.
+\begin{prop}
+	The following conditions for a ring $A$
+	are equivalent.
+	\begin{enumerate}[label=(\roman*)]
+		\item $A$ is a discrete valuation ring.
+		\item $A$ is a local PID but not a field
+		\item $A$ is a Noetherian local ring
+			of $\dim A>0$ and $\fm$ is principal.
+		\item  $A$ is a one-dimensional normal 
+			Noetherian local ring.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Suppse $(iii)$ holds.
+	Then $\fm^n\neq 0$ for any  $n\geq 0$ since  $\dim A>0$
+	but $\cap_n\fm^n=0$ by Krull's intersection.
+	Therefore for any  $y\neq0$ there exists  $n\geq 0$
+	such that  $y\in \fm^n$ but  $y\notin \fm^{n+1}$.
+	Fix a generator $\fm=(x)$,
+	then $y=ux^n$, where $u\notin\fm$ is a unit.
+	Such a decomposition shows that 
+	$A$ is a discrete valuation ring.
+	
+	On the other hand suppose $(iv)$ holds,
+	in particular $A$ is an integral domain
+	and $\{0\}$ and $\fm$ are the only prime ideals of  $A$.
+	Since then $\fm\neq\fm^2$, 
+	one may pick $x\in \fm\setminus\fm^2$ and 
+	conclude that $\fm\in \Ass(A/(x))$.
+	In other word, there exists $y\in A$ such that
+	$((x):y)=\fm$.
+	Put  $a=yx^{-1}\in K\setminus A$ and define
+	$\fm^{-1}=\{b\in K\mid b\fm\subset A\}$.
+	Then $\fm\subset \fm^{-1}\fm\subset A$ 
+	since $A\subset \fm^{-1}$.
+	But $\fm^{-1}\fm=\fm$ cannot happen,
+	for otherwise $a\fm\subset \fm$
+	provide an integral relation of $a$
+	through the characteristic polynomial.
+	Thus $\fm^{-1}\fm=A$ and any relation 
+	\[
+	1=\sum_{i}a_ib_i,\quad a_i\in\fm, b_i\in \fm^{-1}
+	\]
+	implies that $a_ib_i$ is a unit for some  $i$,
+	thus  $a_i\fm^{-1}=A$ and $\fm=(a_i)$
+	(in fact $x\fm^{-1}=A$ since $x\notin\fm^2$).
+\end{proof}
+\begin{prop}
+	Let $A$ be a normal Noetherian domain,
+	then $A$ satisfies the following properties.
+	\begin{enumerate}
+		\item $\hht P=1$ for any principal ideal $(x)$
+			and any $P\in \Ass(A/(x))$.
+		\item $A=\cap_{\hht P=1}A_P$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Suppose $P\in \Ass(A/(x))$ and pick  
+	$y\in A$ such that $((x):y)=P$.
+	Localize to $A_P$ and let $\fm=PA_P$,
+	the same argument as above shows that
+	$\fm$ is invertible, 
+	hence  $\dim A_P=1$
+	by the same proposition.
+
+	For the second statement,
+	suppose $b/a\in \cap_{\hht P=1}A_P$ for $a,b\in A$
+	and let $(a)=N_1\cap\cdots\cap N_r$
+	be the shortest primary decomposition.
+	Write $\Ass(A/N_i)={P_i}$,
+	where the $P_i$'s are distinct,
+	so that $\Ass(A/(a))=\{P_i\}$.
+	Then $\hht P_i=1$ and
+	$b\in aA_{P_i}\cap A=N_i$ for all $i$,
+	hence $b\in(a)$.
+\end{proof}
+
+Consider the following conditions for a Noetherian ring $A$.
+\begin{align*}
+	(R_i)&\colon 
+	A_P\text{ is regular for all prime $P$ such that }
+	\hht P\leq i.\\
+	(S_i)&\colon 
+	\depth A_P\geq \min\{\hht P, i\} \text{ for all prime }P.
+\end{align*}
+\begin{itemize}
+	\item $S_1$ means all associated primes are minimal,
+		since any non-minimal ideal 
+		contains non-zero-divisor.
+	\item  $R_0+S_1$ iff  $A$ is reduced.
+	\item  $S_k$ for all  $k$ implies Cohen-Macaulay.
+\end{itemize}
+
+A ring is normal if $A_P$ is an integral domain 
+\begin{thm}
+	$R_1+S_2$ iff  $A$ is normal.
+\end{thm}
+\begin{proof}
+	Since $A$ is  $R_0+S_1$ is reduced,
+	 $0=P_1\cap \cdots\cap P_r$ for minimal ideals.
+	 Let $K=A/P_1\times\cdots\times A/P_r$.
+	 If $a/b\in K$ for  $b$ regular is integral over  $A$
+	  \[
+		  (a/b)^n+c_1(a/b)^{n-1}+\cdots+c_n=0
+		  \Longleftrightarrow
+		  a^n+\sum c_ia^{n-i}b^i=0.
+	 \]
+	 By $(R_1)$ $A_P$ is regular if  $\hht P=1$ and thus normal,
+	 so  $a\in bA_P$.
+	 By  $(S_2)$ prime divisors of  $bA$ have height one
+	 since  $b$ is regular,
+	 
+	 Thus  $a/b\in A$.
+	 In particular the idempotents are in $A$
+	 but that implies $r=1$, so $A$ is integral closed domain.
+\end{proof}
 
 \section{Spectran sequence}
 
@@ -1485,6 +1606,79 @@ instances of \red{flat} are replaced by faithfully flat.
 	and  $f$ is injective, then  $f\colon A\to B$ is flat.
 \end{rem}
 
+The following criterion is equivalent to
+that $I\otimes_AM\to IM$ is bijective:
+If  $\sum_{i=1}^ra_ix_i=0$ for $a_i\in I, x_i\in M$,
+then there exists  $b_{ij}\in A$ and $y_j\in M$ such that
+$\sum_{i=1}^ra_ib_{ij}=0$ and  $x_i=\sum_{j}b_{ij}y_j$.
+Consider the map
+\[
+	 \varphi\colon A^r\to A\quad
+	 \varphi(t_1,\cdots,t_r)=
+	 \sum a_it_i
+\]
+It then follows from the flatness of $A$ that
+$x=(x_1,\cdots,x_r)\in \ker(\varphi)\otimes_AM$,
+there exists $y_j\in M$ and  $b_j\in \ker$
+such that  $x=\sum b_j\otimes y_j$.
+Conversely, if $\sum a_ix_{i}=0$ for $a_i\in I, x_i\in M$ 
+implies the existence of $b_{ij}\in A$ and $y_j\in M$ as above,
+then
+\[
+	\sum a_i\otimes x_i=
+	\sum a_i\otimes \sum_j b_{ij}y_j=
+	\sum_i \sum_ja_ib_{ij}\otimes y_j=
+	0.
+\]
+
+\begin{prop}
+	Suppose $B$ is a flat  $A$-algebra
+	and  $b\in B$ is not a zero-divisor in  $B/\fm B$
+	for any maximal ideal  $\fm$ of  $A$,
+	then $B/(b)$ is flat over $A$.
+	Inductively if $b_1,\cdots,b_r$
+	is a $B/\fm B$-regular sequence,
+	then  $B/(b_1,\cdots,b_r)$ is flat over $A$.
+\end{prop}
+\begin{proof}
+	First show that $b$ is not a zero-divisor in  $B$,
+	which can be reduced to the case
+	when $A\to B$ is a local homomorphism between local rings.
+	Now $cb=0$ implies $c\in\fm B$.
+	Suppose inductively that $c\in \fm^nB$
+	and write $c=\sum a_ib_i$,
+	where  $\{a_i\}$ is a minimal generating set of $\fm^n$.
+	Since $B$ is flat, there exists 
+	$a'_{ij}\in A$ and $y_j\in B$
+	such that $\sum_ia_ia'_{ij}=0$ and $b_ib=\sum a'_{ij}y_j$.
+	Then $a'_{ij}\in\fm$ from the minimality of $\{a_i\}$,
+	hence $b_ib\in\fm B$ and $b_i\in\fm B$,
+	from which  $c\in \fm^{n+1}B$.
+	Thus $c=0$ by Krull's intersection.
+	Since the same argument holds for
+	$B/IB$, where $I\subset A$ is any ideal,
+	The diagram below implies that $B/(b)$ is flat over  $A$.
+	\[
+		\begin{tikzcd}
+		&I\otimes B \arrow[r]\arrow[d,hookrightarrow] &
+		I\otimes B \arrow[r]\arrow[d,hookrightarrow] 
+		& I\otimes(B/(b))\arrow[d]\arrow[r]&0\\
+		0\arrow[r]&B \arrow[r,"b"]\arrow[d] &
+			B \arrow[r]\arrow[d] &
+			B/(b)\arrow[r]&0 \\
+		0\arrow[r]&B/IB \arrow[r,"b"] &
+			B/IB&
+		\end{tikzcd}
+	\]
+\end{proof}
+Consequently, 
+a hypersurface $Z$ in $B=A[X_1,\cdots,X_n]$ is flat over $A$
+if the coefficients defining of the polynomial defining $Z$
+generate $A$.
+This generalizes to the propositions
+below on dimensions of closed fibers.
+
+
 \subsection{flat morphism}
 \begin{defn}
 	Let $f\colon X\to Y$ be a morphism of schemes
@@ -1507,108 +1701,6 @@ instances of \red{flat} are replaced by faithfully flat.
 	The morphism $f$ is flat or faithfully flat
 	when $\mathcal{O}_X$ can be taken for $F$.
 \end{defn}
-
-\begin{rem}
-	Here is a classical criterion
-	of flatness that is equivalent
-	to $I\otimes_AM\to IM$ is bijective:
-	If  $\sum_{i=1}^ra_ix_i=0$
-	for $a_i\in A, x_i\in M$,
-	then there exists  $b_{ij}\in A$
-	and $y_j\in M$ such that
-	\[
-		\sum_{i=1}^ra_ib_{ij}=0,\quad
-		x_i=\sum_{j}b_{ij}y_j
-	\]
-	If $M$ is flat, consider 
-	 \[
-		 \ker\to A^r\xrightarrow{\varphi}
-		 \to A\quad
-		 \varphi(t_1,\cdots,t_r)=
-		 \sum a_it_i
-	\]
-	Thus if 
-	$x=(x_1,\cdots,x_r)\in \ker(\varphi\otimes I_M$
-	there exists $y_j\in M$
-	and  $b_j\in \ker$
-	such that  $x=\sum b_j\otimes y_j$.
-
-	Conversely, 
-	if  $\sum a_ix_{i}=0$ 
-	for $a_i\in I, x_i\in M$ 
-	and there exists $b_{ij}, y_j$
-	as above, 
-	then
-	\[
-		\sum a_i\otimes x_i=
-		\sum a_i\otimes \sum_j b_{ij}y_j=
-		\sum_i \sum_ja_ib_{ij}\otimes y_j=
-		0
-	\]
-\end{rem}
-
-\begin{prop}
-	Let $A\to B$ be a flat ring homomorphism,
-	and  $b\in B$
-	such that  $b$ is not a zero-divisor
-	in  $B/\fm B$
-	for any maximal ideal  $\fm$ of  $A$,
-	then   $B/(b)$ is flat over  $A$.
-	Inductively if $b_1,\cdots,b_r$
-	is a $b/\fm B$-regular sequence,
-	then  $B/(b_1,\cdots,b_r)$
-	is flat over $A$.
-\end{prop}
-\begin{proof}
-	May reduce to the case 
-	when $A\to B$ is local homomorphism
-	between local rings.
-	First prove that $b$
-	is not a zero-divisor in  $B$:
-	\begin{enumerate}[label=(\alph*)]
-		\item if $cb=0$, then 
-			 $c\in \fm B$
-		 \item write $c=\sum a_ib_i$
-			 where  $\{a_i\}$ 
-			 is a minimal generating set of $\fm$,
-			 then  $\sum a_ib_ib=0$
-			 implies there are 
-			  $a'_{ij}, y_j$
-			  such that $\sum a_ia'_{ij}=0$ and $b_ib=\sum a'_{ij}y_j$.
-			  Thus $a'_{ij}\in \fm$
-			  and $b_ib\in \fm B$.
-			  Thus  $b_i\in \fm B$
-			  and  $c\in \fm^2 B$.
-		  \item Inductively similar 
-			  arguements shows
-			   $c\in \cap_n \fm^n B=0$
-			   by Krull's intersection.
-	\end{enumerate}
-	The same argument shows that
-	$b$ is not a zero-divisor in
-	$B/IB$ for any ideal $I\subset A$,
-	thus there is the exact sequence
-	 \[
-		\begin{tikzcd}
-			I\otimes B \arrow[r]\arrow[d] &
-			I\otimes B \arrow[r]\arrow[d] & I\otimes(B/(b)) \\
-			B \arrow[r]\arrow[d] &
-			B \arrow[r]\arrow[d] &
-			B/(b) \\
-			B/IB \arrow[r] &
-			B/IB \arrow[r] &
-			(B/(b))/I(B/(b))
-		\end{tikzcd}
-	\]
-	from which $B/(b)$ is  $A$-flat.
-\end{proof}
-Consequently, when $B=A[X_1,\cdots,X_n]$,
-a hypersurface $Z$ is flat over  $A$
-if the coefficients defining  $Z$
-generates $A$.
-This generalizes to the propositions
-below on dimensions of closed fibers.
-
 
 \begin{itemize}
 	\item An open immersion is flat.
@@ -1808,7 +1900,7 @@ below on dimensions of closed fibers.
 	is injective, which implies  $(i)$.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:flat_completion}
 	Let $A\to B$ be a ring homomorphism between Noetherian rings,
 	$I\subset A$ and  $I'\subset B$
 	are ideals such that $IB\subset I'\subset \rad(B)$.
@@ -2206,428 +2298,490 @@ of  $Y$ for any closed irreducible  $Y\subset X$.
 
 \begin{defn}
 	Let $k$ be a ring, $A$ be a $k$-algebra,
-	and $M$ be an  $A$-module.
-	The module $\Der_k(A,M)$ of $k$-derivations of  $A$ in  $M$
-	consists of $k$-linear maps $D\colon A\to M$
-	satisfying $D(fg)=fD(g)+gD(f)$ for  $f,g\in A$.
-	Then there eixits an  $A$-module  $\Omega^1_{A/k}$,
-	the module of differentials of $A$ over  $k$,
-	such that 
-	 \[
-		 \Hom_A(\Omega^1_{A/k},M)\cong \Der_k(A,M).
+	and $M$ be an $A$-module.
+	Define
+	\[
+		\Der_k(A,M)=
+		\{D\in\Hom_k(A,M)\mid 
+		D(fg)=fD(g)+gD(f)\text{ for }f,g\in A\}
 	\]
+	Then there eixits an  $A$-module  $\Omega^1_{A/k}$
+	such that $\Hom_A(\Omega^1_{A/k},M)\cong \Der_k(A,M)$.
 \end{defn}
-\begin{enumerate}[label=(\alph*)]
+\begin{itemize}
 	\item let $\varphi\colon A\to B$ be a 
 		$k$-algebra homomorphism, then
-		\[
-		0\to \Der_A(B,M)\to \Der_k(B,M)\to \Der_A(B,M)
-		\Longleftrightarrow
-		\Omega^1_{A/k}\otimes_AB\to \Omega^1_{B/k}
+		\begin{align*}
+		&0\to \Der_A(B,M)\to \Der_k(B,M)\to \Der_A(B,M)\\
+		\Longleftrightarrow \quad
+		&\Omega^1_{A/k}\otimes_AB\to \Omega^1_{B/k}
 		\to \Omega^1_{B/A}\to 0
-		\]
-	\item let $A$ be a  $k$-algebra and  $B=A/I$, then
-		 \[
-		 0\to \Der_k(B,M)\to \Der_k(A,M)\to\Hom_B(I/I^2,M)
-		 \Longleftrightarrow
-		 I/I^2\to \Omega^1_{A/k}\otimes_AB\to 
-		 \Omega^1_{B/k}\to 0
-		\]
+		\end{align*}
+	\item let $A$ be a $k$-algebra and  $B=A/I$, then
+		\begin{align*}
+	&0\to \Der_k(B,M)\to \Der_k(A,M)\to\Hom_B(I/I^2,M)\\
+		 \Longleftrightarrow\quad
+	&I/I^2\to \Omega^1_{A/k}\otimes_AB\to \Omega^1_{B/k}\to 0
+		\end{align*}
 	\item Let $B_1,B_2$ be  $k$-algebras and 
 		 $A=B_1\times B_2$, then
 		 $\Omega_{A/k}\cong
 		 \Omega_{B_1/k}\oplus\Omega_{B_2/k}$.
-	\item Let $A$ be a $k$-algebra,
-	$k\to k'$ be a ring homomorphism,
-	and $A'=A\otimes_kk'$, then
-	$\Omega_{A'/k'}
-	\cong\Omega_{A/k}\otimes_AA'
-	\cong\Omega_{A/k}\otimes_kk'$.
-	\item Let $A$ be a  $k$-algebra, 
-	$S\subset k$ and  $T\subset A$ be multiplicative subsets
-	such that $S$ is mapped into $T$,
-	then $\Omega_{T^{-1}A/S^{-1}k}\cong T^{-1}\Omega_{A/k}$.
-	\item Let $B_1,B_2$ be  $k$-algebras and 
-	$A=B_1\otimes B_2$, then
-	$\Omega_{A/k}\cong 
-	\Omega_{B_1/k}\otimes_{B_1}A\oplus
-	\Omega_{B_2/k}\otimes_{B_2}A$.
-	The map $k\to B_1\to A$ gives
-	 \[
-		\Omega^1_{B_1/k}\otimes_{B_1}A\to 
-		\Omega^1_{A/k}\to \Omega^1_{A/B_1}=
-		\Omega^1_{B_2/k}\otimes_{B_2}A\to 0
+	\item Let $A$ be a $k$-algebra and
+	$k\to k'$ be a ring homomorphism then
+	\[
+		\begin{tikzcd}
+			A'
+		\arrow[dr, phantom, "\ulcorner", very near start]
+		\arrow[d]\arrow[r]& k'\arrow[d]\\
+		A\arrow[r]& k
+		\end{tikzcd}\Longrightarrow\quad
+	\Omega_{A'/k'}\cong
+	\Omega_{A/k}\otimes_AA'\cong\Omega_{A/k}\otimes_kk'.
 	\]
-	A similar sequence given by $k\to B_2\to A$
-	gives a splitting of the above.
-\end{enumerate}
+	\item Let $A$ be a $k$-algebra with $\varphi\colon k\to A$
+	$S\subset k$ and $T\subset A$ be multiplicative subsets
+	such that $\varphi(S)\subset T$,
+	then $\Omega_{T^{-1}A/S^{-1}k}\cong T^{-1}\Omega_{A/k}$.
+	\item Let $B_1,B_2$ be $k$-algebras and 
+	$A=B_1\otimes_kB_2$, then
+	$ \Omega^1_{B_i/k}\otimes_{B_i}A\to 
+	\Omega^1_{A/k}\to \Omega^1_{A/B_i} \to0$ and 
+	$\Omega^1_{A/B_1}=\Omega^1_{B_{2}/k}\otimes_{B_{2}}A$,
+	$\Omega^1_{A/B_2}=\Omega^1_{B_{1}/k}\otimes_{B_{1}}A$,
+	implies that
+	\[
+	\Omega_{A/k}\cong \Omega_{B_1/k}\otimes_{B_1}A\oplus
+	\Omega_{B_2/k}\otimes_{B_2}A.
+	\]
+\end{itemize}
 
-
-Let $X$ be an  $S$-scheme,
-then there exists a quasi-coherent sheaf
-$\Omega_{X/S}$ and an exterior differntial
-$d\colon \oo_X\to \Omega_{X/S}$.
-Moreover, $\Omega^1_{X/S}$ is of finite type
-when $X$ is locally of finite type over  $S$.
-\begin{enumerate}[label=(\alph*)]
+\begin{rem}
+	In the language of schemes,
+	let $X$ be an $S$-scheme,
+	then there exists a quasi-coherent sheaf
+	$\Omega_{X/S}$ and an exterior differntial
+	$d\colon \oo_X\to \Omega_{X/S}$.
+\begin{itemize}
 	\item Let $f\colon X\to Y$
-	be an $S$-morphism between $S$-schemes, then
-	\[ 
-		f^*\Omega^1_{Y/S}\to \Omega^1_{X/S}
-		\to\Omega^1_{X/Y}\to 0
+	be a morphism between $S$-schemes, then
+	$f^*\Omega^1_{Y/S}\to\Omega^1_{X/S}\to\Omega^1_{X/Y}\to0$
+	\item Let $i\colon X\hookrightarrow Y$ be an immersion
+	of  $S$-schemes, then
+	$J/J^2\xrightarrow{\delta}i^*\Omega^1_{Y/S}
+	\to\Omega^1_{X/S}\to 0$,
+	where $J$ is the sheaf of ideals
+	defining  $X$ and
+	the $\oo_X$-module $J/J^2$ is called
+	the conormal sheaf of $X$ in  $Y$.
+	In fact, $\Omega_{X/S}$ is the conormal sheaf of
+	$\iota\colon X\to X\times_SX$.
+	\item Let $X, Y$ be  $S$-schemes, then
+	$\Omega^1_{X/S}\oplus \Omega^1_{Y/S}
+	\cong \Omega^1_{X\sqcup Y/S}$.
+	\item Let $X$ be an $S$-scheme and
+	$S'\to S$ be a morphism between schemes,
+	\[
+		\begin{tikzcd}
+			X'
+		\arrow[dr, phantom, "\ulcorner", very near start]
+		\arrow[d,"f",swap]\arrow[r]& S'\arrow[d]\\
+		X\arrow[r]& S
+		\end{tikzcd}\Longrightarrow\quad
+		f^*\Omega^1_{X/S}\cong \Omega^1_{X'/S'}
 	\]
 	\item Let $X, Y$ be  $S$-schemes, then
 	 $pr_1^*\Omega^1_{X/S}\oplus pr_2^*\Omega^1_{Y/S}
 	 \cong \Omega^1_{X\times_SY/S}$.
-	\item Let $X, Y$ be  $S$-schemes, then
-	$\Omega^1_{X/S}\oplus \Omega^1_{Y/S}
-	\cong \Omega^1_{X\sqcup Y/S}$.
-	\item Let $i\colon X\hookrightarrow Y$ be an immersion
-	of  $S$-schemes and  $J$ be the sheaf of ideals
-	defining  $X$, then
-	\[
-		J/J^2\xrightarrow{\delta}
-		i^*\Omega^1_{Y/S}\to \Omega^1_{X/S}\to 0.
-	\]
-	The $\oo_X$-module  $J/J^2$ is called
-	the conormal sheaf of  $X$ in  $Y$.
-	\item Let $X$ be an $S$-scheme
-	$S'\to S$ be a morphism between schemes,
-	and $X'=X\times_SS'$.
-	Write $f\colon X'\to X$,
-	then $f^*\Omega^1_{X/S}\cong \Omega^1_{X'/S'}$.
-\end{enumerate}
-Let $X$ be an $S$-scheme, 
-$Y=X\times_SX$, and $i\colon X\to Y$,
-then $\Omega_{X/S}$ is the cornormal sheaf of
-$X$ in $Y$.
+\end{itemize}
+\end{rem}
+
+In the rest of the section,
+schemes are assumed locally Noetherian
+and morphisms between schemes are assumed
+locally of finite type.
 
 \subsection{quasi-finite}
-
 \begin{defn}
-	Let $f\colon X\to Y$ be a morphism locally of finite type.
-	Then  $f$ is quasi-finite if 
-	for each  $x\in X$ and  $y=f(x)$,
-	$\oo_x/\fm_y\oo_x$ is a finite-dimensional vector space
-	over  $k(y)$.
+	Let $\varphi\colon A\to B$ be a local ring map 
+	and denote by $k$ the residue field of $A$.
+	Then $\varphi$ is quasi-finite
+	if  $\dim_{k}(B\otimes_Ak)<\infty$.
 	The followings are equivalent.
-	 \begin{enumerate}[label=(\alph*)]
-		\item $\oo_x$ is a quasi-finite $\oo_y$-module.
-		\item  $ \{x\}$ is open in $f^{-1}(y)$.
-		\item $\fm_x^r\subset \fm_y\oo_x$ for
-			some integer $r$ and 
-			$k(x)$ is a finite extension of $k(y)$.
+	\begin{enumerate}[label=(\alph*)]
+	\item $\varphi\colon A\to B$ is quasi-finite,
+		so $B\otimes_Ak$ is a finite over $k$.
+	\item $B\otimes_Ak$ is Artinian.
+	\item $\Spec(B\otimes_Ak)$ is finite and discrete.
+	\item $\Spec(B\otimes_Ak)$ is discrete.
+	\item $\fm_B^r\subset \fm_AB$ for some  $r\geq 0$
+		and  $B/\fm_B$ is a finite extension of $k$.
 	\end{enumerate}
-\end{defn}
-\begin{proof}
-	Consider $A/\fm_yA\to \oo_x/\fm_y\oo_x$
-\end{proof}
-
-\begin{lem}
-	$A\to B$ Noetherian,  $\fq\subset A, \fq'\subset B$
-	such that  $\fq B\subset \fq'\subset \rad(B)$,
-	$M$ is finite  $A$-module and  $N$ is finite  $B$-module.
-	Let  $\varphi\colon M\to N$ be  $A$-homomorphism, inducing
-	 \[
-		\begin{tikzcd}
-		M/\fq M\arrow[r,"\varphi'"]\arrow[d]&
-			N/\fq N\arrow[d,"\beta"]\\
-			\hat{M}/\fq \hat{M}\arrow[r]&
-			\hat{N}/\fq \hat{N}
-		\end{tikzcd}
-	\]
-	then  $ \hat{\varphi}$ is surjective 
-	iff $\beta$ and  $\varphi'$ are surjective.
-\end{lem}
-
-\begin{prop}
-	Let $f\colon X\to Y$ be locally of finite type
-	between  locally Noetherian schemes.
-	Let  $x\in X$ and  $y=f(x)$,
-	then  $\oo_x$ is quasi-finite over  $\oo_y$
-	iff  $ \hat{\oo}_x$ is finite over $ \hat{\oo}_y$.
-\end{prop}
-\begin{proof}
-	If $f$ is quasi-finite,
-	then  $\fm_x^r\subset \fm_y\oo_x$ for some  $r\geq 0$,
-	lift a surjection  $k(y)^{\oplus n}\to k(x)$ 
-	to $\oo_y\to \oo_x$,
-	then  $\varphi'$ surjective implies 
-	 $\varphi''$ surjective
-	 and  $ \hat{\varphi}$ surjective.
-
-	 Conversely, $ \hat{\oo}_x$ is finite
-	 over $ \hat{\oo}_y$ implies
-	 $ \hat{\fm}_x^r\subset \hat{\fm}_y\hat{\oo}_x$,
-	 in other word $ \hat{\fm}_x^r\to \hat{\oo}_x/\hat{\fm}_y\hat{oo}_x$ is the zero map,
-	 and thus $\fm_x^r\subset \fm_y\oo_x$
-	 since  $ \hat{\oo}_x$ is faithfully flat.
-\end{proof}
-
-Let $f\colon X\to \Spec(k)$ be a morphism of finite type
-and  $k$ is a field, then the followings are equivalent.
- \begin{enumerate}[label=(\alph*)]
-	 \item $X$ is affine and $\Gamma(X,\oo_X)$ is Artinian.
-	 \item  $X$ is finite and discrete.
-	 \item  $X$ is discrete.
-	 \item  $f$ is finite.
-\end{enumerate}
+	A morphism $f\colon X\to Y$ between schemes
+	is quasi-finite if
+	$\oo_{f(x)}\to\oo_x$ is quasi-finite for each $x\in X$.
 \begin{itemize}
-	\item any immersion is quasi-finite
-	\item composition
-	\item base-change.
+	\item An immersion is quasi-finite.
+	\item Quasi-finiteness is closed under
+		composition and base-change.
 \end{itemize}
+\end{defn}
+\begin{lem}
+	Let $\varphi\colon A\to B$ be a local ring map
+	and $\hat{A}, \hat{B}$ be the completions
+	with respect to $\fm_A$ and  $\fm_B$.
+	Then $B$ is quasi-finite over $A$
+	if and only if
+	$\hat{B}$ is finite over $\hat{A}$.
+\end{lem}
+\begin{proof}
+	Let $k$ be the residue field of  $A$.
+	If $B$ is quasi-finite over  $A$,
+	lift a $k$-basis of  $B\otimes_Ak$ to
+	$\hat{A}^{\oplus n}\to \hat{B}$,
+	which is surjective since 
+	$\hat{B}/\hat{\fm}_A\hat{B} =\hat{B}/\fm_A\hat{B}=
+	(B/\fm_AB)^\wedge=B/\fm_AB=B\otimes_Ak$.
+
+	Conversely, 
+	$\hat{\fm}_B^r\subset \fm_A\hat{B}$
+	for some $r\geq 0$ if $\hat{B}$ is finite over $\hat{A}$.
+	This implies that $\fm_B^r\subset \fm_AB$
+	since $\hat{\fm}_B^r\to \hat{B}/\fm_A\hat{B}$ is 
+	the zero map and $\hat{B}$ is faithfully flat over $B$.
+\end{proof}
+
 
 \subsection{unramified}
 
 \begin{defn}
-	Let  $f\colon X\to Y$ be morphism locally of type
-	between locally Noetherian schemes.
-	Let $x\in X$ and $y=f(x)$,
-	then  $f$ is unramified at $x$
-	if $\fm_x=\fm_y\oo_x$ and $k(x)$ is a 
-	finite separable field extension over $k(y)$.
-	The followings are equivalent.
-	\begin{enumerate}[label=(\alph*)]
-		\item $f$ is unramified at  $x$.
-		\item  $\Omega^1_{X/Y}$ is zero at $x$
-		\item  $\Delta_{X/Y}$ is an open
-			immersion in neighborhood of $x$.
-	\end{enumerate}
+	Let $\varphi\colon A\to B$ be a local ring map
+	and denote by $k$ the residue field of $A$.
+	Then  $\varphi$ is unramified if 
+	$\fm_B=\fm_AB$ and  $B/\fm_B$ is a 
+	finite separable over $k$.
+	In particular $\varphi$ is quasi-finite.
 \end{defn}
-
-\begin{proof}
-	Suppose $\Omega^1_{X/Y}=0$,
-	For $x\mapsto y$,
-	replay  $X$ by  $f^{-1}(y)$
-	and  $Y$ by  $\Spec(k(y))$;
-	then furher replace by base changes
-	to  $k$, the algebraic clossure
-	of  $k(y)$.
-	Then  $\Delta_{X/Y}$ is an open 
-	immersion in neighborhood of $x$,
-	implies  $x$ is open in  $X$.
-	Thus some local ring  $A_f$ 
-	of finite type is Artinian over  $k$.
-	Since  $(A_f)\otimes_k(A_f)\to A_f$
-	is an open immersion, 
-	implies  $\dim_k(A_f)=1$.
-\end{proof}
-
-\begin{rem}
-	unramified are quasi-finite.
-\end{rem}
-
-
-Let $K $ be an Artinian $k$-algebra
-over a field $k$.
-If $K\otimes_k\bar{k}$ is reduced, 
-then   $K$ is a finite product of finite separable
-field  extensions of $k$.
-\begin{proof}
-	Reduced to when $K$ is local,
-	since  $K\hookrightarrow K\otimes_k\bar{k}$ 
-	and $\fm$ consists of nilpotents,
-	we see  $\fm=0$ and  $K$ is a field.
-	Furthermore, for any  $x\in K$
-	the subfield generated over  $k$
-	is isomorphic to  $k[X]/f(X)$.
-	Then 
-	 \[
-		 k[X]/f(X)\otimes_k\bar{k}
-		 =\prod\bar{k}[X]/(X-a_i)^{r_i}\hookrightarrow
-		 K\otimes_k\bar{k}
-	\]
-	has no nilpotent implies separable.
-\end{proof}
-If $L/K$ is a separable field extension
-and  $D\in Der_K(L,M)$,
-for any  $\alpha\in L$
-let  $f(\alpha)=0$ be the minimal polynomial,
-then  $0=D(f(\alpha))=f'(\alpha)D(\alpha)$,
-since  $f'(\alpha)\neq 0$,  $D(\alpha)=0$,
-thus  $D=0$ and  $\Omega_{L/K}=0$.
-
-\begin{itemize}
-	\item immersions are unramified.
-	\item composition
-	\item base change
-	\item product 
-	\item if $g\circ f$ is unramified, then
-		 $f$ is unramified.
-	\item if  $f$ is unramified, 
-		 then  $f_{red}$ is unramified.
-\end{itemize}
-
-\begin{prop}
-	Let $f\colon X\to Y$ locally of finite type
-	between locally Noetherian  $S$-schemes.
-	Let  $x\in X$ be a point over  $s\in S$, then
-	 \begin{enumerate}[label=(\alph*)]
-		\item $f$ is unramified at $x$ iff
-			$f^*\Omega^1_{Y/S}\to \Omega^1_{X/S}$
-			is surjective at $x$
-		\item  $f$ is unramified at $x$ iff
-			\[
-				X\otimes_Sk(s)\to 
-				Y\otimes_Sk(s)
-			\]
-			is unramified at $x$.
+\begin{lem}\label{lem:unramified_completion}
+	With notations as above,
+	$B$ is unramified over  $A$
+	if and only if 
+	$\hat{B}$ is unramified over $\hat{A}$.
+	Furthermore, suppose $\varphi$ is unramified
+	and  $B/\fm_B=k$,
+	then $\hat{\varphi}$ is surjective.
+\end{lem}
+\begin{lem}
+	Let $k$ be a field and 
+	$K$ be a finite  $k$-algebra.
+	Then $K$ is said to be separable 
+	if  $\rad(K\otimes_k\bar{k})=0$, or equivalently
+	$K\otimes_k\bar{k}$ is a finite product of $\bar{k}$,
+	which extends the concept of separable field extensions.
+	Then the followings are equivalent.
+	\begin{enumerate}[label=(\alph*)]
+		\item $K$ is separable.
+		\item  $K$ is a finite product of finite separable
+			field extensions over  $k$.
+		\item  $\Omega_{K/k}=0$.
 	\end{enumerate}
-\end{prop}
+\end{lem}
+\begin{proof}
+	If $K$ is separable, then $K\otimes_k\bar{k}$ is reduced.
+	For any $x\in K$ consider then
+	the subfield generated over $k$,
+	which is isomorphic to some $k[X]/f(X)$.
+	then $f(X)$ is a separable polynomial 
+	since $\bar{k}[X]/f(X)$ is reduced.
 
-$f$ is unramified at $x$ iff
- $ \hat{\oo}_x/\hat{\oo}_y$ is unramified.
- Furthermore, supose either
- \begin{itemize}
-	 \item $k(x)=k(y)$
-	 \item  $k(y)$ is alg closed
- \end{itemize}
- then if $f$ is unramified,
- then  $ \hat{\oo}_y\to \hat{\oo}_x$ is surjective.
+	If $K/k$ is a separable field extension
+	and  $D\in Der_K(L,M)$,
+	for any  $x\in K$ let $f(X)$ be the minimal polynomial 
+	of which,
+	then  $0=D(f(x))=f'(x)D(x)$
+	and thus $D(x)=0$ since $f'(x)\neq 0$.
 
-\subsection{etale}
+	If $\Omega_{K/k}=0$, may assume $k=\bar{k}$ 
+	and $K$ is local with residue field  $k$.
+	Since $K\otimes_kK$ is then local 
+	and  $\Omega_{K/k}\cong I/I^2$
+	for $I=\ker(K\otimes_kK\to K)$,
+	$\Omega_{K/k}=0$ implies $I=0$,
+	therefore $\dim_k(K)=1$  and $K=k$.
+\end{proof}
 
 \begin{defn}
-	Let $f\colon X\to Y$
-	be locally of finite type
-	between locally Noetherian.
-	Then  $f$ is etale at  $x\in X$
-	if  $f$ is unramified and flat
-	at  $x$.
+	Let  $f\colon X\to Y$ a morphism between scheme,
+	then $f$ is unramified at  $x$
+	if $\oo_x$ is unramified over $\oo_y$ for $y=f(x)$.
+	By the previous proposition 
+	this is equivalent to that 
+	$\Omega^1_{X/Y}$ is zero at $x$.
+\begin{itemize}
+	\item An immersion is unramified.
+	\item Unramifiedness is closed under composition
+		and base-change.
+	\item If $g\circ f$ is unramified,
+		then $f$ is unramified.
+\end{itemize}
 \end{defn}
 
-\begin{prop}
-	$f$ is etale iff
-	 $ \hat{\oo}_x$ is
-	 etale over $ \hat{\oo}_{f(x)}$.
-\end{prop}
+\subsection{\'{e}tale}
 
-\begin{prop}
-	$f$ flat and quasi-finite at  $x$
-	implies
-	 \[
-		 \hat{\oo}_{f(x)}\to \hat{\oo}_x
+\begin{defn}
+	A local ring map $\varphi\colon A\to B$ 
+	is \'{e}tale if  $\varphi$ is both flat and unramified.
+	A morphism $f\colon X\to Y$ between schemes
+	is \'{e}tale at $x\in X$ 
+	if $f$ is both flat and unramified at $x\in X$.
+	Note that this implies that $f$ is \'{e}tale at a 
+	neighborhood of $x$ since both this is true
+	for both being unramified and flat at $x$.
+	\begin{itemize}
+		\item An open immersion is \'{e}tale.
+		\item \'{E}taleness is closed under 
+			composition and base-change.
+		\item If $g\circ f$ is \'{e}tale and 
+			$g$ is unramified, then  $f$ is \'{e}tale.
+	\end{itemize}
+	The last property follows from the diagram below
+	and that $\Delta_{Y/S}$ is an open immersion.
+	\[
+	\begin{tikzcd}
+		Y\arrow[r,"\Delta_{Y/S}"]& Y\times_SY&\\
+		X\arrow[ur, phantom, "\llcorner", very near start]
+		\arrow[u,"f"]\arrow[r]& 
+		X\times_SY\arrow[u,"f\times\id_Y",swap]
+		\arrow[dr, phantom, "\ulcorner", very near start]
+		\arrow[d]\arrow[r]&Y\arrow[d,"g"]\\
+		&X\arrow[r,"g\circ f"]&S
+	\end{tikzcd}
 	\]
-	is injective and finite.
-	Injective because faithfully.
-\end{prop}
+\end{defn}
 
-If $ \hat{\oo}_{f(x)}\to \hat{\oo}_x$
-is isomorphic, then $f$ is etale at  $x$.
-Conversely, if either
-$k(f(x))$ is alg closed or $k(x)/k(f(x))$
-is trivial extension.
-Then  $f$ etale at  $x$ implies
-the isomorphism.
- 
- \begin{rem}
-	Etale at $x$ means etale
-	at neighborhood since this is true
-	for both unramified and flat.
+\begin{rem}
+	By Proposition \ref{prop:flat_completion}
+	and Lemma \ref{lem:unramified_completion},
+	$B$ is \'{e}tale over $A$ if and only if
+	$\hat{B}$ is \'{e}tale over $\hat{A}$.
+	Consequently 
+	$\hat{\varphi}\colon \hat{A}\to\hat{B}$
+	is finite and injective,
+	and even an isomorphism
+	when the residue fields agree.
 \end{rem}
 
-\begin{itemize}
-	\item open immersion
-	\item coposition
-	\item base change
-	\item product
-	\item $g\circ f$ etale
-		and  $g$ unramified 
-		implies  $f$ etale.
-\end{itemize}
-\begin{proof}
-	Consider 
-	$X\xrightarrow{f}Y\xrightarrow{g}S$.
-	Since  $f$ is the composition of
-	the open immersion
-	$X\to X\times_SY$
-	(base change of the open immersion
-	$Y\to Y\times_SY$ by unramifiedness)
-	and the etale map
-	 $X\times_XY\to Y$
-	 (base change of  $X\to S$).
-\end{proof}
-
 \begin{prop}
-	If $f\colon X\to Y$
-	are morphism between  $S$-schemes
-	and  $X,Y$ are flat over  $S$
-	If  $x\mapsto x$,
-	then  $f$ is flat or etale at  $x$
-	iff  $f\otimes k(s)$ is.
-\end{prop}
-
-\begin{prop}
-	If $f:X\to Y$
-	between  $S$-schemes are etale,
-	then $f^*\Omega^1_{Y/S}\cong \Omega^1_{X/S}$
+	If $f:X\to Y$ is an \'{e}tale morphism
+	between  $S$-schemes 
+	then $f^*\Omega^1_{Y/S}\cong \Omega^1_{X/S}$.
 \end{prop}
 \begin{proof}
+	Consider the diagram below.
+	Since $h$ is flat
+	the conormal sheaf of  $g'$ is
+	the pull-back by $h'$ of the conormal sheaf of  $g$.
+	Then the proposition follows from that 
+	$\Delta_{X/Y}$ is an open immersion.
 	\[
 		\begin{tikzcd}
 			X\arrow[r,"\Delta_{X/Y}"]
 			\arrow[dr,"f"] &
 			X\times_YX
-			\arrow[r,"g"]
-			\arrow[d,"g'"] &
+			\arrow[dr, phantom, "\ulcorner", 
+			very near start]
+			\arrow[r,"g'"]
+			\arrow[d,"h'"] &
 			X\times_SX \arrow[d,"h"]\\
-		   & Y\arrow[r,"\Delta_{Y/S}"] &
+		   & Y\arrow[r,"\Delta_{Y/S}=g"] &
 		   Y\times_SY
 		\end{tikzcd}
 	\]
-Since $h$ is flat, the conormal sheaf of  $g$
-is the pull-back by  $g'$
-of the conormal sheaf $\Omega^1_{Y/S}$ 
-of $\Delta_{Y/S}$,
-but since $\Delta_{X/Y}$ is open 
-and $g\circ \Delta_{X/Y}=\Delta_{X/S}$.
 \end{proof}
+
+
+\begin{prop}[fiberwise criterion]
+	Let $f\colon X\to Y$ be a morphism
+	between flat $S$-schemes
+	and suppose $x\in X$ is mapped to  $s\in S$.
+	Then  $f$ is  flat/\'{e}tale at $x$
+	if and only if $f\otimes_Sk(s)$
+	is flat/\'{e}tale at $x$.
+\end{prop}
+\begin{proof}
+	The flatness part follows from the fiberwise criterion.
+	Then notice that it follows automatically from the 
+	definition that similar statement holds for 
+	being unramified.
+\end{proof}
+
+\begin{rem}[Jacobian criterion]
+	If $B=A[X_1,\cdots,X_n]/(f_1,\cdots,f_n)$,
+	then $B$ is \'{e}tale if 
+	the Jacobian $(\frac{\partial f_i}{\partial X_j})$ 
+	is invertible in $B$.
+	For unramifiedness look at the exact sequence,
+	for flatness may assume $A=k$ is a field,
+	then show that $B$ is regular,
+	so  $f_i$ is regular sequence,
+	so  $B$ is flat.
+\end{rem}
 
 \subsection{radicial}
 \begin{defn}
 	A morphism $f\colon X\to Y$
-	betwen schemes is radicial
-	if it is injective 
-	and for all  $x\in X$
-	$k(x)/k(f(x))$ is purely inseparable.
-	The followings are equivalent.
-	 \begin{enumerate}[label=(\alph*)]
-		\item $f$ is radicial
-		\item for any field $K$,
-			the map between $K$-points
-			$X(K)\to Y(K)$
-			is injective.
-		\item any base change
-			$f_{Y'}\colon X\times_YY'\to Y'$ is injective.
-		\item For any $\Spec(K)\to Y$
-			of a field  $K$,
-			 $f_K$ is injective.
-	\end{enumerate}
+	betwen schemes is radicial if it is injective and
+	$k(x)/k(f(x))$ is purely inseparable for all  $x\in X$.
+	Thus
+	$f$ is an open immersion if and only if
+	$f$ is both  \'{e}tale and radicial.
 \end{defn}
+\begin{prop}
+	The following conditions 
+	on a morphism $f\colon X\to Y$
+	between schemes are equivalent.
+	 \begin{enumerate}[label=(\roman*)]
+		\item $f$ is radicial.
+		\item $X(K)\to Y(K)$ is injective 
+			for any field $K$.
+		\item $f_{Y'}\colon X\times_YY'\to Y'$ is injective
+			for any base change
+			$Y'\to Y$.
+		\item $f_K\colon X\times_YK\to \Spec(K)$ 
+			is injective for any field $K$ and
+			$\Spec(K)\to Y$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Suppose $f$ is radical
+	and  $u_1,u_2\in X(K)$ are such that
+	for  $f\circ u_1=f\circ u_2$.
+	It follows from the injectivity of $f$
+	that  $u_i$ are mapped to the same point  $x\in X$ 
+	and they corresponds to 
+	$k(f(x))$-algebra homomorphisms $k(x)\to K$.
+	Thus $u_1=u_2$ since $k(x)/k(y)$ is purely inseparable.
+	Conversely if
+	$x_1,x_2\in X$ are such that  $f(x_1)=y=f(x_2)$,
+	then there exists an extension  $K/f(y)$
+	containing both  $k(x_i)$,
+	thus  $(ii)$ implies that  $f$ is injective 
+	and radicial.
+	Now $(ii)\Longrightarrow (iii)\Longrightarrow(iv)$ since 
+	\[
+		X\times_YY'(K)=X(K)\times_{Y(K)}Y'(K),\quad
+		Y'(K)=Y(K)\times_{Y(K)}Y'(K).
+	\]
+	At last, suppose $(iv)$ holds 
+	and consider the diagram below.
+	\[
+		\begin{tikzcd}
+			X\times_YK
+			\arrow[r,"f'"]
+			\arrow[d]
+			& \Spec(K)
+			\arrow[dl,shift left,"u_1"]
+			\arrow[dl,shift right,"u_2",swap]
+			\arrow[d]\\
+			X \arrow[r,"f",swap]& Y
+		\end{tikzcd}
+	\]
+	Since $u_i$ induces sections  $u_i'$ of  $f'$,
+	it follows from the injectivity of  $f'$
+	that  $X\times_YK$ is a single point with 
+	the residue field  $K$.
+	Thus  $u_1'=u_2'$ and  $u_1=u_2$.
+\end{proof}
 
 \begin{itemize}
-	\item immersion
-	\item coposition
-	\item base change
-	\item product
-	\item $g\circ f$ radicial
-		then  $f$ radicial
-	\item  $f$ radicial then
-		 $f_{red}$ radicial.
+	\item An immersion is radicial.
+	\item Being radicial is closed under composition
+		and base-change.
+	\item If $g\circ f$ is radicial, then $f$ is radicial.
 \end{itemize}
+
+\subsection{covers}
+\begin{defn}
+	A morphism $f\colon X\to Y$ between schemes
+	is a cover if $f$ is both finite and surjective.
+	Then the branch locus of $X$ over  $Y$
+	is the set of points where $f$ is ramified,
+	which is the closed subsubscheme
+	defined by the annihilator of $\Omega^1_{X/Y}$.
+\end{defn}
+
+If $B$ is an  $A$-algebra generated by a single element,
+consider the exact sequence
+\[
+	 I/I^2\to \Omega^1_{A[T]/A}\otimes_AB
+	 \to \Omega^1_{B/A}\to 0
+\]
+for $I=\ker(A[T]\to B)$.
+Thus $\Omega^1_{A[T]/A}\otimes_AB$ 
+is free over $B$ generated by $dT$,
+$\Omega^1_{B/A}$ is isomorphic to $B/d(I)B$,
+where $d(I)=\{\frac{d}{dT}Q(T)\mid Q(T)\in I\}$,
+so $d(I)B$ is the different.
+If $I=(P(T))$, then
+$B/A$ is unramified if $(P,P')=A[T]$.
+Furthermore, $B/A$ is free and hence \'{e}tale
+if the leading coefficient of $P(T)$ is a unit in $A$.
+
+\subsection{smooth}
+
+\begin{defn}
+	$f\colon X\to Y$
+	between locally Noetherian schemes.
+	Then  $X$ is smooth over  $Y$
+	at  $x\in X$ if there is a neighborhood
+	 $U$ of  $x$ and
+	  \[
+	 	\begin{tikzcd}
+			U\arrow[r]\arrow[dr,"f"]
+			& \A^n\times Y\arrow[d]\\
+			& Y
+	 	\end{tikzcd}
+	 \]
+	 where $g$ is \'{e}tale and  $p$ is 
+	 a projection.
+\end{defn}
+
+\begin{thm}
+	$f\colon X\to Y$
+	locally of finite type
+	between locally Noetherian schemes.
+	 $f$ is smooth at  $x$ iff
+	  \begin{enumerate}[label=(\alph*)]
+	 	\item $f$ is flat at  $x$
+		\item $f^{-1}(y)$
+			is smooth over  $k(y)$
+			at  $x$.
+	 \end{enumerate}
+\end{thm}
+
+Consequently,
+$f\colon X\to Y$ an  $S$-morphism
+between  $X,Y$ locally of finite type over  $S$.
+Let  $x\in X$ over  $s\in S$
+and suppose  $Y$ is flat over  $S$,
+then  $f$ is smooth at  $x$ iff
+ \begin{enumerate}[label=(\alph*)]
+	\item $X$ is flat over  $S$ at  $x$
+	\item  $f_s\colon X_s\to Y_s$
+		is smooth at  $x$.
+\end{enumerate}
 
 \section{misc}
 
-A pro erty $P$ of ring maps is local if 
-the f llowings hold.
+A property $P$ of ring maps is local if 
+the followings holds.
 \begin{enumerate}[label=(\alph*)]
-	\item for any $R\to A$ and  $f\in R$,
-		$P(R\to A)\Longrightarrow P(R_f\to A_f)$.
-	\item for any  $f\in R, a\in A$ and  $R_f\to A$,
-		$P(R_f\to A)\Longrightarrow P(R\to A_a)$.
-	\item for any  $R\to A$ and  $a_i\in A$ 
-		such that  $(a_1,\cdots,a_n)=A$,
+	 \item for  any $R\to A$ and  $f\in R$,
+	 $P(R\to A \Longrightarrow P(R_f\to A_f)$.
+	 \item    any  $f\in R, a\in A$ and  $R_f\to A$,
+	 $P(R_f\to A)\Longrightarrow P(R\to A_a)$.
+	 item for any  $R\to A$ and  $a_i\in A$ 
+	 such that  $(a_1,\cdots,a_n)=A$,
 		$P(R\to A_{a_i})\Longrightarrow P(R\to A)$.
 \end{enumerate}
 A morphism $f\colon X\to S$ between schemes 
@@ -2643,6 +2797,8 @@ such that $P(O_S(V)\to O_X(U))$.
 	$U\subset X$ and  $V\subset S$
 	with  $f(U)\subset V$.
 \end{lem}
+
+
 
 %\bibliography style{amsalpha}
 %\bibliography biblio}
