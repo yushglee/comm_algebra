@@ -86,6 +86,7 @@
 \DeclareMathOperator{\Gal}{Gal}
 \DeclareMathOperator{\Nr}{\mathsf{N}}
 \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\mtr}{Tr}
 
 
 
@@ -158,6 +159,7 @@
 
 
 \DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\res}{res}
 \DeclareMathOperator{\rec}{rec}
 
 
@@ -2700,6 +2702,74 @@ locally of finite type.
 	\item If $g\circ f$ is radicial, then $f$ is radicial.
 \end{itemize}
 
+\subsection{\'{e}tale}
+
+\begin{prop}
+	A closed immersion 
+	$f\colon Y\to X$  that is flat
+	is an open immersion.
+\end{prop}
+\begin{proof}
+	Since $f(Y)$ is open, may assume $f$ surjective.
+	Then  $f_*\oo_Y$ is locally free
+	and hence  $f_*\oo_Y=\oo_X$
+	so  $f$ is an isomorphism.
+\end{proof}
+If $f\colon Y\to X$ is separated,
+any section is a closed immersion.
+If  $f$ is further  \'{e}tale,
+then a section is an isomoprhism 
+onto an open component.
+
+\begin{defn}
+	Let $A$ be a ring,
+	 $f$ is monic,
+	 and  $g\in A[X]$
+	 such that  $f'$
+	 is invertible in  $A[X]_g/(f)$,
+	 call  $A\to A[X]_g/(f)$
+	 standard  \'{e}tale.
+\end{defn}
+
+For example,
+let $\fp\subset A$
+be a prime ideal
+and  $L$ be a separable extension
+of  $k(\fp)$.
+Let  $L=k(\fp)(\alpha)$,
+may assume that 
+the minimal polynomial  $\bar{f}(x)$ 
+of $\alpha$ comes from  $f(x)\in A[X]$,
+then  $A\to B=A[X]_{f'}/(f)$ is standard \'{e}tale
+and 
+\[
+	X\mapsto \alpha,
+	\quad f'\mapsto \bar{f}'(\alpha)\neq 0
+\]
+defines $B\to L$,
+whose kernel is a prime over $\fp$.
+
+
+\begin{thm}[Zariski's main theorem]
+	If $f\colon Y\to X$
+	between affine is quasi-finite,
+	then  $f$ factors into
+	 $Y\to Y'\to X$
+	 where  $Y\to Y'$ is an open immersion
+	 and  $Y'\to X$ is finite.
+\end{thm}
+
+\begin{proof}
+	If $A\to B$ is unramified,
+	hence quasi-finite.
+	Given  $\fq\subset B$
+	and  $\fp=\fq\cap A$,
+	$B\otimes_Ak(\fp)$
+	is product of Artinian local rings over  $k(\fp)$
+	and the one corresponds to  $\fq$ is  $k(\fq)$.
+	k
+\end{proof}
+
 \subsection{covers}
 \begin{defn}
 	A morphism $f\colon X\to Y$ between schemes
@@ -2771,6 +2841,101 @@ then  $f$ is smooth at  $x$ iff
 		is smooth at  $x$.
 \end{enumerate}
 
+\subsection{Henselian rings}
+
+Throughout the subsection,
+$A$ is a local ring with maximal ideal  $\fm$
+and residue field  $k$.
+\begin{lem}[Hensel lemma]
+	Suppose $A$ is complete, 
+	$F(x)\in A[X]$ is monic and 
+	$f(x)=g(x)h(x)\in k[X]$ and  $(g,h)=1$ coprime,
+	then  $F(X)=G(X)H(X)$
+\end{lem}
+\begin{proof}
+	Lift $g(x), h(x)$ to monic  $G_1(X),H_1(X)$
+	of same degrees and consider
+	$F-G_1H_1=\sum \omega_iU_i\in \fm[X]$ 
+	and $\deg(U_i)<\deg(F)$.
+	Since  $(g,h)=1$, may pick
+	 \[
+		 \bar{U_i}=g(x)v_i(x)+h(x)u_i(x),\quad
+		 \det v_i<\deg h,\deg u_i<\deg g
+	\]
+	Lift $u_i,v_i$ to  $U_i,V_i$ of same degrees
+	and form  $G_2=G_1+\sum\omega_iU_i$
+	 $H_2=H_1+\sum\omega_iV_i$,
+	 then  $F-G_2H_2\in\fm^2[X]$.
+	 Inductively get  $F=GH$.
+\end{proof}
+\begin{defn}
+	A Henselian ring is a loca ring 
+	for which the Hensel lemma holds.
+\end{defn}
+\begin{rem}
+	Since $(g,h)=k[T]$,
+	by Nakayama's lemma  $(G,H)=A[X]$.
+	In particular if  $F=GH=G'H'$,
+	for  $Gr+H's=1$,
+	then  $G'=G'Gr+G'H's=G(G'r+Hs)$
+	is divisible by  $G$.
+\end{rem}
+
+\begin{thm}
+	The followings are equivalent.
+	\begin{enumerate}[label=(\alph*)]
+		\item $A$ is Henselian.
+		\item any fintie  $A$-algebra  $B$
+			is a direct product of local rings
+		\item if  $f\colon Y\to X=\Spec(A)$ is quasi-finite
+			and separated,
+			then $Y=Y_0\sqcup\cdots\sqcup Y_n$
+			where $f(Y_0)$ doesn't contain $x$,
+			the closed point, 
+			each $Y_i$ is finite over  $X$
+			is a spec of local rings for  $i\geq 1$
+		\item if $f\colon Y\to X$ is \'{e}tale
+			and $f(y)=x$ with  $k(y)=k(x)$,
+			then  $f$ has a section
+		\item If  $f_1,\cdots,f_n\in A[T_1,\cdots,T_n]$
+			if there exists $a=(a_1,\cdots,a_n)\in k^n$
+			such that  $\bar{f}_i(a)=0$ 
+			but such that 
+			$\det(\frac{\partial f_i}
+			{\partial T_j}(a)\neq 0$ 
+			then there exists $b\in A^n$
+			such that  $\bar{b}=a$ 
+			and $f_i(b)=0$
+	\end{enumerate}
+\end{thm}
+
+\begin{itemize}
+	\item $A$ is Henselian.
+	\item any finite  $A$-algebra 
+		is a direct porduct of local rings.
+	\item finite  \'{e}tale local homomorphism
+		$A\to B$ with same residues 
+		is isomorphism.
+		($B$ is free since  $B$ is flat over  $A$
+		and  $\fm_AB=\fm_B$, dimension counting
+		shows  $A=B$)
+\end{itemize}
+
+
+\begin{defn}
+	Let $A\to A^h$
+	be a local homomorphism between local rings.
+	Then $A^h$ is the Henselization of  $A$
+	if  $A^h$ is Henselian and 
+	any local homomorphism to a Henselian local ring
+	factors through uniquely.
+	If  $k$ is separably closed,
+	then  $A$ has no finite  \'{e}tale extension 
+	and called strictly Henselian.
+\end{defn}
+
+
+
 \section{misc}
 
 A property $P$ of ring maps is local if 
@@ -2799,7 +2964,500 @@ such that $P(O_S(V)\to O_X(U))$.
 \end{lem}
 
 
+\section{N\'{e}ron models}
+In this section $R$ is a Dedekind domain 
+and  $K$ is the field of fraction.
 
-%\bibliography style{amsalpha}
+\begin{defn}
+	 Let $X$ be a smooth separated $K$-scheme of finite type.
+	 A N\'{e}ron model of $X$ is a smooth separated finite type
+	 $R$-scheme $\mathfrak{X}$ such that
+	 \begin{enumerate}[label=(\alph*)]
+		 \item there exists an isomorphism
+			 $\mathfrak{X}_K\cong X$.
+		 \item for each smooth $R$-scheme $\mathfrak{Y}$
+		 and $f\colon\mathfrak{Y}_K\to \mathfrak{X}_K$
+		 between  $K$-schemes, 
+		 there exists a unique  
+		 $\varphi\colon\mathfrak{Y}\to \mathfrak{X}$
+		 which extends $f$.
+	 \end{enumerate}
+	 In particular $\mathfrak{X}(R)\to X(K)$
+	 is bijective.
+\end{defn}
+\begin{itemize}
+	\item If $\mathfrak{X}'$ is the N\'{e}ron model
+		of $X'$, then
+		$\mathfrak{X}\times_R\mathfrak{X}'$
+		is the  N\'{e}ron model of $X\times_KX'$.
+	\item If $X$ is a  $K$-group scheme,
+		then  $\mathfrak{X}$ has a unique
+		 $R$-group scheme structure.
+		 $\mathfrak{X}$ is commutative if
+		 $X$ is commutative.
+\end{itemize}
+
+
+\begin{thm}
+	When $R$ is a Dedekind domain
+	and  $A$ is an abelian varity over  $K$,
+	then  $A$ admits a  N\'{e}ron model $\mathfrak{A}/R$.
+\end{thm}
+
+\begin{prop}
+	If $R'$ is an integral domain \'{e}tale over $R$,
+	then  $\mathfrak{X}_{R'}$ 
+	is the N\'{e}ron model of $X_{K'}$.
+\end{prop}
+
+\begin{prop}
+	When $R$ is a complete discrete valuation ring,
+	the smooth locus  $\mathcal{W}^{sm}$ 
+	of a minimal Weierstrass model for $E$
+	is isomorphic to the relative identity component 
+	$\mathcal{N}^0$ of the  N\'{e}ron model.
+\end{prop}
+\[
+	r\colon E(K)=\mathcal{N}(R)\to
+	\mathcal{N}_k(k)\supset \mathcal{N}^0_k(k)=
+	\mathcal{W}^{sm}(k)
+\]
+then $E(K)^1=\ker(r)\subset E(K)^0=r^{-1}(\mathcal{N}^0_k(k))$.
+The component group is the 
+finite \'{e}tale $k$-group  $\Phi_E=\mathcal{N}_k/\mathcal{N}^0_k$.
+\[
+	E(K)^0/E(K)^1\cong \mathcal{N}^0_k(k),\quad
+	E(K)/E(K)^0\cong \Phi_E(k).
+\]
+
+\subsection{Chevalley}
+
+Let $K$ be a perfect field
+and  $G$ a group variety,
+then 
+ \[
+	1\to H\to G\to B\to1
+\]
+with $B$ abelian and  $H$ affine.
+If  $H$ is commutative affine group scheme,
+then  $H=T\times U$
+into torus and unipotent.
+Since  $H(\bar{K})$ is $m$-divisible
+when  $m$ is invertible in  $K$,
+ \[
+	 0\to H[m]\to G[m]\to B[m]\to 0
+\]
+
+\section{Tate's residue}
+
+\subsection{traces}
+\begin{itemize}
+	\item If $V$ is finite dimensional,
+		then  $\mtr_V(\theta)$
+		is the usual trace.
+	\item If  $W\subset V$ is a subspace
+		ant  $\theta W\subset W$, then
+		 \[
+			 \mtr_V(\theta)=
+			 \mtr_W(\theta)+
+			 \mtr_{V/W}(\theta)
+		\]
+	\item If $\theta$ is nilpotent, then
+		$\mtr_V(\theta)=0$.
+	\item If  $F$ is a finite potent subspace of  $\End(V)$,
+		then  $\mtr_V\colon F\to k$ is  $k$-linear.
+	\item If  $\varphi\colon V'\to V$ and $\psi\colon V\to V'$
+		are such that $\varphi\psi$
+		is finite potent, then so is  $\psi\varphi$
+		and  $\mtr_V(\varphi\psi)=\mtr_{V'}(\psi\varphi)$.
+\end{itemize}
+
+Fix a subspace $A$ of  $V$
+and define subspaces of $\End(V)$ by
+\begin{align*}
+	\theta\in E&\Longleftrightarrow \theta A<A\\
+	\theta\in E_1&\Longleftrightarrow \theta V<A\\
+	\theta\in E_2&\Longleftrightarrow \theta A<(0)\\
+	\theta\in E_0&\Longleftrightarrow \theta V<A\text{ and }\theta A<(0)
+\end{align*}
+\begin{itemize}
+	\item $E$ is a  $k$-subalgebra
+		and  $E_i$ are two-sided ideals.
+	\item $E_0$ is finite potent.
+	\item Let $\pi\colon V\to A$ be a projection,
+	then  $\pi\in E_1, 1-\pi\in E_2$.
+	If either $\varphi\in E_0, \psi\in E$ or
+	$\varphi\in E_1, \psi\in E_2$,
+	then  $[\varphi,\psi]\in E_0$
+	and  $\mtr_V([\varphi,\psi])=0$.
+\end{itemize}
+
+\subsection{Residue}
+
+Let $K$ be a commutative  $k$-algebra 
+which acts on  $V$ linearly.
+And  $A\subset V$ is a subspace
+such that  $fA<A$ for all  $f\in K$,
+so  $K$ acts through  $E$.
+Deifne $k$-linear residue map
+ \[
+	\res_{A}^V\colon \Omega^1_{K/k}\to k
+\]
+such that $\res_A^V(f\,dg)=\mtr_V([f_1,g_1])$
+for  $f_1,g_1\in E$ such that
+ \begin{itemize}
+	 \item $f\equiv g_1, g_1\equiv g\mod (E_2)$
+	 \item either $f_1\in E_1$ or $g_1\in E_1$ 
+\end{itemize}
+Easy to check that the induced map
+$K\otimes_kK\to k$
+factors through  $\Omega^1_{K/k}$,
+which has kernel
+\[
+	f\otimes gh-fg\otimes h-fh\otimes h.
+\]
+
+\begin{prop}
+	Given $f,g\in K$
+	define 
+	\begin{align*}
+		B&=A+gA\\
+		C&=\{v\in B\mid fv\in A \text{ and } fgv\in A\}
+	\end{align*}
+	Since $fB+fgB<A$,
+	$B/C$ is finite dimensional.
+
+	Let $\pi$ be projection of $(A+fA+fgA)\to A$
+	then 
+	\[
+		\res_A^V(f\,dg)=\mtr_{V}([\pi f,g])
+		=\mtr_{B/C}([\pi f,g]).
+	\]
+	Since $[\pi f,g]$ maps $V\to B$
+	and $C\to 0$.
+\end{prop}
+
+\begin{itemize}
+	\item 
+	 If $fA+fgA+fg^2A\subset A$,
+	 then  $B=C$ and
+	 thus  $\res_A(f\,dg)=0$
+ \item Let $t\in K$, then  $\res_(t^n\,dt)=0$
+	 for  $n\geq 0$.
+	 the same holds for  $n\leq -2$
+	 if  $t$ is invertible.
+ \item If  $g\in K$ is invertible and  $h\in K$
+	 is such that  $hA\subset A$, then
+	  \[
+		  \res_A(hg^{-1}\,dg)=
+		  \mtr_{A/(A\cap gA)}(h)-
+		  \mtr_{gA/(A\cap gA)}(h)-
+	 \]
+	 Let $f=hg^{-1}$, then
+	 $[\pi f, g]=\pi h-\pi_1h$ 
+	 where $\pi_1=g\pi g^{-1}$ is projection to  $gA$.
+	 Since  both $A,gA$ are stable under  $h$,
+	  \[
+		  \res_A(hg^{-1}\,dg)=
+		  \mtr_{(A+gA)/A\cap gA}(\pi h)-
+		  \mtr_{(A+gA)/A\cap gA}(\pi_1 h)-
+	 \]
+	 and the two traces can be computed in $A$ and  $gA$
+	 respectively.
+ \item If $B\subset V$ is another subspace of  $V$
+	 such that  $fB<B$ for all  $f\in K$, then
+	  \[
+	  	\res_A+\res_B=\res_{A+B}+\res_{A\cap B}
+	  \]
+	  By above
+	  \begin{multline*}
+		  \res_A(f\,dg)-\res_{A+B}
+		  =\mtr_V([\pi_Af,g])-\mtr_V([\pi_{A+B}f,g])\\
+		  =\mtr_V([(\pi_A-\pi_{A+B})f,g])\\
+		  =\mtr_V([(\pi_{A\cap B}-\pi_{B})f,g])\\
+	  \end{multline*}
+	  Since both $[\pi_Af,g]$ and $[\pi_{A+B}f,g]$
+	  carry  $V\to A+B$,  $A+B\to A$,  $A\to 0$
+	  so they belong to a common finite potent subspace
+	  of  $\End(V)$.
+  \item Let  $K'$ be a finite free commutative  $K$-algebra,
+	   $V'=K'\otimes_KV, A'=\sum x_i\otimes K\subset V'$
+	   where  $\{x_i\}$ is a $K$-basis of  $K'$.
+	   Then 
+	    \[
+		    \res_{A'}(f'\,dg)=\Res_A(\Tr_{K'/K}f\,dg)
+		    \quad f'\in K', g\in K.
+	   \]
+\end{itemize}
+
+\subsection{curves}
+
+Let $X$ be a connected regular scheme 
+of dimension $1$ and proper over the ground field $k$.
+Let $K=k(X)$ be the function field.
+At each closed point  $p\in X$
+let  $A_p=\hat{\oo}_p$ be the completion of the dvr
+and $K_p$ be the field of fraction of  $A_p$.
+Define 
+ \[
+	 \res_p(f\,dg)=\res_{A_p}^{K_p}(f\,dg)
+\]
+
+\begin{thm}
+	If $p$ is a $k$-rational point 
+	so that $A_p\cong k[[t]]$, 
+	then
+	\[
+		\res_p(f\,dg)=
+		\sum_{\nu+\mu=0}\mu a_\nu b_\mu,\quad
+		f=\sum a_\nu t^\nu,
+		g=\sum b_\mu t^\mu,
+	\]
+	Reduce to where $f$ and $g$ are finite sum
+	then  use
+	\[
+		\res_p(t^n \,dt)=
+		\begin{cases}
+			0 & n\neq -1\\
+			\dim(A_p/tA_p)=1 & n=-1
+		\end{cases}
+	\]
+\end{thm}
+
+\begin{thm}
+	Let $S$ be any set of closed points 
+	and  $\oo(S)=\cap_{p\in S}\oo_p\subset K$
+	then for $\omega\in \Omega^1_{K/k}$
+	\[
+		\sum_{p\in S}\res_p(\omega)=
+		\res_{\oo(S)}^K(\omega)
+	\]
+	Left side is finite sume.
+	In particular $\sum\res_p(\omega)=0$
+	since $\oo(X)$ is finite dimensional.
+	\[
+		\res_{A_S}+\res_K=\res_{\oo(S)}+\res_{K+A_S}
+	\]
+	but $\res_K=0$ on  $K$
+	and  $\res_{K+A_S}=0$
+	since $V_S/(K+A_S)$ is finite dimensional.
+	Let $S'\subset S$ be a finite set of  $S$
+	contains all poles of  $f,g$
+	and  $T=S\setminus S$, then
+	 \[
+		 \res_{A_S}(f\,dg)=
+		 \res_{A_T}(f\,dg)+
+		 \sum_{p\in S'}\res_{p}(f\,dg)=
+		 \sum_{p\in S'}\res_{p}(f\,dg)
+	\]
+\end{thm}
+Consider the exact sequnce of sheaves
+\[
+	0\to \oo_X\to K^0\to K^1\to 0
+\]
+where $K^0(U)=image(K\to V_U)$
+and  $K^1(U)=V_U/A_U=\oplus K_p/A_p$,
+then  $K^i$ has trivial cohomology in positive degrees
+and thus
+\[
+	H^1(X,\oo_X)\cong V_X/A_X+K
+\]
+is finite dimensional since $X$ is proper.
+
+\begin{thm}
+	Let $X'\to X$
+	be surjective morphism of curves
+	correponding to  $K\to K'$, then
+	\[
+		\sum_{p'\mapsto p}
+		\res_{p'}(f'\,dg)=\res_p((\Tr_{K'/K}f')\,dg)
+		\quad
+		f'\in K', g\in K, p\in X
+	\]
+	and 
+	\[
+		\res_{p'}(f'\,dg)=\res_p((\Tr_{K'_{p'}/K_p}f')\,dg)
+		\quad
+		f'\in K'_{p'}, g\in K_p
+	\]
+\end{thm}
+
+\subsection{duality}
+Let $V=V_X, A=A_X$ and for each divisor  $D$ let
+ \[
+	 V(D)=\{f=(f_p)\in V\mid ord_pf_p+ ord_pD\geq 0\}
+\]
+then $H^1(X,\oo_X(D))\cong V/K+V(D)$
+using similary exact sequence.
+
+Define the dualizing sheaf $J_{X/k}$
+whose stalk at the generic point is
+\[
+	J_{K/k}=
+	\{\lambda\in \Hom_k(V,k)\mid
+	\lambda(K+V(D))=0 \text{ for some divisor }D\}
+	\cong \varinjlim_D (H^1(X,\oo_X(D))^*
+\]
+whose stalk at each $p$ is 
+ \[
+	 J_p=\{\lambda\in J_{K/k}\mid \lambda(A_p)=0\}
+ \]
+then $U\subset X$
+define  $J_{X/k}(U)=\cap_{p\in U}J_p\subset J_{K/k}$.
+It is thus constructed so that
+\[
+	H^0(J_{X/k}(-D))=\Hom_k(V/(K+V(D)),k)\cong 
+	H^1(X,\oo_X(D))^*
+\]
+is tautological.
+
+Then there is a canonical 
+ $c\colon \Omega^1_{X/k}\to J_{X/k}$ such that
+ \[
+	 (c\omega)(f)=\langle f,\omega\rangle
+	 =\sum_{p\in X}\res_p(f_p\omega).
+ \]
+
+
+\section{Serre}
+
+Let $X$ be algebraic curve
+(over  $k=\bar{k}$).
+Let  $D(X)$ be the divisor group
+and  $P(X)$ be the principal divisor.
+If  $f\in K^*$, then
+$f$ induces map  $X\to P_1(k)$ and 
+ \[
+	 (f)=f^{-1}(0)-f^{-1}(\infty)
+\]
+and if  $f$ is nonconstant
+$f^{-1}(0), f^{-1}(\infty)$ 
+have the same degree $[K:k(x)]$.
+\[
+	L(D)=\{f\in K^*\mid D+(f)\geq 0\}
+\]
+is finite dimensional
+and $|D|$ be the set of 
+effective divisors linearly equivalent to  $D$
+is bijective with  $P(L(D))$
+
+Define sheaf $\mathcal{L}(D)$
+by 
+ \[
+	 v_p(f)\geq -v_p(D).
+\]
+Then $H^0,H^1$ are finite-dimensional,
+ $H^q=0,q\geq 2$. 
+
+ \begin{thm}[Riemann-Roch]
+ \[
+	 h^0(D)-h^1(D)=\deg(D)+1-g,\quad
+	 g=\dim H^1(X,\oo_X).
+ \]	
+ \end{thm}
+
+\begin{proof}
+	Trivially true for $D=0$.
+	 \[
+		0\to
+		\mathcal{L}(D)\to
+		\mathcal{L}(D+P)\to Q\to 0
+	\]
+	then $Q$ is skyscrapper sheaf supported at  $P$
+	the stalk is one-dimensional.
+\end{proof}
+
+\[
+	0\to \mathcal{L}(D)\to K\to K/\mathcal{L}(D)\to 0
+\]
+then the last term is skyscrapper sheaf. Taking 
+cohomology get
+\[
+	K\to V_X/V(D)\to H^1(X,\mathcal{L}(D))\to 0.
+\]
+
+\subsection{dual}
+
+Let 
+\[
+	J=\varinjlim_D J(D)=((V_X/K+V(D))^*
+\]
+then $J$ is at most one-dimensional over  $K$.
+ \begin{proof}
+	 Suppose $\alpha,\alpha'\in J(D)$
+	 are linearly-independent over  $K$.
+	 Let $\Delta_n$ be any divisor of
+	 degree  $n\geq 0$ and  $f,g\in L(\Delta_n)$,
+	 then
+	  \[
+		  (f,g)\mapsto f\alpha+g\alpha'\quad
+		  L(\Delta_n)+L(\Delta_n)\hookrightarrow 
+		  J(D-\Delta_n)
+	 \]
+	 which implies 
+	 \[
+		 h^1(D-\Delta_n)=-\deg(D-\Delta_n)
+		 +g-1+h^0(D-\Delta_n)
+		 =n+(g-1-d)+h^0(D-\Delta_n)
+	 \]
+and get contradition when $n$ is large.
+\end{proof}
+
+Let $\omega\in \Omega^1_{K/k}$ 
+and $t$ be a uniformizer of  $p\in P$,
+write  $\omega=f\,dt$
+then define
+ \[
+	 v_p(\omega)=v_p(f)
+\]
+and $\res_p(\omega)a_{-1}$
+if  $f=\sum a_nT^n$.
+
+\begin{prop}
+	If $\omega\in \Omega^1_{K/k}$,
+	then  $\sum \res_p(\omega)=0$.
+\end{prop}
+When $k=\C$, can use
+ \[
+	 \res_p(\omega)=\frac{1}{2\pi i}\int_P\omega
+\]
+and use Stoke.
+
+Define $(\omega)=\sum v_p(\omega)P$
+Define 
+ \[
+	 \langle \omega, r\rangle=\sum\res_p(r_p\omega)
+\]
+Let $\Omega(D)=\{\omega\mid (\omega)\geq D\}$,
+\begin{thm}
+	$\Omega(D)$ dual to  $J(D)$
+\end{thm}
+\begin{proof}
+	If $\theta(\omega)=0$,
+	then  $\omega\in \Omega(\Delta)$
+	for any divisor  $\Delta$ so  $\omega=0$.
+	Then use  $\dim_K\Omega_{K/k}=1$
+	and $\dim_K J\leq 1$.
+\end{proof}
+
+Fix $(\omega_0)$, then
+ \[
+	 (f\omega_0)\geq D\Longleftrightarrow
+	 (f)+(\omega_0)\geq D
+\]
+so $\Omega(D)$ corresponds to  $L(K-D)$
+where  $K=(\omega_0)$.
+
+
+If $X'\to X$ corresponds to  $K\to K'$,
+then  $\Omega_{K'/k}=\Omega_{K/k}\otimes_KK'$,
+then $\Tr\colon K'\to K$
+defines 
+ \[
+ 	\Tr\colon \Omega_{K'/k}\to \Omega_{K/k}.
+ \]
+
+%\biblio graphy  style{ ams lp }
 %\bibliography biblio}
 \end{document}
+

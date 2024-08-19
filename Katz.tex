@@ -1292,8 +1292,199 @@ and
 \]
 with the kernel being $W_{k+i+1}$
 
+\section{Katz in motive}
+
+Let $k$ be a field and
+$X$ be separated of finite type over  $k$.
+The  \'{e}tale cohomology 
+$H^1(X_{\bar{k}}, \Z/N\Z)$ is an abelian group 
+killed by $N$, with an action of  $\Gal(\bar{k}/k)$.
+
+By Nagata, there exists an open immersion
+$j\colon X\to \bar{X}$
+where $ \bar{X}$ is proper over  $k$.
+Then define
+ \[
+	 H^i_c(X_{\bar{k}},\Z/N\Z)=
+	 H^i(\bar{X}_{\bar{k}},j_!(\Z/N\Z)).
+\]
+Cohomology groups with compact suppport
+are finite and vanish for $i>2\dim(X)$.
+
+If  $N$ is invertible in  $k$,
+then  $H^i(X_{\bar{k}},\Z/N\Z)$
+are finite and vanish for $i>2\dim(X)$.
+
+If  $k=\C$, then
+ \[
+	 H^i(X,\Z/N\Z)\cong H^i(X(\C),\Z/N\Z),\quad
+	 H^i_c(X,\Z/N\Z)\cong H^i_c(X(\C),\Z/N\Z).
+\]
+the right hand side are Betti.
+
+Denote $\Z/N\Z(1)=\mu_N(\bar{k})$
+the $\Gal(\bar{k}/k)$-module,
+where $N$ is invertible in  $k$.
+
+ \begin{thm}
+	Supose $N$ is invertible in  $k$
+	 \begin{enumerate}[label=(\alph*)]
+		\item if $X$ is geometrically irreducible 
+			 $k$-scheme of dimension  $d$,
+			 then
+			  \[
+				  H^{2d}_c(X_{\bar{k}},\Z/N\Z)(d)
+				  \cong \Z/N\Z
+			 \]
+			 if $X/k$ is smooth, for  $a+b=d$
+			 there is Galois equivariant 
+			 cup-product pairing 
+			  \[
+				  H^i_c(X_{\bar{k}},\Z/N\Z)(a)
+				  \times
+				  H^{2d-i}(X_{\bar{k}},\Z/N\Z)(b)
+				  \to 
+				  H^{2d}_c(X_{\bar{k}},\Z/N\Z)(d)
+				  \cong \Z/N\Z
+			 \]
+			 which is perfect pairing.
+	\end{enumerate}
+\end{thm}
+
+When $X/k$ is smooth and geometrically connected of dimension  $d$.
+Let  $Z\subset X$ be a 
+geometrically irreducible subscheme of codimension  $i$,
+there is restriction map
+ \[
+	 H^{2d-2i}_c(X_{\bar{k}},\Z/N\Z)(d-i)\to
+	 H^{2d-2i}_c(Z_{\bar{k}},\Z/N\Z)(d-i)\cong \Z/N\Z
+\]
+giving a clas in $H^{2i}(X_{\bar{k}},\Z/N\Z)(i)$.
+
+Kunneth formula between graded $\Ql$-algebras.
+\begin{align*}
+	H^*_c((X\times_kY)_{\bar{k}},\Ql)&\cong 
+	H^*_c(X_{\bar{k}},\Ql)\otimes H^*_c(Y_{\bar{k}},\Ql)\\
+	H^*((X\times_kY)_{\bar{k}},\Ql)&\cong 
+	H^*(X_{\bar{k}},\Ql)\otimes H^*(Y_{\bar{k}},\Ql)
+\end{align*}
 
 
+\subsection{finite fields}
+Let $k$ be a finite field with
+characteristic  $p$ and
+cardinality  $q$.
+Let  $F\in \Gal(\bar{k}/k)$ be the geometric Frobenius.
+Define
+\[
+	Z(X/k,T)\coloneqq
+	\exp\left( \sum_{n\geq 1}N_nT^n/n \right)\in
+	1+T\Q[[T]],\quad
+	N_n=\#X(k_n), [k_n:k]=n
+\]
+Then 
+\[
+	Z(Z/k,T)=\prod_{\text{closed pt }x\in X}
+	[1-T^{\deg(x)}]^{-1}
+	=\prod_{r\geq1}[1-t^r]^{-B_r}
+\]
+where $B_r$ is the number of closed points
+of degree  $r$.
+
+\[
+	Z(X/k,T)=
+	\prod_{i=0,\cdots,2\dim(X)}
+	\det(1-TF\mid H^i_c(X_{\bar{k}},\Ql))^{(-1)^{i+1}}
+\]
+which is equivalent to 
+\[
+	\#X(k_n)=
+	\sum_{i=0,\cdots,2\dim(X)}
+	(-1)^i\mtr(F^n\mid H^i_c(X_{\bar{k}},\Ql))
+\]
+
+\begin{thm}
+	The eigenvalues $\alpha_{i,j,\ell}$
+	of $F$ are algebraic integers
+	And there is integers
+	$0\leq w(\alpha_{i,j,\ell}\leq i$
+	such that for every embedding $ \bar{\Q}_\ell\to \C$
+	\[
+		|\alpha|=q^{w/2}.
+	\]
+	If moreover $X/k$ is proper and smooth,
+	then  $w=i$.
+	And if in addition  $X$ is purely of dimension  $d$,
+	then
+	 \[
+		\{\alpha_{2d-i,j,\ell}\}_j=
+		\{q^d/\alpha_{i,j,\ell}\}_j=
+	\]
+\end{thm}
+$ \det(1-TF\mid H^i_c(X_{\bar{k}},\Ql))$
+has $\Z$-coefficients independent of  $\ell\neq p$
+if  $X/k$ is proper smooth.
+
+\begin{itemize}
+	\item both $H^i$ and  $H^i_c$ have mixed weights
+		if  $X$ is not proper.
+\end{itemize}
+
+\section{summary of mixed hodge}
+
+Let $X$ be smooth variety over  $\C$
+and  $\iota\colon X\to \bar{X}$
+complement is  a divisor with normal crossing.
+\[
+	\mathbb{H}^n(\bar{X},\Omega^*_{\bar{X}}(\log D))\cong
+	\mathbb{H}^n(\bar{X},\iota_*\Omega^*_{X})\cong
+	\mathbb{H}^n(X,\Omega^*_{X})\cong
+	H^n(X,\C)
+\]
+The sheaf complex $\Omega^*_{\bar{X}}(\log D)$
+has Hodge and weight filtration
+\begin{align*}
+	F^p\Omega^r_{\bar{X}}(\log D)=
+	\begin{cases}
+		\Omega^r_{\bar{X}}(\log D) & r\geq p\\
+		0 & ow
+	\end{cases}\\
+	W_k\Omega^r_{\bar{X}}(\log D)=
+	\begin{cases}
+		\text{image of }
+		\Omega^r_{\bar{X}}(\log D)\otimes
+		\Omega^{r-k}_{\bar{X}}\to
+		\Omega^r_{\bar{X}}(\log D) & k\leq r\\
+		\Omega^r_{\bar{X}}(\log D) & ow.
+	\end{cases}
+\end{align*}
+
+\begin{rem}
+	Use Poincare pairing,
+	$H^k(X)\cong H^{2n-k}(X)^*(-n)$ 
+	as MHS.
+\end{rem}
+
+Let $h^{p\pm}$ 
+be the dimension of $\pm(-1)^p$-eigenspace of  $F_\infty$,
+then
+ \[
+	 L_\infty(s)=
+	 \prod_{p<q}\Gamma_\C(s-p)^{h^{p,q}}
+	 \prod_{p}\Gamma_\R(s-p)^{h^{p+}}
+	 \prod_{p}\Gamma_\R(s-p+1)^{h^{p-}}
+\]
+where $\Gamma_\C(s)=2(2\pi)^{-s}\Gamma(s)$
+and $\Gamma_\R(s)=\pi^{-s/2}\Gamma(s/2)$.
+
+\subsection{Faltings}
+For $X/K$ proper smooth
+ \[
+	 H^n(X_{K},\Qp)\otimes \C_K\cong
+	 \bigoplus_{i+j=n}
+	 H^i(X,\Omega^j_{X/K})\otimes \C_K(-j)
+\]
+so Hodge-Tate weight can be read.
 
 %\bib ingraphystyle{amsalpha}
 %\bib raphy{biblio}
