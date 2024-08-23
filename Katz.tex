@@ -109,8 +109,8 @@
 \newcommand{\Zp}{\mathbf{Z}_p}
 \newcommand{\Ql}{\mathbf{Q}_\ell}
 \newcommand{\Zl}{\mathbf{Z}_\ell}
-\newcommand{\R}{\mathbf R}
 \newcommand{\C}{\mathbf C}
+\newcommand{\R}{\mathbf R}
 \newcommand{\A}{\mathbf A}
 \newcommand{\hZ}{{\hat{\mathbf{Z}}}}
 \newcommand{\dd}{\mathfrak{d}} %different
@@ -1692,13 +1692,13 @@ $pr_i\vert_Z$ are proper.
 Then  $Z\hookrightarrow X_1\times \bar{X}_2$
 has closed image and defines a correspondence, 
 giving a class
-\[
-	c_\ell(Z)=c^{X_1\times \bar{X}_2}_\ell(Z)
+\begin{align*}
+	c_\ell(Z)&=c^{X_1\times \bar{X}_2}_\ell(Z)
 	\in H^{2r}_{|X|}(X_1\times \bar{X}_2, \Ql(r))
-	= H^{2r}_{|X|}(X_1\times \bar{X}_2, pr_2^*j^2_!\Ql(r))
-	=H^*(X_1,\Ql)\otimes H^*_c(X_2,\Ql)
+	= H^{2r}_{|X|}(X_1\times \bar{X}_2, pr_2^*j^2_!\Ql(r))\\
+	 &=H^*(X_1,\Ql)\otimes H^*_c(X_2,\Ql)
 	=Hom(H^*_c(X_1,\Ql), H^*_c(X_2,\Ql)).
-\]
+\end{align*}
 when $Z$ has codimension  $r$,
 this is of degree $2(r-d)$. 
 Let  $Corr^c_E(X_1\times X_2)$
@@ -1706,7 +1706,151 @@ be the vector space over  $E$
 of proper correspondence modulo 
 homological equivalence.
 
+There exists algebra homomorphism
+\[
+	\theta^X\colon 
+	Corr_E^c(X)\to \End_E(H^*_c(X,E))
+\]
 
+\begin{prop}
+	Let $S$ be the places of bad reductions for  $ \bar{X}$,
+	and $h\in Corr_E^c(X)$ be an idempotent. 
+	If for  $i\in \{q,q-1\}$,
+	$H^i(\partial X)$ belongs to  $C_E^{S,gr}$,
+	then $\theta^X(h)\cdot H^q_c(X,E)$
+	belongs to  $C_E^{S,c}$.
+\end{prop}
+
+\begin{rem}
+	Let $U(n)$ be the principal level- $n$ subgroup,
+	 $M_{g,n}/\Q$ the Siegel modular varieties of level $n$.
+	  $A_{g,n}$ the universal abelian varieties
+	  of relative dimension $2$,
+	   $A_{g,n}^s$ the $s$-th fiber product over $M_{g,n}$.
+\end{rem}
+
+\begin{cor}
+	For all $s$,  $H^*(\partial \bar{A}_{g,n}^s)$
+	belongs to $C_E^{S_n,gr}$,
+	where $S_n$ is the set of prime divisors of  $n$.
+\end{cor}
+
+\begin{defn}
+	For $\gamma\in M_{2g}(\hZ)\cap \GSp_{2g}(\A_f)$,
+	let 
+	\[
+		Isog_{g,n,\gamma}/\Q\hookrightarrow
+		M_{g,n}\times M_{g,n}/\Q
+	\]
+	be the Hecke correspondences classifying
+	isogenies between principally polarized
+	$g$-dimensional abelian varieties
+	$\phi\colon A\to A'$ such that 
+	 $\phi_\ell\colon T_\ell(A)\to T_\ell(A')$
+	 is equivalent to  $\gamma$.
+	 The morphism
+	  \[
+	 	\gamma^\natural\colon 
+		M_{g,\gamma U\gamma^{-1}}(\C)\to
+		M_{g,U}(\C)
+	 \]
+	 is defined over $\Q$
+	 and  $Isog_{g,n,\gamma}$ is the image of 
+	 $(id\times \gamma^\natural)$
+	 of  $M_{g,U\cap\gamma U\gamma^{-1}}$.
+	 The correspondence $\mathcal{R}^s_{g,n,\gamma}$
+	 can be defined similarly.
+	 These are proper correspondence and defines 
+	 algebra homomorphisms
+	 \begin{align*}
+		 \mathcal{H}_g(n)\to Corr_\Q(M_{g,n}/\Q)\,
+		 U(n)\gamma U(n)\mapsto Isog_{g,n,\gamma}\\
+		 \mathcal{H}_g(n)\to Corr_\Q(A^s_{g,n}/\Q)\,
+		 U(n)\gamma U(n)\mapsto \mathcal{R}^s_{g,n,\gamma}
+	 \end{align*}
+\end{defn}
+
+Let $T$ be a  $\Q$-variety 
+and $Y$ is a smooth  $T$-scheme of finite type
+and dimension  $d$
+such that  $f\colon Y\to T$ is proper flat.
+Let  $Z\hookrightarrow Y$ be a closed immersion
+of codimension $r$ and  $Z$ is flat over  $T$.
+There exists a class $c^Y_\ell(Z)\in H^{2r}_Z(Y,\Ql(r))$,
+define 
+\[
+	c^{Y/T}_\ell(Z)=
+	c_\ell(Z)\in 
+	H^{2r}(Y,\Ql(r))\to H^0(T,R^{2r}f_*\Ql(r))
+\]
+
+A rellative irrducible correspondence over $Y/T$
+is closed irreducible subscheme  $Z_T$
+flat over  $T$ inside  $Y\times_TY$ of codimension  $r$,
+which defines 
+ \[
+	R^\bullet f_*\to R^{\bullet+2(r-d)}f_*
+\]
+which induces 
+$H^p(T, R^qrf_*\Ql)\to H^p(T, R^{q+2(r-d)}f_*\Ql)$ 
+and coincide 
+via the Leray spectral sequence with
+$H^{p+q}(Y,\Ql)\to H^{p+2+2(r-d)}(Y,\Ql)$.
+
+\begin{prop}
+	There exists $e_\lambda\in Corr_\Q(A_{g,U}^s)$
+	such that
+	\[
+		e_\lambda\cdot R^if^s_*\Ql=
+		\begin{cases}
+			\underline{L}_\lambda, &, i=s\\
+			0, &, i\neq s.
+		\end{cases}
+	\]
+\end{prop}
+
+\begin{thm}
+	Let $\pi$ be a cuspidal representation
+	of cohomological weight  $\lambda$
+	and  unramified outside $S_\pi$.
+	 \[
+		 \mathbf{V}_\pi=\Hom_{G(\A_f)}
+		 (\pi_f,H^*_c(M_g, L_\lambda(E_\pi)))
+	\]
+	belongs to $C_{E_\pi}^{S_\pi, c}$
+\end{thm}
+
+\section{Deligne}
+
+\begin{defn}
+	A cmplex algebraic variety is a $\C$-scheme
+	separated of finite type.
+\end{defn}
+
+When $X$ is proper smooth,
+ $H^i(X)=H^i(X,\Q)$ is pure of weight  $i$.
+
+When  $X$ is proper smooth, connected of dimension  $d$.
+Let $P$ be a point, then
+ \[
+	H^{i}_{(P)}(X)=
+	\begin{cases}
+		H^{2d}(X)=\Q, & i=2d,\\
+		0, & \text{o.w.}.
+	\end{cases}
+\]
+Which can be viewed as
+$\Q=H^0(P)(-d)\cong H^{2d}_{(P)}(X)$.
+In genera, let $Y$ be a smooth subvariety of codimension  $d$,
+then  $H^i(Y)(-d)\cong H^{i+2d}_Y(X)$.
+
+When $Y$ is closed smooth subvariety
+pure of codimension  $d$,
+ \[
+	\cdots\to H^i(X)\to H^i(X-Y)\to H^{i+1}_Y(X)\to \cdots
+\]
+Then $Gr^W_j(H^i(X-Y))=0$ if  $j\neq i,i+1$
+and  $W_i$ is the image of  $H^i(X)$.
 
 %\bib ingraphystyle{amsalpha}
 %\bib raphy{biblio}
