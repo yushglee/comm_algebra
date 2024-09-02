@@ -158,6 +158,7 @@
 \DeclareMathOperator{\corank}{corank}
 
 
+\DeclareMathOperator{\Pic}{Pic}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\res}{res}
 \DeclareMathOperator{\rec}{rec}
@@ -2964,8 +2965,141 @@ such that $P(O_S(V)\to O_X(U))$.
 \end{lem}
 
 
+\section{Abelian varieties}
+
+In general 
+\[
+	\begin{tikzcd}
+		X\times_TY\arrow[r]\arrow[d]
+		\arrow[dr, phantom, "\ulcorner", very near start]&
+		X\times_SY\arrow[d]\\
+		T\arrow[r,"\Delta"]&
+		T\times_ST
+	\end{tikzcd}
+\]
+Thus $X\times_TY\to X\times_SY$
+is a closed immersion if  $T$ is separated over  $S$.
+ \begin{lem}
+	Let $f\colon X\to Y$
+	be a morphism between  $S$-schemes.
+	If  $X$ is proper and  $Y$ is separated over  $S$,
+	then  $f$ is proper.
+\end{lem}
+\begin{proof}
+	Decompose $f$ into
+	$X\xrightarrow{\Gamma_f}\to X\times_SY
+	\to Y$.
+	Then the graph  $\Gamma_f$
+	is a closed immersion since  $Y$ is separated over  $S$.
+\end{proof}
+
+\begin{defn}
+	An abeian variety $X$ is a proper smooth connected
+	group scheme over a field $k$.
+	In particular  $X$ is irreducible.
+\end{defn}
+\begin{enumerate}[label=(\alph*)]
+	\item (Seesaw) Let $L$ be a line bundle 
+		on  $X\times X$, then the set
+		 \[
+			X_1=\{x\in X\mid L\vert_{X\times \{x\} }
+			\text{ is trivial }\}
+		\]
+		is a Zariski closed set.
+		And if $p_2\colon X\times X_1\to X_1$
+		is the second projection,
+		then  $L\vert_{X\times X_1}\cong p_2^*M$
+		for some line bundle $M$ on  $X_1$.
+	\item (cube) Let  $L$ be a line bundle 
+		on  $X\times X\times X$ whose restriction to
+		 $X\times X\times \{x_0\}$,
+		 $X\times \{x_0\}\times X$,
+		 $\{x_0\}\times X\times X$, are trivial,
+		 then $L$ is trivial.
+	 \item  $(f+g+h)^*L\cong 
+	 (f+g)^*L\otimes (g+h)^*L\otimes (f+h)^*L\otimes
+	 f^*L^{-1}\otimes g^*L^{-1}\otimes h^*L^{-1}\otimes $.
+ \item $n_X^*L\cong L^{\frac{n^2+n}{2}}\otimes
+	 (-1_X)^*L^{\frac{n^2-n}{2}}$ 
+ \item (square) $T_{x+y}^*L\otimes L\cong 
+	 T_x^*L\otimes T_y^*L$
+\end{enumerate}
+Apply the Seesaw theorem, 
+\[
+	K(L)=\ker(\phi_L)=
+	\{x\in X\mid T_x^*L\cong L\}
+\]
+is a Zariski closed subset.
+\begin{prop}
+	$K(L)$ us finite 
+	if and only if  $L$ is ample.
+\end{prop}
+
+\subsection{dual abelian varieties}
+
+$\Pic^0(X)$ is the subgroup of  $L$
+for which  $\phi_L$ is identically  zero.
+In particular $T_x^*L\otimes L^{-1}\in \Pic^0(X)$ 
+for any line bundle $L$.
+ \begin{enumerate}[label=(\alph*)]
+	 \item $L\in \Pic^0(X)$, thus
+		 $T_x^*L\otimes L^{-1}$ is trivial for all $x$
+	 \item  $m^*L\cong p_1^*L\otimes p_2^*L$ by Seesaw,
+		 check trivial on $ \{0\}\times X$
+		 and $X\times \{x\}$ for all $x$.
+	 \item Thus by above $(f+g)^*L\cong f^*L\otimes g^*L$.
+	 \item Use above inductively,  $n_X^*L\cong L^{n}$.
+	 \item Apply the above to the middle term of 
+		  \[
+			 T_x^*(L\otimes (-1_X)^*L^{-1})\cong 
+			 T_x^*L\otimes (-1_X)^*[L\otimes T_{-x}^*L^{-1}]\otimes (-1_X)^*L^{-1}\cong L\otimes (-1_X)^*L^{-1}
+		  \]
+		  and show that $L\otimes(-1_X)^*L^{-1}$
+		  is in $Pic^0$. Thus
+		  $n_X^*L\equiv L^{n^2}\mod \Pic^0(X)$.
+	  \item Thus $\phi_{L^n}=n\phi_L(x)$,
+		  and thus $L\in \Pic^0(X)$
+		  if  $L$ is of finite order.
+\end{enumerate}
+
+\begin{thm}
+	If $L$ is ample and  $M\in \Pic^0(X)$
+	then  $M\cong T_x^*L\otimes L^{-1}$ 
+	for some  $x$.
+\end{thm}
+
+Poincare bundle $P$
+on  $X\times \hat{X}$ 
+such that $P\vert_{\{0\}\times X}$
+is trivial and pull-back alongd $\alpha\in \hat{X}$
+is $\alpha\in \hat{X}=\Pic^0(X)$.
+
+If $S$ is nomral and  $K$ on  $X\times S$
+is a line bundle such that 
+ \begin{enumerate}[label=(\alph*)]
+	\item $K_s=K\vert_{X\times\{s\}}$
+		is in  $\Pic^0(X)$ for one(hence all)
+		$s\in  S$.
+	\item $K\vert_{\{0\}\times S}$ is trivial, then 
+		there is morphism
+		$f\colon S\to \hat{X}$
+		such that $K_s\cong P_{f(s)}$
+		and $K\cong (1_X\times f)^*P$.
+\end{enumerate}
+
+
+\begin{defn}
+	Divisorial correspondence between $X$ and  $Y$
+	is a line bundle  $Q$ on  $X\times Y$
+	whose restriction to  $\{0\}\times Y$ 
+	and $X\times\{0\}$ are trivial
+\end{defn}
+
 \section{N\'{e}ron models}
-In this section $R$ is a Dedekind domain 
+
+
+
+In this  section $R$ is a Dedekind domain 
 and  $K$ is the field of fraction.
 
 \begin{defn}
